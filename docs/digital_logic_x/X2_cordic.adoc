@@ -24,6 +24,26 @@ it can also calculate logarithmic and exponential functions, given the needed mo
 image:../images/unit_circle.svg[width=40%]
 
 == The CORDIC algorithm
+In the image below, V0 shows the start vector
+
+["latex","../images/startvector.svg",imgfmt="svg", width="70%"]
+\[v_{0}=\begin{bmatrix}
+0 \\
+1
+\end{bmatrix}
+\]
+
+which we now iterate, by multiplying it with the rotation matrix, given below:
+["latex","../images/vector_rotation.svg",imgfmt="svg", width="70%"]
+\[v_{i+1}= R_i v_i\]
+
+["latex","../images/vector_rotation.svg",imgfmt="svg", width="70%"]
+\[ R_i = \begin{bmatrix}
+cos(\theta) & -sin(\theta) \\
+sin(\theta) & cos(\theta)
+\end{bmatrix}
+\]
+
 
 image:../images/cordic_circle.svg[width=40%]
 
