@@ -15,6 +15,3 @@ into a different repo, called hugo_content, the former repo I called hugo_blog.
 In my case, this means you have to clone the repo hugo_blog first
 go inside the new directory (cd hugo ), checkout its branch 'hugo' and then do a clone of
 the repo hugo_content.
-
-
-
