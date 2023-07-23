@@ -77,7 +77,8 @@ conductivity is (highly) dependent on its purity degree and environment
 factors like temperature. Representants of this group are called semiconductors.
 Carbon and silicon are examples showing up on the periodic table.
 The author picked those two elements as they have very exciting properties 
-in regards to - but not limited to - conductivity. This is due to the 
+in regards to - but not limited to - conductivity. This is due to the number of valence
+electrons on the outer shell.
 
 
 [width="100%" cols="a,a"]
@@ -269,34 +270,3 @@ Why? Because mostly we not only handle lumped components
 but rather distributed ones - especially in HF but dont get 
 me started about HF. Network thingies also - Why do we need this? 
 ////
-
-////
-Electrostatic field and capacitance 
-////
-
-////
-C= Q/U_c , also integral 
-////
-
-=== The Capacitor and Coils
-
-The elements next introduced, have a clue compared to the static of (ohmic) resistor.
-Now the time comes into focus, too, since capacitator and coils are both in a sense time-sensitive
-elements.
-So normally we would start with introducing the Capacitor with all its implication, and then go over to the coils wich
-are introduced then afterwards. Instead for this post, we show both of them in a comparision
-as they have complementary properties.
-
-
-[width="100%" cols="a,a"]
-|=====
-| conductor | coil
-| image:../images/electronic_basics/capacitor.svg[width="300px"]
-| image:../images/electronic_basics/coil.svg[width="300px"]
-| circuit symbol of a capacitor | circuit symbol of a coil
-| stores energy in electrical field | stores energy in a magnetic field
-| leads in phase | lags in phase
-| blocks in DC Mode | in DC mode current is growing while, voltage is taken done, with the same rate
-| 
-|=====
-
