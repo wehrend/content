@@ -98,7 +98,8 @@ type: text
     <tr class="ro1">
         <td style="text-align:left;width:1.6598in; " class="ce7"><p><a
                 href="./../docs/digital_logic/00_combinatorial_logic/">00_combinatorial_logic</a></p></td>
-        <td style="text-align:left;width:2.1283in; " class="ce18"><p>10_sequential_logic</p></td>
+        <td style="text-align:left;width:2.1283in; " class="ce18"><a
+                href="./../docs/digital_logic_2/10_sequential_logic/"><p>10_sequential_logic</a></p></td>
         <td style="text-align:left;width:0.889in; " class="Default"> </td>
     </tr>
     <tr class="ro1">
@@ -205,7 +206,8 @@ type: text
         <td style="text-align:left;width:0.889in; " class="Default"> </td>
     </tr>
     <tr class="ro1">
-        <td style="text-align:left;width:1.6598in; " class="ce14"><p>X2_Trigonometric functions (CORDIC)</p></td>
+        <td style="text-align:left;width:1.6598in; " class="ce14"><a
+                href="./../docs/digital_logic_x/x2_cordic"><p>X2_Trigonometric functions (CORDIC)</a></p></td>
         <td style="text-align:left;width:2.1283in; " class="ce14"> </td>
         <td style="text-align:left;width:0.889in; " class="Default"> </td>
     </tr>
