@@ -1,0 +1,91 @@
+---
+title: "FPGA 101: Starting with HDLS"
+date: 2023-12-03
+tags: ["verilog", "fpga"]
+draft: false
+type: blog
+---
+
+Today I want to introduce an introduction to hardware programming with an FPGA-board.
+I do not have the physical board, but we can still have a look into an introduction project
+and into the Gowin IDE. Below is given the verilog-source for an led chaser.
+Also given below is the constraint file, which we need to assign the pins
+accordingly.
+
+image:../gowin_ide.png[Gowin IDE]
+
+
+./src/led_water.v
+[source,verilog]
+----
+{{<highlight verilog>}}
+module led_water(clk,rstn,led_o);
+input clk;
+input rstn;
+output [7:0]led_o;
+
+parameter CNT_MAX = 26'd50000000;
+
+reg [25:0] cnt_1s;
+wire flag_1s;
+reg[7:0] led_reg;
+
+
+always@(posedge clk or negedge rstn) begin
+    if(!rstn)
+        cnt_1s <= 26'd0;
+    else if(cnt_1s >= CNT_MAX - 26'd1)
+        cnt_1s <= 26'd0;
+    else
+        cnt_1s <= cnt_1s + 26'd1;
+end
+
+assign flag_1s = cnt_1s >= CNT_MAX + 26'd1;
+
+
+always@(posedge clk or negedge rstn) begin
+    if(!rstn)
+        led_reg <= 8'b00000000;
+    else if(flag_1s)
+        if(led_reg == 8'b00000000)
+            led_reg <= 8'b11111110;
+        else
+            led_reg <= {led_reg[6:0],led_reg[7]};
+    else
+        led_reg <= led_reg;
+end
+
+assign led_o = led_reg;
+endmodule
+{{</highlight>}}
+----
+
+And the physical constraint file
+
+/src/led_water.cst
+[source,cst]
+----
+
+IO_LOC "led_o[7]" 41;
+IO_PORT "led_o[7]" PULL_MODE=NONE DRIVE=8;
+IO_LOC "led_o[6]" 42;
+IO_PORT "led_o[6]" PULL_MODE=NONE DRIVE=8;
+IO_LOC "led_o[5]" 43;
+IO_PORT "led_o[5]" PULL_MODE=NONE DRIVE=8;
+IO_LOC "led_o[4]" 44;
+IO_PORT "led_o[4]" PULL_MODE=NONE DRIVE=8;
+IO_LOC "led_o[3]" 45;
+IO_PORT "led_o[3]" PULL_MODE=NONE DRIVE=8;
+IO_LOC "led_o[2]" 35;
+IO_PORT "led_o[2]" PULL_MODE=NONE DRIVE=8;
+IO_LOC "led_o[1]" 34;
+IO_PORT "led_o[1]" PULL_MODE=NONE DRIVE=8;
+IO_LOC "led_o[0]" 8;
+IO_PORT "led_o[0]" PULL_MODE=NONE DRIVE=8;
+IO_LOC "rstn" 39,40;
+IO_PORT "rstn" PULL_MODE=UP;
+IO_LOC "clk" 22;
+IO_PORT "clk" PULL_MODE=UP;
+----
+
+
