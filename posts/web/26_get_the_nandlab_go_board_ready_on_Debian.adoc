@@ -1,15 +1,15 @@
 ---
-title: "FPGA 101: Get the Nandlab Go board ready on Debian Bullseye"
+title: "FPGA 101: Get the Nandland Go board ready on Debian Bullseye"
 date: 2024-03-10
-tags: ["fpga","beginners", "Lattice","Nandlab Go", "IceCube2", "debian"]
+tags: ["fpga","beginners", "Lattice","Nandland Go", "IceCube2", "debian"]
 draft: false
 type: blog
 ---
 
 Hi there,
 
-finally this week the https://nandland.com/the-go-board/[nandlab go board] I ordered from the developer Russel Merrick a month ago arrived.
-I took a detour due to some shipping problems, but this is not about that, so.
+finally this week the https://nandland.com/the-go-board/[nandland go board] I ordered from the developer Russell Merrick a month ago arrived.
+It took a detour due to some shipping problems, but this is not about that, so.
 I had to face quite a few obstacles to get this running on my Debian Bullseye.
 
 == Serial Connection via USB
