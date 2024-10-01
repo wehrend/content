@@ -1,0 +1,18 @@
+---
+title: Über
+slug: ueber
+date: 2020-12-12
+---
+
+Ein einfaches, statisches Blog, in dem über Themen wie Elektronik, Computer und - vielleicht - Philosophie geschrieben wird.
+
+'''
+
+Lieber Leser meines bescheidenen Blogs, ich bin Sven Wehrend, eine Scanner-Persönlichkeit, geboren 1987,
+Ich interessiere mich für ein breites Spektrum an Themen, von Technik über Psychologie bis hin zu Spiritualität.
+
+Ich habe Technische Informatik an der HTW Berlin (Bachelor) und der TU Berlin (Master) studiert.
+
+'''
+
+==== Aus dem englischen übersetzt mit https://deepl.com[deepl.com].
