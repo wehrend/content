@@ -8,7 +8,7 @@ description:
 type: text
 ---
 
-*Du willst also etwas über Elektronik, digitale Logik und darüber lernen, wie eine CPU das macht, was sie macht? +
+*Du willst also etwas über Elektronik, digitale Logik und darüber lernen, wie eine CPU das macht, was sie macht?*
 
 *Hier helfen wir dir auf die Sprünge*
 {{< rawhtml >}}
