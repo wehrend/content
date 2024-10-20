@@ -9,72 +9,68 @@ description:
 type: text
 outdir: ~/development/blog
 ---
-= Time-sensitive components
+== Zeitkritische Komponenten
 
-After reviewing and extensively describing the most important component,
-the resistor, in  the first part, now we want to have a look at the next important
-component, the capacitor. Capacitor are also passive components, meaning
-they do not amplify a signal.
+Nachdem wir im ersten Teil das wichtigste Bauteil, den Widerstand, betrachtet und ausführlich beschrieben haben
+Widerstand, im ersten Teil ausführlich beschrieben wurde, wollen wir uns nun das nächste wichtige
+Bauteil, den Kondensator, werfen. Kondensatoren sind ebenfalls passive Bauelemente, das heißt
+sie verstärken ein Signal nicht.
 
 
-=== Electrostatic field
-If we take two metal planes and park them side by side, with a small thin layer of a non-conducting
-substance in-between, we created an electrostatic field.
+=== Elektrostatisches Feld
+Nimmt man zwei Metallflächen und stellt sie nebeneinander, mit einer kleinen dünnen Schicht einer nichtleitenden
+Substanz dazwischen, entsteht ein elektrostatisches Feld.
 
-The build-up of the electrostatic field happens via a DC source, in the image below depicted by the generator G.
-The source voltage of the generator shifts th electrons located in the wire and the metal plates.
-This way on the right plate originates an overflowm of electrons (-Q) , while on the other plate a ahortage
-of the same amount, +Q, originates.
+Der Aufbau des elektrostatischen Feldes erfolgt über eine Gleichstromquelle, im Bild unten dargestellt durch den Generator G.
+Die Quellenspannung des Generators verschiebt die Elektronen, die sich im Draht und in den Metallplatten befinden.
+Auf diese Weise entsteht auf der rechten Platte ein Überfluss an Elektronen (-Q), während auf der anderen Platte ein Mangel
+der gleichen Menge, +Q, entsteht.
 
-For a short amount of time, a charging current flows with the instantaneous value i, which in tradtional direction,
-promotes a quantity of electricity +Q. The charging current i becomes zero, if the quantity of electricity +Q and -Q
-generated voltage equals out.
+Für kurze Zeit fließt ein Ladestrom mit dem Momentanwert i, der in umgekehrter Richtung eine Strommenge +Q fördert,
+eine Strommenge +Q fördert. Der Ladestrom i wird Null, wenn die Strommenge +Q und die -Q der erzeugten Spannung gleich groß ist.
 
-The electrostatic field endures after detachment from the DC source, which can be verified with
-a high impedance voltmeter.The conclusion: The electrostatic field originates by the separated loads
-+Q, -Q. THe existing voltage shows, that energy is stored in the field. This arrangement is called a plate capacitor.
+Das elektrostatische Feld bleibt auch nach dem Trennen von der Gleichstromquelle bestehen, was mit einem Voltmeter mit hoher Impedanz überprüft werden kann: Das elektrostatische Feld entsteht durch die getrennten Ladungen
++Q, -Q. Die vorhandene Spannung zeigt, dass in dem Feld Energie gespeichert ist. Diese Anordnung wird als Plattenkondensator bezeichnet.
 
 
 image:../images/electronic_basics/electrostatic_field.svg[width=300]
 
-Reference: Dieter Zastrow, Elektrotechnik,16.Auflage, p. 120.
-It is another basic electronic component, oftentimes
-used in electronic devices. The substance in-between is called a dielectricum.
+
+Referenz: Dieter Zastrow, Elektrotechnik,16.Auflage, S. 120.
+Es ist ein weiteres grundlegendes elektronisches Bauteil, das häufig
+in elektronischen Geräten verwendet wird. Die dazwischen liegende Substanz wird als Dielektrikum bezeichnet.
 
 
-=== Capacitance
-The basic equation for computing the capacity, the no.-1 property of a condensator is a follows.
-The capacity C of the capacitor gives the interesting ratio of the stored charge quantity Q to the charging
-voltage U_c .
+=== Kapazität
+Die Grundgleichung zur Berechnung der Kapazität, der Eigenschaft Nr. 1 eines Kondensators, lautet wie folgt.
+Die Kapazität C des Kondensators gibt das interessante Verhältnis zwischen der gespeicherten Ladungsmenge Q und der Ladespannung
+spannung U_c .
 
-["latex","../images/electronic_basics/Capacitance.svg" ,imgfmt="svg"]
+[„latex“,„../images/electronic_basics/Capacitance.svg“ ,imgfmt=„svg“]
 \[C= \frac{Q}{U_c}\]
 
 
-=== Parallel- and series circuit
+=== Parallel- und Reihenschaltung
 
-In parallel connection of capacitors, the capacitances add up to the total capacitance.
+Bei der Parallelschaltung von Kondensatoren addieren sich die Kapazitäten zur Gesamtkapazität.
 
-["latex","../images/electronic_basics/parallel_C.svg" ,imgfmt="svg"]
+[„latex“,„../images/electronic_basics/parallel_C.svg“ ,imgfmt=„svg“]
 \[C= C_{1} + C_{2} + ... \]
 
-In series connection, the reciprocal of the total capacitance is equal to
-the sum of the reciprocals of the individual capacitances.
+Bei der Reihenschaltung ist der Kehrwert der Gesamtkapazität gleich der
+der Summe der Kehrwerte der Einzelkapazitäten.
 
-["latex","../images/electronic_basics/series_C.svg" ,imgfmt="svg"]
+[„latex“,„../images/electronic_basics/series_C.svg“ ,imgfmt=„svg“]
 \[ \frac{1}{C}= \frac{1}{C_{1}} + \frac{1}{C_{2}} + ... \]
 
-=== The Capacitor and Coils
+=== Der Kondensator und die Spulen
 
-The elements next introduced, have a clue compared to the static of (ohmic) resistor.
-Now the time comes into focus, too, since capacitator and coils are both in a sense time-sensitive
-elements.
-So normally we would start with introducing the Capacitor with all its implication, and then go over to the coils wich
-are introduced then afterwards. Instead for this post, we show both of them in a comparision
-as they have complementary properties.
-
-
-
+Die nun vorgestellten Elemente haben einen Bezug zur Statik des (ohmschen) Widerstandes.
+Nun rückt auch die Zeit in den Fokus, denn sowohl Kondensator als auch Spulen sind in gewissem Sinne zeitempfindliche
+Elemente sind.
+Normalerweise würden wir also mit der Einführung des Kondensators mit all seinen Implikationen beginnen, und dann zu den Spulen übergehen, die
+die dann anschließend eingeführt werden. Stattdessen zeigen wir in diesem Beitrag beide in einem Vergleich
+da sie komplementäre Eigenschaften haben.
 
 [width="100%" cols="a,a"]
 |=====
@@ -95,43 +91,41 @@ as they have complementary properties.
 - Kondensator im Gleichstromkreis
 - RC-Glieder
 ////
-== Frequency-dependent networks (Filters)
+== Frequenzabhängige Netzwerke (Filter)
 
-An often and very popular application of capacitors are filters,
-Simple filters of first order like shown here,are build up from
-one resistor and one capacitor. Next we want to compute the frequency
-response of a filter by getting the frequency response function,
-which is the outgoing voltage divided by the in-going voltage -
-this becomes clearer with the following examples.
+Eine häufige und sehr beliebte Anwendung von Kondensatoren sind Filter,
+Einfache Filter erster Ordnung, wie hier gezeigt, werden aus
+einem Widerstand und einem Kondensator aufgebaut. Als nächstes wollen wir den Frequenzgang eines Filters berechnen
+Frequenzgang eines Filters berechnen, indem wir die Frequenzgangfunktion ermitteln,
+das ist die Ausgangsspannung geteilt durch die Eingangsspannung -
+Dies wird anhand der folgenden Beispiele deutlicher.
 
 
-=== Lowpass Filter
-1.order lowpass
+=== Tiefpassfilter
+Tiefpass 1. Ordnung
 
-image:../images/electronic_basics/lowpass.svg[width="400px"]
+image:../images/electronic_basics/lowpass.svg[width=„400px“]
 
-frequency response
+Frequenzgang
 
-["latex", "../images/electronic_basics/lowpass_fr.svg", imgfmt="svg"]
+[„latex“, „../images/electronic_basics/lowpass_fr.svg“, imgfmt=„svg“]
 \[ H(\omega) = \frac{U_{out}}{U_{in}} = \frac{(1/j\omega C)}{(R+ 1/j \omega C)} = \frac{(1/j\omega C)\cdot j \omega C}{(R+ 1/j \omega C) \cdot j \omega C } =
 \frac{1}{1+ j\omega RC } = \frac{1}{1+ j \omega/ \omega_g}\]
 
-cutoff frequency (with example values of R=1kOhm, C= 1µF)
-["latex", "../images/electronic_basics/cutoff_fr.svg", imgfmt="svg"]
+Grenzfrequenz (mit Beispielwerten von R=1kOhm, C= 1µF)
+[„latex“, „../images/electronic_basics/cutoff_fr.svg“, imgfmt=„svg“]
 \[ \omega_g = \frac{1}{RC} = \frac{1}{1 \cdot 10^3 \cdot 1 \cdot 10^6}= 10^3= 1000 \cdot 1/s\]
 
+image:../images/electronic_basics/lowpass_bode_diagram.svg[width=„1250px“]
 
-
-image:../images/electronic_basics/lowpass_bode_diagram.svg[width="1250px"]
-
-We have to use some help to generate the Bode diagram for the lowpass shown above,
-to do that, please install matplotlib via the following command:
+Um das Bode-Diagramm für den oben gezeigten Tiefpass zu erzeugen, brauchen wir eine Hilfe,
+Dazu installieren Sie bitte mit dem folgenden Befehl matplotlib:
 
 '''
 pip install matplotlib
 
 '''
-and execute the following python script:
+und führen folgendes python-Skript aus:
 
 
 [source,python]
@@ -209,7 +203,7 @@ cutoff frequency (with example values of R=1kOhm, C= 1µF)
 image:../images/electronic_basics/highpass_bode_diagram.svg[width="1250px"]
 
 And here again the python script, this time for the high-pass:
-
+Und hier widerun ein python Skript, dieses mal für den Hochpass
 
 [source,python]
 ----
