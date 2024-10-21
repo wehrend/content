@@ -1,0 +1,71 @@
+---
+title: How does a CPU work 2? Overview
+date: 2023-05-14
+tags: draft
+category:
+link:
+description:
+---
+
+== Wie funktioniert eine CPU 2 - Inhaltsverzeichnis
+
+
+== *Von der Kombinatorischen zur Sequentiellen Logik - Einführung*
+_https://wehrend.uber.space/docs/digital_logic_2/10_sequential_logic[Einführung in die sequentielle Logik]_
+
+Wir gelangen von rein kombinatorischen Logikschaltungen ohne irgendeine Form von Speicher zu sequentiellen Logikschaltungen mit einer Art von Speicher (meist Flipflops).
+Speicher (meist Flipflops)
+
+== *Taktgeber, Flipflops und Register*
+
+_https://wehrend.uber.space/docs/digital_logic_2/11_clocks_and_registers/[Taktgeber, Flipflops und Register]_
+
+Wir machen einen Sprung in den Bereich der sequentiellen Logik und führen einige für die sequentielle Logik wichtige Konzepte ein,
+wie Taktgeber, Flipflops und Register
+
+== *Automaten*
+
+_https://wehrend.uber.space/docs/digital_logic_2/12_automata/[Automaten]_
+
+Wir stellen die zwei (drei) verschiedenen Automaten Mealy, Moore (und Medwedjew) vor. Diese können synchron oder
+asynchron sein.
+
+
+== *CPU-Steuerung*
+
+_http://wehrend.uber.space/docs/digital_logic_02/13_cpu_control/[CPU-Steuerung]_
+
+Hier sezieren wir das Gehirn einer CPU, die Steuereinheit, die alle Aktionen einer CPU steuert und kontrolliert
+einer CPU
+
+== *Programmierbare Logik*
+
+_http://wehrend.uber.space/docs/digital_logic_02/14_programmable_logic/[Programmierbare Logik]_
+
+Wir führen das Konzept der programmierbaren Logik sowohl für kombinatorische als auch für sequentielle Logik ein.
+
+
+== *Testen Sie gründlich*
+
+_http://wehrend.uber.space/docs/digital_logic_02/15_testable_logic/[Testbare Logik]_
+
+Jede eingebettete Schaltung oder Logik benötigt eine gewisse Infrastruktur zum Testen. Hier stellen wir
+JTAG und Boundary-Scan-Tests.
+
+
+== *HDLs*
+
+_VHDL und Verilog_
+
+Wir stellen das Konzept einer Hardwarebeschreibungssprache (HDL) wie VHDL und Verilog vor.
+
+
+== Extra
+
+== *Register-Transfer-Level*
+
+_Register-Transfer-Level_
+
+In dieser Lektion wird das Konzept des Register-Transfer-Levels vorgestellt.
+
+
