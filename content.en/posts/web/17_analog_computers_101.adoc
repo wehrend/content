@@ -6,6 +6,8 @@ draft: false
 type: blog
 ---
 
+== Analog Computers
+
 Today I want to speak about analog computers. In todays times analog computers are leading a shadowy existence,
 compared to their digital counterparts. But they are wonderous little machines. And that machines I mean
 wordly because there exists analog mechanical computers that are models from the world and used to

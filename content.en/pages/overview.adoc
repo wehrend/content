@@ -83,7 +83,7 @@ We need to learn the concept of registers and sequential logic.
 This will be the main topic of the second post series.
 
 
-= Extra
+== Extra
 
 ==  *Let me look that up*
 

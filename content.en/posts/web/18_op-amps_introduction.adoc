@@ -6,6 +6,8 @@ draft: false
 type: blog
 ---
 
+== OP-Amps Introduction
+
 Today I want to speak about op-amps. These wonderful, but mysterious components, we have heavely often appearing
 in circuit schematica of analog or analog / digital hybrid circuits. We want to demistify these components.
 

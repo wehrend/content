@@ -56,7 +56,7 @@ image:../images/how_does_cpu/example.jpg[title="showing the binary value 9 (unsi
 
 Let us do some simple calculations with the goal to derive the necessary logic for an adder-unit.
 The addition is done like learned in elementary school, just that this time we add binary numbers.
-The first example works while the second one producesa carry flag besides the (wrong) result.
+The first example works while the second one produces a carry flag besides the (wrong) result.
 
 image:../images/how_does_cpu/addition.svg[width="100%"]
 
@@ -71,7 +71,7 @@ applied to evaluate combinatorial circuits
 
 [cols="a,a",options="header"]
 |====
-Truth table for fulladder cell | fulladder cell |
+|Truth table for fulladder cell | fulladder cell |
 ||
 [width="100%",cols="3,3,3,0,3,3",options="header"]
 !===
