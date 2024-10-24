@@ -1,0 +1,39 @@
+---
+title: 00_combinatorial_logic_de
+date: 2024-10-24
+tags:
+math:
+category: 
+link: 
+description: 
+type: text
+menu:
+  docs:
+    parent: "digital_logic_de"
+    weight: 1
+--- 
+
+Dieser Kurs über digitale Logik ist in zwei große Abschnitte aufgeteilt:
+
+1. Kombinatorische Schaltungen (ohne Speicherelemente)
+2. Sequentielle Schaltungen (mit Speicherelementen)
+
+image:../images/how_does_cpu/digital_logic.svg[width=500px]
+
+Während kombinatorische Schaltungen aus booleschen Gattern bestehen,
+die ohne Rückkopplungsfunktion miteinander verbunden sind, besitzen sequentielle Gatter
+eine Speicherfunktion, die es ihnen ermöglicht, in einen anderen Zustand überzugehen.
+
+Eine kombinatorische Schaltung kann einen _n_ - weiten Vektor von Eingängen und einen _m_ - weiten Vektor
+von Ausgängen haben.
+
+Kombinatorische Schaltungen können auf verschiedene Weise beschrieben werden:
+Als Formel, als Schaltkreis, als Wahrheitstabelle oder als Karnaugh-Map.
+Alle diese Beschreibungen sind ineinander überführbar.
+
+image:../images/how_does_cpu/transition_scheme.svg[width=500px]
+
+Beginnen wir also mit den grundlegenden logischen Gattern und der booleschen Algebra im
+nächsten Beitrag.
+
+Aus dem englischen übersetzt mit DeepL.com
