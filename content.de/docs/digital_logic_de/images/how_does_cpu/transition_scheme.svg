@@ -15,7 +15,7 @@
     <text x="20" y="20" font-size="4">Formel</text>
     
     <rect x="65" y="10" width="30" height="20" rx="5" ry="5" style="fill:lightgrey;stroke:black;stroke-width:0.5px;"/>
-    <text x="70" y="20" font-size="4">Wahrheitstabelle</text>
+    <text x="68" y="20" font-size="4">Wahrheitstabelle</text>
     
     <polyline points="30,35 30,45" style="fill:none;stroke:lightskyblue;stroke-width:0.5px;" marker-start="url(#startarrow)" marker-end="url(#endarrow)"/>
     <polyline points="80,35 80,45" style="fill:none;stroke:lightskyblue;stroke-width:0.5px;" marker-start="url(#startarrow)" marker-end="url(#endarrow)"/>
@@ -26,8 +26,8 @@
     <text x="20" y="60" font-size="4">Schaltkreis</text>
     
     <rect x="65" y="50" width="30" height="20" rx="5" ry="5" style="fill:lightgrey;stroke:black;stroke-width:0.5px;"/>
-    <text x="68" y="60" font-size="4">Karnaugh-Schema</text>
+    <text x="68" y="60" font-size="4">Karnaugh-</text>
     
-   
+   <text x="68" y="65" font-size="4">Schema</text>
 </svg>
 
