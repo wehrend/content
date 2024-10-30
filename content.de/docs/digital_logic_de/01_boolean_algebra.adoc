@@ -2,7 +2,7 @@
 title: 01_boolean_algebra
 date: 2020-12-23
 tags:
-math:
+math: true
 category:
 link:
 description:
