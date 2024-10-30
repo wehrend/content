@@ -13,197 +13,199 @@ menu:
     identifier: "01_boolean_algebra"
     weight: 5
 ---
-== Boolesche Algebra und einfache logische Gatter
 
-Wir beginnen (die Reise) mit drei sehr
-grundlegenden logischen Funktionen (oder Operationen), die trotz ihrer Einfachheit
-bereits gültige Anweisungen einer regulären CPU sind:
+== Boolean Algebra and Basic Logic Gates
 
-*NOT, AND und OR*.
+We are starting (the journey) with three very 
+basic logic functions (or operations), which despite their simplicity 
+already are valid instructions of a regular CPU:
 
-
-Logische Funktionen - auch Operationen genannt, der Autor wird hier beide Begriffe abwechselnd verwenden -
-können auf verschiedene Weise beschrieben werden, am häufigsten wird sie implizit beschrieben
-als boolesche Gleichung, aber sie können auch explizit in einer Wahrheitstabelle erklärt werden.
-
-Eine Wahrheitstabelle ist eine Tabelle mit einer Spalte für jede Eingabe und einer Spalte für jede Ausgabe.
-Sie zeigt also die Ausgabe bzw. die Ausgänge der Funktion für alle möglichen Kombinationen von Eingaben.
-Sie kann auch Spalten mit Zwischenwerten enthalten.
-
-Die in dieser Lektion gezeigten Wahrheitstabellen sind im Allgemeinen sehr klein und zeigen nur Kombinationen von zwei Eingaben,
-obwohl alle Funktionen, die Eingänge verbinden, auf eine beliebige Anzahl von Eingängen erweitert werden können.
-
-Boolesche Gleichungen können in Wahrheitstabellen umgewandelt werden und umgekehrt. Später werden wir auch einführen
-https://en.wikipedia.org/wiki/Karnaugh_map[Karnaugh-Maps], eine Möglichkeit, die boolesche Logik auf grafische Weise zu optimieren.
-
-=== NICHT
-Die Nicht-Operation wird auch als Inversion bezeichnet,
-wird bezeichnet als \[\overline{A} = \neg A = Q\]
+*NOT, AND and OR*
 
 
+Logical functions - also called operations, the author will use both terms interchangebly here -
+can be described in various ways, most often it is described implicit
+as boolean equation, but it can also be explained explicit in a truth table.
 
-[width=„50%“ cols=„1,1“]
+A truth table is a table with the a column for every input and a column for every output.
+So it shows the output respective the outputs of the function for all possible combinations of inputs. 
+Also they can contain columns with intermediate values.
+
+The truth tables shown in this lesson are in general very small and show only combinations of two inputs,
+although all the functions joining inputs can be expanded to a arbitrary number of inputs.
+
+Boolean equations can be transformed to truth tables and vice versa. Later, we will also introduce 
+https://en.wikipedia.org/wiki/Karnaugh_map[Karnaugh maps], a way to optimize boolean logic in a graphical way.
+
+=== NOT 
+The not operation also termed as inversion,
+is denoted as \[\overline{A} = \neg A = Q\]
+
+
+
+[width="50%" cols="1,1"]
 |==========
-| A | Q
-| 0 | 1
-| 1 | 0
+| A   | Q    
+| 0   | 1    
+| 1   | 0    
 |==========
 
 image:../images/how_does_cpu/inverter_symbol.svg[width=200]
 
-Die Operation not ist die einzige mit nur einem Eingang, sie kann nicht erweitert werden.
+The not operation is the only one with only one input, it can not be expanded.
 
-Dementsprechend ist die Gate-Level-Implementierung auch unter dem Namen Inverter bekannt.
-Trotz seiner scheinbar einfachen Funktionalität gibt es über den Inverter viel zu sagen
-sowohl zur Logik als auch zur Implementierung zu sagen, so dass der Autor ihm einen eigenen
-Beitrag in der Mitte des Features widmen.
+Accordingly the gate-level implementation is also known by the name inverter.
+Despite its seemingly simple functionality there is a lot to say about the inverter 
+for both the logical as well the implementation, so the author will dedicate it an own 
+post in the mid-feature.
 
-=== UND
+=== AND
 
-Die und-Verknüpfung, auch als Konjunktion bezeichnet
-wird als \[A \land B = Q\] bezeichnet
+The and  operation  also termed as conjunction 
+is denoted as \[A \land B = Q\]
 
-[width=„50%“ cols=„1,1,1“]
+[width="50%" cols="1,1,1"]
 |================
-| A | B | Q
-| 0 | 0 | 0
-| 0 | 1 | 0
-| 1 | 0 | 0
-| 1 | 1 | 1
+| A   | B   |  Q  
+| 0   | 0   |  0  
+| 0   | 1   |  0  
+| 1   | 0   |  0  
+| 1   | 1   |  1  
 |================
 
 
 image:../images/how_does_cpu/and_symbol.svg[width=200]
 
-=== ODER
+=== OR 
 
-Die Oder-Operation, auch als Disjunktion bezeichnet
-wird als \[A \lor B = Q\] bezeichnet
+The or operation also termed as disjunction 
+is denoted as \[A \lor B = Q\]
 
-[width=„50%“ cols=„1,1,1“]
+[width="50%" cols="1,1,1"]
 |================
-| A | B | Q
-| 0 | 0 | 0
-| 0 | 1 | 1
-| 1 | 0 | 1
-| 1 | 1 | 1
+| A   | B   |  Q  
+| 0   | 0   |  0  
+| 0   | 1   |  1 
+| 1   | 0   |  1  
+| 1   | 1   |  1  
 |================
-
+  
 image:../images/how_does_cpu/or_symbol.svg[width=200]
 
 ////
-=== XOR
+=== XOR 
 
-Die Exklusiv-Oder-Operation xor, die auch als Antivalenz bezeichnet wird
-wird bezeichnet als A ⊕ B = Q
+The exclusive-or operation xor which is also termed as antivalence
+is denoted as A ⊕ B = Q
 
-[width=„50%“]
+[width="50%"]
 |================
-| A | B | Q
-| 0 | 0 | 0
-| 0 | 1 | 1
-| 1 | 0 | 1
-| 1 | 1 | 0
+| A   | B   |  Q  
+| 0   | 0   |  0  
+| 0   | 1   |  1 
+| 1   | 0   |  1  
+| 1   | 1   |  0  
 |================
-
+  
 image:../images/how_does_cpu/xor_symbol.svg[width=200]
 
-Es gibt eine Menge wichtiger Anwendungen für die Exklusiv-Oder-Operation
-wie man es von einer so grundlegenden und grundlegenden Operation erwarten kann, aber dennoch
-ist die Situation bei dieser Operation ein wenig anders als bei 'und' und 'oder'.
+There are a lot of important applications for the exclusive-or operation
+as you can expect for a such basic and fundamaental operation, but still
+the situation is a bit different with this operation compared to 'and' and 'or'.
 
 ////
 
 '''
 
-Obwohl die boolesche Algebra an sich schon ein interessantes Gebiet ist, werden wir das Thema hier nur kurz anreißen, gerade genug
-um ein Gefühl und ein Verständnis dafür zu bekommen, wie man mit booleschen Formeln arbeitet.
+Although boolean algebra on itself is an interesting field, we will only skim the subject briefly here, just enough
+to get a feeling and understanding how to work with boolean formulas.
 
-[HINWEIS]
-Wenn Sie an einer tiefer gehenden Betrachtung interessiert sind, die Induktion und Beweise enthält,
-verweise ich Sie auf entsprechende Literatur (Quellen am Ende aufgeführt).
+[NOTE]
+If you are interested in a more profound view, providing induction and proof, 
+I refer you to accordingly literature (sources listed at the end).
 
 
-Die Gesetze der booleschen Algebra sind in der folgenden Tabelle dargestellt:
-[%autowidth cols=„40,75a,75a“,options=„header“]
+The laws of the boolean algebra are shown in the following table:
+[%autowidth cols="40,75a,75a",options="header"]
 |====================================================================================================================
-| Gesetz | ∧ (Konjunktion, UND-Operator) | ∨ (Disjunktion, ODER-Operator)
-| Kommutativgesetz | ∨ (Konjunktion, UND-Operator) | ∨ (Disjunktion, ODER-Operator)
-| Assoziativgesetz |
-\[p \land (q \land r) = (p \land q) \land r = pqr\] |\[p \lor (q \lor r) = (p \lor q) \lor r = p \lor q \lor r\]
-| Absorptionsgesetz | \[p \land (p \lor q) = p\]| \[p \lor (p \land q) = p\]
-| Verteilungsgesetz | \[p \lor (q \lor r) = (p \land q) \lor (p \land r) = pq \lor pr\] |
+|   Law   |  ∧  (conjunction, AND operator)               |  ∨ (disjunction, OR operator)
+| commutative law   | \[p \land q = q \land p\]   |\[p \lor q = q \lor p\]
+| associative law   | 
+\[p \land (q \land r) = (p \land q) \land r = pqr\]  |\[p \lor (q \lor r) = (p \lor q) \lor r = p \lor q \lor r\]
+| absorptions law   | \[p \land (p \lor q) = p\]| \[p \lor (p \land q) = p\]
+| distributive law  | \[p \lor (q \lor r) = (p \land q) \lor (p \land r) = pq \lor pr\] |
 \[p \lor (q \lor r) = (p \lor q) \lor (p \lor r) = (p \lor q)(p \lor r)\]
-| neutrale Elemente | \[p \land 1 = p\] | \[p \lor 0 = p\]
-| Komplementäres Element | \[p \land \neg p = 0\] | \[p \lor \neg p = 1\] |
-*Referenz* |
-*Hans-Jochen Bartsch* |
-*Taschenbuch Mathematischer Formeln, 20. Auflage, S. 27- 28* |
+| neutral elements  | \[p \land 1 = p\] | \[p \lor 0 = p\]                                                   
+| complem. element  |  \[p \land \neg p = 0\] | \[p \lor \neg p = 1\] | 
+*Reference* | 
+*Hans-Jochen Bartsch* | 
+*Taschenbuch Mathematischer Formeln, 20. Auflage, p. 27- 28*  |
 |====================================================================================================================
 
-Sie kennen wahrscheinlich intuitiv - oder aus der Schule - die ersten beiden in der Tabelle genannten Gesetze,
-das Kommutativgesetz und das Assoziativgesetz.
-Wie Sie sehen, kann jedes Gesetz sowohl auf Konjunktionen als auch auf Disjunktionen angewandt werden, ohne dass es Ausnahmen gibt.
 
-Das Kommutativgesetz besagt, dass die Reihenfolge der Variablen für die Operation neutral ist und vertauscht werden kann, ohne
-ohne das Ergebnis der Operation zu verändern.
+You probably know intuitively - or from school-  the first two laws mentioned in the table, 
+the commutative law and the associative laws.
+As you can see, every law can be applied to conjunctions as well as disjunctions without any exceptions.
 
-Das Assoziativgesetz besagt, dass Klammern vertauschbar sind. Konjunktionen können ohne Operator kondensiert werden.
+The commutative law implies that the order of the variables is neutral for the operation and can be swapped without
+changing the result of the operation. 
 
-Das Absorptionsgesetz ist Ihnen wahrscheinlich aus der Schule nicht bekannt, da es nur in der Logik verwendet wird und
-zumindest in der Schulmathematik kein Gegenstück hat.
+The associative law implies, that parenthesis are swappable. Conjunctions can be condensed without operator.
 
-Das Distributivgesetz wiederum ist aus der Schule bekannt. Es besagt, dass Variablen/Operationen außerhalb der Paranthese
-auf alle Variablen in der Klammer angewendet werden müssen.
+The absorptions law is probably not known to you from school, as it is only used in logic and has no counterpart in at least
+school mathmatics.
 
-Das Gesetz der neutralen Elemente ist wiederum etwas Besonderes für die boolesche Algebra. Die logische Eins ist die Entsprechung zu 'wahr',
-und somit ist p und wahr gleich 'wahr', so wie die logische Null 'falsch' ist und somit p oder falsch gleich p ist.
+The distributive law, again, is known from school. It implies that variables / operations outside of paranthesis needs 
+to be applied to all variables in the parenthesis.
 
-Das Komplementärgesetz besagt, dass es zu jedem Element (Variable) p ein komplementäres Element (Variable) [overline]#p# gibt,
-so dass die Konjunktion zu einer logischen Null und die Disjunktion zu einer logischen Eins führt.
+The law of neutral elements, again is something special to boolean algebra. The logic one is the correspondent to 'true',
+and so p and true equals 'true', so as the logic zero is 'false' and so p or false equals p.
+
+The complementary law implies, that to every element (variable) p there is a complementary element (variable) [overline]#p#,
+so that the conjunction results in a  logical zero while disjunction results in a logical one.
 
 '''
 
-An dieser Stelle muss der Autor ein wenig vorpreschen, denn einige praktische Fragen auf der elektrischen Ebene erfordern einige Überlegungen auf ihrer
-Logik-Ebene:
-Auf der Implementierungsebene (für eine elektrische Implementierung) ist es eher unüblich, AND, OR und NOT direkt zu verwenden, stattdessen
-werden die Umkehrfunktionen NAND und NOR verwendet.
+At this point the author has to leap ahead a bit as some practical issues on the electrical level need some thought on their
+logic level:
+On the implementation level (for an electrical implementation) it is rather uncommon to use AND,OR and NOT directly, instead 
+the inverse functions NAND and NOR are used.
 
 
-=== NAND und NOR
+=== NAND and NOR
 
-Die NAND-Operation wird als \[\overline{A \land B} = Q\] bezeichnet
-während die NOR-Operation als \[\overline{A \lor B} = Q\] bezeichnet wird.
+The NAND operation is denoted as \[\overline{A \land B} = Q\]
+while the NOR operation is denoted as \[\overline{A \lor B} = Q\]
 
 
-[width=„100%“ cols=„a,a“]
+[width="100%" cols="a,a"]
 |======
 | NAND | NOR
 |image:../images/how_does_cpu/nand_symbol.svg[width=200] |image:../images/how_does_cpu/nor_symbol.svg[width=200]
 |======
 
-Wie Sie sehen können, sind die Ergebnisse für diese beiden Funktionen genau umgekehrt zu ihrem jeweiligen Komplement
-(NAND <==> AND,NOR <==> OR), in diesem Sinne empfiehlt der Autor die Konstruktion der entsprechenden Wahrheitstabellen
-als eine Übung für den Leser.
+As you can see, for those two functions the results are exactly the inverse of their respective complement 
+(NAND <==> AND,NOR <==> OR), in that sense the author recommends the construction of the respective truth tables 
+as an exercise to the reader.
 
 
 
-== Das De-Morgan-Theorem
+== The De Morgan theorem
 
-Zusätzlich zu den oben eingeführten Grundaxiomen gibt es das **De-Morgan-Theorem**,
-das wir benötigen, um auf einfache Weise zwischen NAND und NOR zu konvertieren. Der Einfachheit halber zeigen wir nur für
-zwei Elemente, jedoch ist das Theorem unabhängig von einer beliebigen Anzahl von Elementen/Eingängen.
+In addition to those merely basic axioms introduced above, there is the **De Morgan theorem**,
+which we need to easily convert between NAND and NOR. For the sake of simplicity we only show for 
+two elements however the theorem is independent from any number of elements / inputs.
 
-[„latex“, „../images/demorgan_nand.svg“,imgfmt=„svg“, width=„75%“]
+["latex", "../images/demorgan_nand.svg",imgfmt="svg", width="75%"] 
 \[\overline{p_1 \land p_2} = \overline{p_1} \lor \overline{p_2}\]
 
-[width=„100%“ cols=„a,a,25a,25a,25a,25a“]
+[width="100%" cols="a,a,25a,25a,25a,25a"]
 |==========================================================================================
-| A | B |\[\overline{A}\] | \[\overline{B}\] | \[\overline{AB}\] |\[\overline{A} \lor \overline{B}\]
-| 0 | 0 | 1 | 1 | 1 | 1
-| 0 | 1 | 1 | 0 | 1 | 1
-| 1 | 0 | 0 | 1 | 1 | 1
-| 1 | 1 | 0 | 0 | 0 | 0
+| A   | B   |\[\overline{A}\] | \[\overline{B}\] | \[\overline{AB}\]  |\[\overline{A} \lor \overline{B}\]
+| 0   | 0   |    1         |     1         |          1       | 1
+| 0   | 1   |    1         |     0         |          1       | 1
+| 1   | 0   |    0         |     1         |          1       | 1
+| 1   | 1   |    0         |     0         |          0       | 0
 |==========================================================================================
 
 
@@ -212,17 +214,17 @@ zwei Elemente, jedoch ist das Theorem unabhängig von einer beliebigen Anzahl vo
 image:../images/how_does_cpu/de_morgan_nand_equivalence.svg[width=400]
 
 
-[„latex“, „../images/demorgan_nor.svg“,imgfmt=„svg“, width=„75%“]
+["latex", "../images/demorgan_nor.svg",imgfmt="svg", width="75%"] 
 \[\overline{p_1 \lor p_2} = \overline{p_1} \land \overline{p_2}\]
 
 
-[width=„75%“ cols=„a,a,25a,25a,25a,25a“]
+[width="75%" cols="a,a,25a,25a,25a,25a"]
 |==========================================================================================
-| A | B |\[\overline{A}\] | \[\overline{B}\] | \[\overline{AB}\]| \[\overline{A} \lor \overline{B}\]
-| 0 | 0 | 1 | 1 | 1 | 1
-| 0 | 1 | 1 | 0 | 0 | 0
-| 1 | 0 | 0 | 1 | 0 | 0
-| 1 | 1 | 0 | 0 | 0 | 0
+| A   | B   |\[\overline{A}\] | \[\overline{B}\] |  \[\overline{AB}\]| \[\overline{A} \lor \overline{B}\]
+| 0   | 0   |    1         |     1         |          1       | 1
+| 0   | 1   |    1         |     0         |          0       | 0
+| 1   | 0   |    0         |     1         |          0       | 0
+| 1   | 1   |    0         |     0         |          0       | 0
 |==========================================================================================
 
 
@@ -230,176 +232,176 @@ image:../images/how_does_cpu/de_morgan_nor_equivalence.svg[width=400]
 
 
 
-Nun sind wir endlich gerüstet, um mit dem elektrischen Teil / der Beschreibung fortzufahren.
+Now we are finally equipped to continue with the electrical part / description.
 
-== Umsetzung auf elektrischer Ebene
+== Implementation on electrical level
 
-Zunächst stellen wir einige gängige elektronische Bauteile und ihre Symbole vor, die in
-elektrischen Schaltplänen verwendet werden.
+First we are introducing some common electronic components and their symbols used in 
+electric circuit schematics.
 
 image:../images/how_does_cpu/common_symbols.svg[width=500]
 
-Aus dem englischen übersetzt mit DeepL.com
+=== The diode
+
+We are beginning the journey with a simplificated circuit design for 'and' and 'or' called wired logic.
+This circuit design is so simple it is even not possible to implement an inverter in it.
 
 
-=== Die Diode
-
-Wir beginnen die Reise mit einem vereinfachten Schaltungsentwurf für 'und' und 'oder', der verdrahteten Logik.
-Dieser Schaltungsentwurf ist so einfach, dass es nicht einmal möglich ist, einen Inverter darin zu implementieren.
-
-
-[width=„100%“ cols=„100a,100a“]
+[width="100%" cols="100a,100a"]
 |======
-| verdrahtet und | verdrahtet oder
-|image:../images/how_does_cpu/wire_and.svg[width=250] | image:../images/how_does_cpu/wire_or.svg[width=250]
+| wired and | wired or
+|image:../images/how_does_cpu/wire_and.svg[width=250] | image:../images/how_does_cpu/wire_or.svg[width=250] 
 | # diodes: 2 | # diodes : 2
 |======
 
-Wie Sie sehen können, ist diese Schaltung nicht allzu kompliziert - selbst Laien in Elektronik sollten in der Lage sein, die wesentlichen Teile zu erkennen
-von - die Eingänge sind mit je einer Diode verbunden. Eine Diode ist ein einfacher Halbleiter, der als Einbahnstraße für elektrischen Strom dient.
-Halbleiter sind eine Gruppe von Materialien (nur Silizium und Germanium sind hier aufgrund ihrer chemischen Eigenschaften sinnvoll),
-die nicht wirklich leiten, aber auch keine Isolatoren sind. Vielmehr ist die Leitfähigkeit des Materials abhängig von der gezielten Verschmutzung
-ihrer Kristallgitterstruktur mit Elementen der fünften Hauptgruppe, für ein n(egativ)-gepunktetes Material bzw. der dritten Hauptgruppe
-für ein p(ositiv)-gepunktetes Material. Dieser Vorgang wird als Punktierung bezeichnet. Für den interessierten Leser https://www.electrical4u.com/semiconductor-physics/[hier]
-ist ein Link zu allen physikalischen Hintergründen, die der Autor zu faul war zu wiederholen, da sie schon oft und besser im Internet erklärt sind ;-) .
+As you can see, this circuit is not to complicate - even laymans in electronc should be able to identify the essential parts
+of - the inputs are connected to a diode, each. A diode is a simple semiconductor which acts as a one-way for electric current.
+Semiconductors are a group of materials (only silicon and germanium are useful here, due to their chemical properties),
+not really conductor but also no insulator. In fact the conductiviy of the material is dependent on the deliberated pollution 
+of their crystall lattice structure with elements of the fifth main group, for an n(egative)-dotted material respectively of the third main group
+for a p(ositive) dotted material. This process is called dotting. For the interested reader https://www.electrical4u.com/semiconductor-physics/[here]
+is a link to all the physical background the author was to lazy to repeat since it is often and better explained on the internet already ;-) .
 
-image:../images/how_does_cpu/diode_structure.svg[width=450]
+image:../images/how_does_cpu/diode_structure.svg[width=450] 
 
-Alles, was wir wissen müssen, ist, dass eine Diode aus einem Substrat (in den meisten Fällen heute Silizium) besteht, das auf der einen Seite n-dottiert und auf der anderen Seite p-dottiert wird,
-und dazwischen einen pn-Übergang bildet, der als besagte Einwegbarriere fungiert: Es ist möglich, dass Elektronen von der n-Seite zur p-Seite eilen, jedoch nicht andersherum.
+All we need to know right know is that a diode consist of one substrate (in most cases today silicon) which becomes n-dotted on one side and p-dotted on the other, 
+forming a pn-junction in between acting as said one-way barrier: It is possible for electrons to rush from n-side to the p-side but not the other way round. 
 
-Die zweite Komponente der oben gezeigten Schaltungen ist ein Widerstand, dessen einziger Zweck es ist, den fließenden Strom zu reduzieren.
-Bei wire-and ist er als Pull-up-Widerstand verdrahtet, während er bei wire-or als Pull-down-Widerstand verdrahtet ist.
-Der wire-and erreicht nur dann einen ausreichend hohen Pegel, wenn alle Eingänge auf High-Pegel gehen. Ähnlich geht der wire-or nur dann auf Low-Pegel, wenn keiner der Eingänge auf High-Pegel geht.
-Um zu verhindern, dass Strom vom Pull-up-Widerstand zum Ausgang der vorherigen Schaltung (Wire-and) bzw. Strom von einem Eingang zurück zum anderen fließt, ist der Wire-or als Pull-down-Widerstand zu beschalten.
-Um zu verhindern, dass Strom von einem Eingang zurück zum anderen Eingang (wire-or) fließt, sind die Dioden vorhanden.
+The second component of the circuits shown above is a resistor, its solely purpose is to reduce the current flowing. 
+For wire-and it is wired as pull-up resistor while for wire-or it is wired as pull down resistor.
+The wire-and only reaches a sufficient high-level if all inputs go high-level. Similar the wire-or only goes low-level if neither of the inputs
+goes high level.To prevent current flowing from pull-up resistor to the output of the previous circuit (wire and) respectively current flowing 
+from one input back to the other input (wire-or), the diodes are in place.
 
-Ein Problem dieses Aufbaus, auf das wir mit Sicherheit irgendwann stoßen werden, besteht darin, dass das Signal beim Übergang vom Eingang zum Ausgang schwach wird
-und es gibt keine Möglichkeit, das Signal wiederherzustellen, so dass der Signalpegel am Ausgang von der nachfolgenden Schaltung möglicherweise nicht richtig unterschieden werden kann.
-Erlauben Sie dem Autor an dieser Stelle eine Anmerkung zu einem feinen Detail in der Terminologie: Obwohl es oft als Verstärkung bezeichnet wird, wollen wir hier festhalten, dass wir einen
-etwas „intelligenten“ Signalverstärker, der den Signalpegel des Eingangssignals erkennt und wiederherstellt, komplementär zu einem „dummen“ Verstärker, der einfach nur
-der das Eingangssignal verstärkt.
+A problem of this setup which we will definitely encounter at some point, is that the signal is weakend when flowing from input to the output 
+and there is no ability  provided to recover the signal, so at the output the signal level might not be distinguished correctly by the subsequent circuit. 
+Allow the author a remark in a subtle detail in the terminology at this point: Although it is often described as amplifying we want holding on here, that we want a 
+somewhat 'intelligent' signal amplifier here recognizing the signal level of the input signal and recovering, complementary to a 'stupid' amplifier just
+amp-ing the input signal.
 
-Die Dioden sind also ein feines Bauteil, z.B. nützlich, um Teile der Schaltung vor elektrostatischer Entladung zu schützen
-(https://www.allaboutcircuits.com/textbook/semiconductors/chpt-9/electrostatic-discharge/[ESD]), aber für unsere Logik ist sie nicht ausreichend.
+So the diodes are a fine component, e.g. useful when protecting parts of the circuit from electrostatic discharge 
+(https://www.allaboutcircuits.com/textbook/semiconductors/chpt-9/electrostatic-discharge/[ESD]), but for our logic it is not sufficient.
 
-Was wäre, wenn wir ein Bauteil hätten, das das Signal verstärken könnte, so dass wir Schaltungen entwerfen könnten, die auch die Signalpegel damit wiederherstellen?
-Glücklicherweise gibt es ein solches Bauteil und es wird im nächsten Abschnitt vorgestellt.
+What if we had a component capable to amplify the signal, so we could design circuits also recovering the signal levels with it?
+Luckily such a component exists and is introduced in the next section.
 
 ////
-//=== Der klassische Transistor
+//=== The classical transistor
 //
-//Vor der eigentlichen Einführung des Transistors wollen wir einen Blick in die Geschichte werfen. Einige der ersten Computer, die gebaut wurden, benutzten
-//http://www.historicsimulations.com/ZuseZ3.html[elektromechanische Relais],
-///Während andere sich auf https://www.thoughtco.com/history-of-the-eniac-computer-1991601[Vakuumröhren] verließen.
-//Die allerersten waren rein https://www.fourmilab.ch/babbage/[mechanisch].
-//Hier wollen wir uns auf die Vakuumröhren - insbesondere die Triode - als Blackboxen konzentrieren, da das Funktionsprinzip äußerlich in etwa mit dem einer
-//einem normalen / klassischen bipolaren Transistor.
+//Before we actually introduce the transistor let us do a peek into history. Some of the first computers built were using 
+//http://www.historicsimulations.com/ZuseZ3.html[electromechanical relays], 
+//whereas others relied on https://www.thoughtco.com/history-of-the-eniac-computer-1991601[vacuum tubes]. 
+//The very first one(s) were purely https://www.fourmilab.ch/babbage/[mechanical].
+//Here we want to focus on the vacuum tubes - in particular the triode -as black boxes as on the outside the working principal is roughly comparable to that 
+//of a standard / classic bipolar transitor.
 //
-//[width=„100%“ cols=„a,a“]
+//[width="100%" cols="a,a"]
 //|======
-//|Bipolar Junction Transistor (BJT) | Triode (bestimmte Art von Vakuumröhre)
-//||Bild:../images/how_does_cpu/bjt_structure.svg[width=450] | Bild:../images/how_does_cpu/triode.svg[width=300]
-    *>* Ein Strom an der Basis steuert den Strom zwischen Kollektor und Emitter
-    *>* Eine Spannung am Gitter steuert den Strom zwischen Kollektor und Emitter
+//|Bipolar Junction Transistor (BJT) | Triode (certain type of vacuum tube)
+//||image:../images/how_does_cpu/bjt_structure.svg[width=450] | image:../images/how_does_cpu/triode.svg[width=300]
+//| *>* A current on basis controls the current between collector and emitter     
+//| *>* A voltage on grid controls the current between collector and emitter 
 //|======
 ////
 
 
 ////
-Ein Transistor ermöglicht die Durchführung der oben vorgestellten Operationen und ermöglicht gleichzeitig die Verstärkung des Signals.
-Er ist ein Schaltelement, das mit einer Steuerspannung gesteuert werden kann, ähnlich wie ein elektromechanisches Relais,
-bei dem ein kleiner Strom in einer Spule ein Magnetfeld aufbaut, das den Anker bewegt, um die Kontakte des Lastkreises zu schließen (oder zu öffnen, je nach Bauart)
-die Kontakte des Lastkreises.
+A transistor allows the implementation of the operations introduced above and at one go also allows allows the amplifying of the signal.
+It is a switching element which can be controlled with a control voltage, similar to an electromechanical relay,
+where a small current in a coil builds up a magnetic field which moves the armature to close (or open, depending on the construction) 
+the contacts of the load circuit.
 ////
 
-=== Der MOSFET-Transistor
+=== The MOSFET transistor
 
-Der Transistortyp, den wir hier vorstellen und verwenden wollen, ist ein MOSFET (Metal Oxid Semiconductor Field Effect Transistor) - im Gegensatz zum klassischen bipolaren Transistor.
-Wie der Name schon sagt, ist ein MOSFET ein Transistor (oder Halbleiter), bei dem der Laststrom durch die Stärke des elektrischen Feldes gesteuert werden kann, das am Gate-Eingang erzeugt wird
+The type of transistor we want to introduce and use here is a MOSFET (Metal Oxid Semiconductor Field Effect Transistor) - as opposed to classical bipolar transistor.
+As the name suggests a MOSFET is a transistor (or semiconductor) where the load currrent can be controlled by the strength of the electrical field, created on the gate input
 //https://www.power-and-beyond.com/whats-the-difference-between-mosfet-and-bjt-a-909006/
 
 
 image:../images/how_does_cpu/mosfet_model.svg[width=500]
 
-Das obige Bild skizziert den prinzipiellen Aufbau eines Mosfets auf Silizium. Source und Drain sind beide mit einer eigenen n-Wanne verbunden, im p-gepunkteten Substrat,
-während das Gate dazwischen durch eine dünne Siliziumdioxidschicht isoliert ist. Bei diskreten MOSFETs, die mit der Source verbunden sind, gibt es einen vierten Anschluss, der zum Substrat führt,
-aber das ist im Moment nicht relevant.
-Hinter der Funktionsweise eines MOSFET steckt eine Menge komplexer Physik, und wir wollen nur wissen, dass beim Anlegen einer Spannung am Gate ein elektrisches Feld induziert wird,
-Dadurch entsteht ein Kanal zwischen Source und Drain, durch den Elektronen von der Source zum Drain fließen können. Je höher die Gate-Spannung, desto größer (breiter) ist der Kanal, desto mehr Elektronen
-fließen (natürlich nur bis zu einer bestimmten Grenze). Und wenn die Gate-Spannung gleich Null ist, ist auch der Kanal nicht vorhanden.
+The image above sketches the principal structure of a mosfet on the silicon. Source and drain are both connected to an own n-well, in the p dotted substrate,
+while the gate in between is isolated by a thin silicon dioxide layer. There is a forth connector 'bulk', leading to the substrate, in discrete MOSFETs connected to the source,
+but for now this one is not relevant.
+There is a lot of complex physics behind the workings of a MOSFET all we want to know for now, is that when a voltage is applied to the gate, an electrical field is induced, 
+which creates a chanel between source and drain and allows electrons to flow from source to drain. The higher the gate voltage the bigger  (wider) the channel, the more electrons 
+flowing (until a certain boundary of course). And if the gate voltage is zero, also the channel is non-existent.
 
 image:../images/how_does_cpu/inverter_nmos.svg[width=500]
 
-Übliche Symbole für MOSFETs, die in elektrischen Schaltplänen verwendet werden, sowie einige andere, die wir aufgrund des Kurses brauchen, sind unten dargestellt, einige haben mehr als nur eines, besonders der MOSFET hat eine Anzahl
-von leicht unterschiedlichen Symbolen, die die Unterschiede in der physikalischen Komponente widerspiegeln.
+Common used symbols for MOSFET used in electrical schematics as well as some other we need due to course are shown below, some has more then only one, especially the MOSFET has a number 
+of sligthly various symbols reflecting the differences in the physical component.
 
 image:../images/how_does_cpu/mosfet_symbols.svg[width=500]
 
-Mit dem eingeführten MOSFET-Element und einem einzelnen Widerstand, einem Element, das den Stromfluss reduziert, können wir eine Inverterschaltung wie in der obigen Abbildung direkt umsetzen.
-Source ist mit der Masse verbunden und Drain ist mit dem Inverterausgang und über einen hochohmigen Widerstand auch mit der Spannungsquelle verbunden. Das Gate ist der Eingang des Inverters.
-Wenn die Spannung am Gate zu niedrig eingestellt ist, leitet der MOSFET nicht, so dass das am Ausgang vorhandene Potenzial für eine logische Eins ausreicht.
-Wenn am Gate eine Spannung angelegt wird, wird der Drain-Source-Pfad des MOSFETs leitend, das am Ausgang vorhandene Potenzial bricht zusammen und fließt über den Drain-Source-Pfad ab.
+With the MOSFET element introduced and a single resistor,an element which reduces the current flow, added, we can straight-forward implement an inverter circuit as shown in the image above.
+Source is connected to the ground and Drain is connected to the inverter output and also to the voltage source via a high-impedance resitor. Gate is the input of the inverter.
+When the voltage is set to low on the gate, the MOSFET does not conduct and so the potential available on the output is sufficient for a logic one.
+Whene a voltage is set to the gate,the drain-source path of the MOSFET becomes conductive, the potential available on the output breaks down an drains away via the drain-source path.
 
 image:../images/how_does_cpu/inverter_cmos.svg[width=500]
 
 '''
-Auf der elektrischen Ebene hat der Inverter zwei verschiedene Aufgaben zu erfüllen
+On the electrical level inverter has two different tasks to fullfill
 
-1. Auffrischung des Signals (Pegel), das der Wechselrichter von der vorhergehenden Schaltung erhält
-2. Die eigentliche Invertierung des Signals
+1. Refreshing the signal (level) the inverters gets from the preceeding circuit 
+2. Actually, inverting the signal 
 
-Es gibt auch integrierte Schaltkreise, die als Puffer oder Treiber bezeichnet werden und sich ausschließlich der erstgenannten Aufgabe widmen; darauf werden wir in einem späteren Blogbeitrag / einer späteren Lektion eingehen.
-Hier wollen wir uns nur auf den logischen Teil der Invertierung des Signals konzentrieren, obwohl dafür beide Funktionen gleich wichtig sind, weshalb sie in einer
-Schaltung. Natürlich müssen die logischen Signale auch in anderen logischen Schaltungen - wie und und oder - aufgefrischt werden, aber in den meisten Fällen wird diese Aufgabe ausschließlich von
-diese Inverterstufen erledigt, danach oder davor.
+There are also integrated circuits, called buffer or driver, solely dedicated to the first task mentioned, we will discuss that in a later blog post / lesson.
+Here we want to focus only on the logical part of inverting the signal, although for that both functions are equal important, thats why they are combined in one 
+circuit. Of course, the logic signals have to be refreshed also in other logical circuits - like and and or - but in most cases this task is solely handeled by 
+those inverter stages, afterwards or before.
 
 image:../images/how_does_cpu/inverter_symbol.svg[width=200]
 
-Im Symbol wird die erste Aufgabe, das Auffrischen des Signals (Pegels), durch das Dreieck angedeutet, während der kleine Kreis die eigentliche Invertierungsfunktion kennzeichnet.
+In the symbol the first task, the refreshing of the signal (level), is indicated by the triangle, while the little circle denotes the actual inverting function.
+
 '''
 
-[width=„100%“ cols=„a,a“]
+[width="100%" cols="a,a"]
 |======
 | NMOS NAND | NMOS NOR
-|image:../images/how_does_cpu/nand_nmos.svg[width=200] | image:../images/how_does_cpu/nor_nmos.svg[width=500]
-| # transistor: 2 | # transistor: 2
+|image:../images/how_does_cpu/nand_nmos.svg[width=200] | image:../images/how_does_cpu/nor_nmos.svg[width=500] 
+| # transistor: 2 | # transistor: 2 
 |======
 
-Jetzt wird klar, warum die Umkehrfunktion von UND und ODER auf Gatterebene einfacher ist als die ursprüngliche Funktion.
-Denn man muss nachträglich eine Inverterschaltung hinzufügen, wodurch sich die Anzahl der Transistoren erhöht.
+Now it becomes clear, why the inverse function of AND and OR on the gate level is simpler than the original function. 
+Because you have to add an inverter circuit afterwards, increasing the transistor count.
 
-Ein großer Nachteil der Implementierung ist der hohe Stromverbrauch, der durch den Pull-up-Widerstand verursacht wird. Wir wollen sehen, ob es eine Möglichkeit gibt
-dieses Problem zu lösen. Was wäre, wenn es einen Transistor mit der Bezeichnung PMOS mit einer komplementären Struktur - p-Wells auf einem n-gepunkteten Substrat - zu unserer
-bisher verwendeten NMOS-Schaltung?
+One big drawback of the implementation is the high power consumption caused by the pull-up resistor. Let us see if there is a way to
+solve that issue. What if there is transistor labeled PMOS with a complementary structure - p-wells on an n dotted substrate - to our 
+up-to-now used NMOS circuit?
 
-Wenn wir diese anstelle des Widerstands für den Pull-up-Pfad verwenden, können wir die Verlustleistung drastisch reduzieren.
-Wie Sie sich denken können, gibt es diese Technik, bei der beide Transistortypen kombiniert werden, unter der Bezeichnung CMOS (Complementary Metal Oxid Semiconductor).
+When we use those instead the resistor for the pull-up path we can drastically reduce power dissipation. 
+As you guess this technique, both types of transistor combined, exists and is named CMOS ( Complementary Metal Oxid Semiconductor).
 
-[width=„100%“ cols=„a,a“]
+[width="100%" cols="a,a"]
 |======
-| CMOS NAND | CMOS NOR
-|image:../images/how_does_cpu/nand_cmos.svg[width=250] | image:../images/how_does_cpu/nor_cmos.svg[width=500]
-| # transistor: 4 | # transistor: 4
+| CMOS NAND | CMOS NOR 
+|image:../images/how_does_cpu/nand_cmos.svg[width=250] | image:../images/how_does_cpu/nor_cmos.svg[width=500] 
+| # transistor: 4 | # transistor: 4 
 |======
 
 ////
-//===Von diskret zu Silizium
+//===From discrete to silicon
 ////
 
-Es wird nun deutlich, woher die CMOS-Technologie ihren Namen hat:
-Wie wir bei der Umsetzung von NAND und NOR in CMOS-Technologie sehen können, ist die P-Schaltung oben genau das Komplementär der N-Schaltung unten.
-Für den Inverter war diese Eigenschaft aufgrund der Symmetrie einfach nicht erkennbar.
-Aber wir können auch den Nachteil der CMOS-Technologie erkennen: Die Anzahl der Transistoren verdoppelt sich, was den Aufwand und die Komplexität des Herstellungsprozesses erhöht
-(komplexere Masken und Layouts, mehr Verarbeitungsschritte aufgrund verschiedener Transistortypen, nmos und pmos auf einem Wafer) und der integrierten Schaltung als Endprodukt.
+It becomes apparent now where the CMOS technology has its name from:
+As we can see in the implementation of NAND and NOR in CMOS technology, the P circuit above is exactly the complementary of the N circuit below.
+For the inverter this property was just not recognizable due to the symmetry.
+But we can also see the drawback of the CMOS technology: The number of transistors doubles, increasing the effort and complexity of the manuacturing process
+(complexer masks and layouts, more processing steps due to different types of transistors, nmos and pmos both on one wafer) and the integrated circuit as the end product.
 
-Die Toolchain, der CMOS-Prozess und die damit verbundenen Technologien sind jedoch bereits seit Jahrzehnten weiterentwickelt und ausgereift, so dass dies heute keine Rolle mehr spielt, im Gegenteil
-vor kurzem veröffentlichte Google sogar das https://github.com/google/skywater-pdk[SkyWater Open Source PDK 130], ein sogenanntes Process Design Kit, das Elektroingenieuren
-ein Tool(chain) zur Erstellung von Designs für anwendungsspezifische integrierte Schaltungen, die dann direkt in einem 130nm-Prozess hergestellt werden können.
-Sie können mehr darüber lesen https://hackaday.com/2020/06/30/your-own-open-source-asic-skywater-pdf-plans-first-130-nm-wafer-in-2020/[hier auf Hackaday].
+However the toolchain, the CMOS process and its related technologies are evolved and matured already since decades, so today it does not matter anymore, in fact
+recently Google even published the https://github.com/google/skywater-pdk[SkyWater Open Source PDK 130], a so-called Process Design Kit offering electrical engineers 
+a tool(chain) to produce designs for Application Specific Integrated Circuits  which then can directly be manufactured using a 130nm process. 
+You can read more about it https://hackaday.com/2020/06/30/your-own-open-source-asic-skywater-pdf-plans-first-130-nm-wafer-in-2020/[here on Hackaday].
 
-Das war ein erster kleiner Einblick in die boolesche Logik und ihre Umsetzung auf Silizium, natürlich gibt es viel mehr als nur ein Referenzdesign,
-Auch haben wir uns noch nicht mit ESD-Messungen und Schutzschaltungen für die Ein- und Ausgänge beschäftigt.
+That was a first slight look into boolean logic and its implementation on silicon, of course there is a lot more to it than only one reference design, 
+also we did not had a look yet for ESD measurements and protection circuits for the inputs and output.
 
-Im nächsten Beitrag werfen wir einen Blick auf die Exklusiv-Oder (XOR)-Operation.
+In the next post we have a look on the exclusive-or (XOR) operation.
+
+
 
