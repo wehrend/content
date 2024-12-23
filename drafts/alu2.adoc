@@ -163,7 +163,7 @@ L= \overline{A}_{1}B_{1} + \overline {A_{1} \oplus B_{1}} (\overline{A_{2}}B_{2}
 
 Last but not least for equal holds:
 
-["../images/E_equation.svg",imgfmt="svg", width="100%"]
+[role="image","../images/E_equation.svg",imgfmt="svg", width="100%"]
 \huge
 \[ 
 \begin{array}{l}

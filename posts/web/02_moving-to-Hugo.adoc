@@ -60,7 +60,11 @@ and add the line
 theme = "hugo-book"
 ----
 to our config.toml. While we are at it we also add the following policy, necessary since hugo version 0.91, to our config.
+
+Example config.toml block
+[source, toml]
 ____
+
 [security]
   enableInlineShortcodes = false
   [security.exec]

@@ -214,7 +214,7 @@ two elements however the theorem is independent from any number of elements / in
 image:../images/how_does_cpu/de_morgan_nand_equivalence.svg[width=400]
 
 
-["../images/demorgan_nor.svg",imgfmt="svg", width="75%"]
+[role="image","../images/demorgan_nor.svg",imgfmt="svg", width="75%"]
 \[\overline{p_1 \lor p_2} = \overline{p_1} \land \overline{p_2}\]
 
 
