@@ -6,6 +6,8 @@
 .. description: 
 .. type: text
 
+== ALU (Arithmetic Logic Unit)
+
 === Instruction table
 
 [options="header"]
@@ -66,26 +68,26 @@ https://www.electrical4u.com/digital-comparator/[here].
 This leads us to three simple boolean equations (greater than, equal, less than):
 
 
-["latex","../images/greater_than.svg",imgfmt="svg", width="22%"]
+[role="image","../images/greater_than.svg",imgfmt="svg", width="22%"]
 \[ G = A\overline{B} \]
 
-["latex","../images/equal.svg",imgfmt="svg", width="30%"]
+[role="image","../images/equal.svg",imgfmt="svg", width="30%"]
 \[ E = \overline {A \oplus B} \]
 
-["latex","../images/less_than.svg",imgfmt="svg", width="22%"]
+[role="image","../images/less_than.svg",imgfmt="svg", width="22%"]
 \[ L = \overline{A}B \]
 
 image:../images/how_does_cpu/single-bit-comparator.svg[width="80%"]
 
 We extend this scheme to a  4 bit width comparator as follows:
 
-["latex","../images/A_B.svg",imgfmt="svg", width="70%"]
+[role="image","../images/A_B.svg",imgfmt="svg", width="70%"]
 \[ A = A_{1}A_{2}A_{3}A_{4} \quad and \quad B=B_{1}B_{2}B_{3}B_{4} \]
 
 ''''
 === Greater than
 
-["latex","../images/G_equations.svg",imgfmt="svg", width="100%"]
+[role="image","../images/G_equations.svg",imgfmt="svg", width="100%"]
 \huge
 \[ 
 \begin{array}{l}
@@ -96,7 +98,7 @@ We extend this scheme to a  4 bit width comparator as follows:
 \end{array}
 \]
 
-["latex","../images/G_equations2.svg",imgfmt="svg", width="100%"]
+[role="image","../images/G_equations2.svg",imgfmt="svg", width="100%"]
 \huge
 \[ 
 \begin{array}{l}
@@ -109,7 +111,7 @@ For \quad (4) \quad G= \overline {A_{1} \oplus B_{1}} \quad \overline {A_{2} \op
 
 From this follows, that G=1 when either of the above equations holds...
 
-["latex","../images/G_equations3.svg",imgfmt="svg", width="100%"]
+[role="image","../images/G_equations3.svg",imgfmt="svg", width="100%"]
 \huge
 \[ 
 \begin{array}{l}
@@ -122,7 +124,7 @@ G= A_{1}\overline{B}_{1} + \overline {A_{1} \oplus B_{1}} (A_{2}\overline{B_{2}}
 ''''
 === Less than
 
-["latex","../images/L_equations.svg",imgfmt="svg", width="100%"]
+[role="image","../images/L_equations.svg",imgfmt="svg", width="100%"]
 \huge
 \[ 
 \begin{array}{l}
@@ -133,7 +135,7 @@ G= A_{1}\overline{B}_{1} + \overline {A_{1} \oplus B_{1}} (A_{2}\overline{B_{2}}
 \end{array}
 \]
 
-["latex","../images/L_equations2.svg",imgfmt="svg", width="100%"]
+[role="image",,"../images/L_equations2.svg",imgfmt="svg", width="100%"]
 \huge
 \[ 
 \begin{array}{l}
@@ -146,7 +148,7 @@ For \quad (8) \quad L= \overline {A_{1} \oplus B_{1}} \quad \overline {A_{2} \op
 
 From this follows, that L=1 when either of the above equations holds...
 
-["latex","../images/L_equations3.svg",imgfmt="svg", width="100%"]
+[role="image","../images/L_equations3.svg",imgfmt="svg", width="100%"]
 \huge
 \[ 
 \begin{array}{l}
@@ -161,7 +163,7 @@ L= \overline{A}_{1}B_{1} + \overline {A_{1} \oplus B_{1}} (\overline{A_{2}}B_{2}
 
 Last but not least for equal holds:
 
-["latex","../images/E_equation.svg",imgfmt="svg", width="100%"]
+["../images/E_equation.svg",imgfmt="svg", width="100%"]
 \huge
 \[ 
 \begin{array}{l}

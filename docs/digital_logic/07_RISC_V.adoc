@@ -1,7 +1,7 @@
 ---
 title: 07_RISC-V
 date: 2022-03-21
-tags: draft
+tags: ['draft']
 category:
 link:
 description:

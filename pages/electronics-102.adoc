@@ -9,7 +9,10 @@ description:
 type: text
 outdir: ~/development/blog
 ---
-= Time-sensitive components
+
+= Electronics 102
+
+== Time-sensitive components
 
 After reviewing and extensively describing the most important component,
 the resistor, in  the first part, now we want to have a look at the next important
@@ -47,7 +50,7 @@ The basic equation for computing the capacity, the no.-1 property of a condensat
 The capacity C of the capacitor gives the interesting ratio of the stored charge quantity Q to the charging
 voltage U_c .
 
-["latex","../images/electronic_basics/Capacitance.svg" ,imgfmt="svg"]
+[role="image","../images/electronic_basics/Capacitance.svg" ,imgfmt="svg"]
 \[C= \frac{Q}{U_c}\]
 
 
@@ -55,13 +58,13 @@ voltage U_c .
 
 In parallel connection of capacitors, the capacitances add up to the total capacitance.
 
-["latex","../images/electronic_basics/parallel_C.svg" ,imgfmt="svg"]
+[role="image","../images/electronic_basics/parallel_C.svg" ,imgfmt="svg"]
 \[C= C_{1} + C_{2} + ... \]
 
 In series connection, the reciprocal of the total capacitance is equal to
 the sum of the reciprocals of the individual capacitances.
 
-["latex","../images/electronic_basics/series_C.svg" ,imgfmt="svg"]
+[role="image","../images/electronic_basics/series_C.svg" ,imgfmt="svg"]
 \[ \frac{1}{C}= \frac{1}{C_{1}} + \frac{1}{C_{2}} + ... \]
 
 === The Capacitor and Coils
@@ -112,12 +115,12 @@ image:../images/electronic_basics/lowpass.svg[width="400px"]
 
 frequency response
 
-["latex", "../images/electronic_basics/lowpass_fr.svg", imgfmt="svg"]
+[role="image","../images/electronic_basics/lowpass_fr.svg", imgfmt="svg"]
 \[ H(\omega) = \frac{U_{out}}{U_{in}} = \frac{(1/j\omega C)}{(R+ 1/j \omega C)} = \frac{(1/j\omega C)\cdot j \omega C}{(R+ 1/j \omega C) \cdot j \omega C } =
 \frac{1}{1+ j\omega RC } = \frac{1}{1+ j \omega/ \omega_g}\]
 
 cutoff frequency (with example values of R=1kOhm, C= 1µF)
-["latex", "../images/electronic_basics/cutoff_fr.svg", imgfmt="svg"]
+[role="image","../images/electronic_basics/cutoff_fr.svg", imgfmt="svg"]
 \[ \omega_g = \frac{1}{RC} = \frac{1}{1 \cdot 10^3 \cdot 1 \cdot 10^6}= 10^3= 1000 \cdot 1/s\]
 
 
@@ -192,14 +195,14 @@ image:../images/electronic_basics/highpass.svg[width="400px"]
 
 frequency response
 
-["latex", "../images/electronic_basics/highpass_fr.svg", imgfmt="svg"]
+[role="image","../images/electronic_basics/highpass_fr.svg", imgfmt="svg"]
 \[ H(\omega) = \frac{U_{out}}{U_{in}} = \frac{R}{R+ 1/j\omega C} = \frac{j \omega C}{1+ j \omega RC} =
 \frac{j\omega / \omega_g}{1+ j\omega/ \omega_g}\]
 
 cutoff frequency (with example values of R=1kOhm, C= 1µF)
 
 ////
-["latex", "../images/electronic_basics/cutoff_fr.svg", imgfmt="svg"]
+[role="image", "../images/electronic_basics/cutoff_fr.svg", imgfmt="svg"]
 \[ \omega_g = \frac{1}{RC} = \frac{1}{1 \cdot 10^3 \cdot 1 \cdot 10^6}= 10^3= 1000 \cdot 1/s\]
 ////
 

@@ -62,10 +62,10 @@ preventing a good contact. We might discuss such effects later. For now just let
 image:../images/electronic_basics/simple_circuit.svg[width="400px"]
 
 
-["latex", "../images/electronic_basics/elemental_charge.svg", imgfmt="svg"]
+[role="image", "../images/electronic_basics/elemental_charge.svg", imgfmt="svg"]
 \large \[Q = N \cdot (\pm e)\]
 
-["latex", "../images/electronic_basics/current.svg", imgfmt="svg"]
+[role="image", "../images/electronic_basics/current.svg", imgfmt="svg"]
 \large \[I = \frac{\Delta Q }{\Delta t}\]
 
 
@@ -137,7 +137,7 @@ applications with op-amps.
 |=====
 
 
-["latex", "../images/electronic_basics/potentialdifference.svg", imgfmt="svg"]
+[role="image", "../images/electronic_basics/potentialdifference.svg", imgfmt="svg"]
 \large \[U = \phi_{1} - \phi_{0}\]
 
 
@@ -179,7 +179,7 @@ the graphit trace work as a conductor - not an optimal one but a conductor.
 
 This observance leads us to the most important formula you will encounter in an electrical engineering 101 course, Ohm's law.
 
-["latex","../images/electronic_basics/ohms_law.svg" ,imgfmt="svg"]
+[role="image","../images/electronic_basics/ohms_law.svg" ,imgfmt="svg"]
 \large \[ R [\Omega] = \frac{U [V]}{I [A]}\]
 
 // .Ohm's law
@@ -213,13 +213,13 @@ We also need to note, of course that the conductivity is not only dependent on t
 also dependent on the temperature, but I will not go into this here), you know we handle with physics, so another useful formula / equation 
 in this context is the following.
 
-["latex","../images/electronic_basics/wire_resistance.svg" ,imgfmt="svg"]
+[role="image","../images/electronic_basics/wire_resistance.svg" ,imgfmt="svg"]
 \large \[ R = \frac{\rho L}{A}\]
 
 
 For the most common rectangle form - like a strip conductor on a PCB  - area A resolves to width times height
 
-["latex","../images/electronic_basics/strip_resistance.svg" ,imgfmt="svg"]
+[role="image","../images/electronic_basics/strip_resistance.svg" ,imgfmt="svg"]
 \large \[ R = \frac{\rho L}{A} = \frac{\rho L}{w \cdot h}\]
 
 

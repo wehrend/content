@@ -81,7 +81,7 @@ image:../images/how_does_cpu/inverter_chain.svg[width="400px"]
 The frequency is dependent on the number of inverters as well as the propagation time Tp (see the equation below). The time the signal needs to travel 
 trough the gate is known as propagation time Tp.
 
-["latex", "../images/how_does_cpu/ring_oscillator_frequency.svg",imgfmt="svg", width="40%"] 
+[role="image","../images/how_does_cpu/ring_oscillator_frequency.svg",imgfmt="svg", width="40%"]
 \[f_{ro}  = \frac{1}{2nT_{p}}\]
 
 Here the accuracy is mostly dependent on the stability of the power supply.

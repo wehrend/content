@@ -88,7 +88,7 @@ Truth table for fulladder cell | fulladder cell |
 |image:../images/how_does_cpu/fulladder_cell.svg[width="100%"] 
 |====
 
-["latex","../images/sum-equations.svg",imgfmt="svg", width="100%"]
+[role="image","../images/sum-equations.svg",imgfmt="svg", width="100%"]
 \[
 \begin{aligned}
 s & = (\overline{c_{in}} \land \overline{A} \land B) \lor (\overline{c_{in}} \land A \land {\overline{B}}) \lor (c_{in} \land \overline{A} \land \overline{B}) \lor (c_{in} \land A \land B) \\
@@ -102,7 +102,7 @@ s & = (\overline{c_{in}} \land \overline{A} \land B) \lor (\overline{c_{in}} \la
 
 
 
-["latex","../images/carry-equations.svg",imgfmt="svg", width="100%"]
+[role="image","../images/carry-equations.svg",imgfmt="svg", width="100%"]
 \[
 \begin{aligned}
 c_{out} & = \overline{c_{in}}(A \land B) \lor c_{in}(\overline{A} \land B) \lor c_{in}(A \land \overline{B}) \lor c_{in}(A \land B) \\
@@ -133,7 +133,7 @@ without the carry, we evaluate the half-adder cell.
 As we can see, the halfadder consists only of the two gates 'AND' and 'XOR'.
 Two halfadder and a separate 'OR'-gate for the carry-signal result in a fulladder.
 
-["latex","../images/half-adder.svg",imgfmt="svg", width="30%"]
+[role="image","../images/half-adder.svg",imgfmt="svg", width="30%"]
 \[
 \begin{array}{c}
 c = x \land y \\
@@ -151,7 +151,7 @@ the carry-Lookahead has been developed.
 The signals, (g)enerate and (p)ropagate are defined as follows
 (i being the index of the significance):
 
-["latex","../images/generate_propagate.svg",imgfmt="svg", width="30%"]
+[role="image","../images/generate_propagate.svg",imgfmt="svg", width="30%"]
 \[
 \begin{array}{c}
 g_{i} = a_{i} \land b_{i} \\
@@ -161,12 +161,12 @@ p_{i} = a_{i} \lor b_{i}
 
 From these helper signals the next carry-value is calculated:
 
-["latex","../images/carry_lookahead.svg",imgfmt="svg", width="40%"]
+[role="image","../images/carry_lookahead.svg",imgfmt="svg", width="40%"]
 \[
 c_{i+1} = g_{i} \lor c_{i} \land p_{i} 
 \]
 
-["latex","../images/carry_lookaheads.svg",imgfmt="svg", width="95%"]
+[role="image","../images/carry_lookaheads.svg",imgfmt="svg", width="95%"]
 \[
 \begin{aligned}
 c_{1} & = g_{0} \lor c_{0}p_{0} \\

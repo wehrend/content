@@ -6,6 +6,8 @@ draft: false
 type: blog
 ---
 
+== Analog Computers
+
 Today I want to speak about analog computers. In todays times analog computers are leading a shadowy existence,
 compared to their digital counterparts. But they are wonderous little machines. And that machines I mean
 wordly because there exists analog mechanical computers that are models from the world and used to
@@ -33,7 +35,7 @@ image:../sum_up.png[sum up]
 To create an analog multiplier we are using a trick here, by transforming the input signals into the logarithmic space
 summing up the result and transforming it back to the linear space. Mathematically speaking we do the following
 
-["latex","../images/analog_multiplier_equation.svg" ,imgfmt="svg"]
+[role="image","../images/analog_multiplier_equation.svg" ,imgfmt="svg"]
 \[c= a*b = alog( \log(a) + \log(b))\]
 
 Below you can see the according schematic: The first stage at the inputs are both logarithmic amplifiers, you can see the

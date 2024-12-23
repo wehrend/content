@@ -99,10 +99,10 @@ of  50 Mhz, we need to divide this down to a frequency of around 1Hz, which is 1
 For that we need to divide the signal by roughly 50.000.000. To compute how much bit width we
 need we need to do a little computation:
 
-["latex","../images/compute_bitwidth.svg" ,imgfmt="svg"]
+[role="image","../images/compute_bitwidth.svg" ,imgfmt="svg"]
 \[50.000.000 = 2^x\]
 
-["latex","../images/compute_bitwidth_2.svg" ,imgfmt="svg"]
+[role="image","../images/compute_bitwidth_2.svg" ,imgfmt="svg"]
 \[x = log_{2}(50.000.000)= 25.575\]
 
 So, because we need to round up the result we need a bit-width of 26 bits.

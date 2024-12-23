@@ -4,7 +4,7 @@ date: 2022-04-24
 category:
 link:
 description:
-tags: draft
+tags: ['draft']
 type: text
 menu:
   docs:
@@ -47,7 +47,7 @@ system which results in 42.
 
 multiplicand x multiplier = product
 
-["latex","../images/multiplication.svg",imgfmt="svg", width="70%"]
+[role="image","../images/multiplication.svg",imgfmt="svg", width="70%"]
 \[ \begin{aligned}
 0111_2 \times 0110_2 \\
 \hline 0000   \\
@@ -98,7 +98,7 @@ a binary subtraction.
 // === Parallel Multiplication
 
 // KANN Weg
-//["latex", "../images/multiplication_1.svg", width="70%"]
+//[role="image", "../images/multiplication_1.svg", width="70%"]
 //\[P = X \ast Y = X \ast Y_{1} + 2^1 \ast X \ast Y_{2} + \cdots + 2^{n-1} \ast X \ast Y_{n} \]
 //
 //We derive this formula to a Horner-Schema as known from math classes:
@@ -108,7 +108,7 @@ a binary subtraction.
 //
 //From which follows a recursive equation system
 //
-//["latex", "../images/multiplication_3.svg", width="70%"]
+//[role="image", "../images/multiplication_3.svg", width="70%"]
 //\[ \begin{aligned}
 //P^0 = 0 \\
 //P^1 = 2 \ast P^0 + X \ast Y_n \\

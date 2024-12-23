@@ -6,6 +6,8 @@ draft: false
 type: blog
 ---
 
+== OP-Amp
+
 Today I want to speak about op-amps. These wonderful, but mysterious components, we have heavely often appearing
 in circuit schematica of analog or analog / digital hybrid circuits. We want to demistify these components.
 
@@ -14,10 +16,10 @@ image:../op-amp.svg[op-amp,width="400px"]
 There are two basic thumb rules when handling ideal op-amp circuit. (Real-world op-amp circuits are a bit more complicated, but we will discuss this later).
 
 .1. The first thumb rule is that Vout is essentially the difference of the voltage values at the both inputs, multiplied with an arbitrary but high amplification factor A.
-["latex", "../op-amp_rule_1.svg", imgfmt="svg"]
+[role="image","../op-amp_rule_1.svg", imgfmt="svg"]
 \[ V_{out} = A (V_{in+} - V_{in-}) = \] in  short this goes to
 
-["latex", "../op-amp_rule_1-5.svg", imgfmt="svg"]
+["../op-amp_rule_1-5.svg", imgfmt="svg"]
 \[ V_{in+} = V_{in-}\]
 
 
@@ -34,20 +36,20 @@ image:../op-amp-non-inverting.svg[non-inverting op-amp,width="400px"]
 
 The non-inverting amplifier is simple and easy to calculate: The Amplification A is the output voltage divided by the input voltage, which can be computed as follows:
 
-["latex", "../op-amp_rule_non-inverting.svg", imgfmt="svg"]
+[role="image","../op-amp_rule_non-inverting.svg", imgfmt="svg"]
 \[ A = \frac{U_{out}}{U_{in}} = \frac{R1 + R2}{R1}=1 + \frac{R2}{R1}\]
 
-["latex", "../op-amp_rule_non-inverting_0.svg", imgfmt="svg"]
+[role="image","../op-amp_rule_non-inverting_0.svg", imgfmt="svg"]
 \[U_{in}= 5V; R_{1} = 100 k\Omega; R_{2} = 100 k\Omega \]
 
 
-["latex", "../op-amp_rule_non-inverting_1.svg", imgfmt="svg"]
+[role="image","../op-amp_rule_non-inverting_1.svg", imgfmt="svg"]
 \[ \frac{U_{out}}{U_{in}} = 1 + \frac{R2}{R1}\]
 
-["latex", "../op-amp_rule_non-inverting_1.svg", imgfmt="svg"]
+[role="image","../op-amp_rule_non-inverting_1.svg", imgfmt="svg"]
 \[ U_{out} = ( 1 + \frac{R2}{R1}) \cdot U_{in} = ( 1 + \frac{100k\Omega}{100k\Omega}) \cdot 5V  = (1 + 1) \cdot 5V = 10V\]
 
-["latex", "../op-amp_rule_non-inverting_1.svg", imgfmt="svg"]
+[role="image","../op-amp_rule_non-inverting_1.svg", imgfmt="svg"]
 \[ A = 2 \]
 
 
