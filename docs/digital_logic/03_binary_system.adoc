@@ -71,7 +71,7 @@ applied to evaluate combinatorial circuits
 
 [cols="a,a",options="header"]
 |====
-Truth table for fulladder cell | fulladder cell |
+|Truth table for fulladder cell | fulladder cell |
 ||
 [width="100%",cols="3,3,3,0,3,3",options="header"]
 !===

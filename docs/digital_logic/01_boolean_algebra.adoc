@@ -126,7 +126,7 @@ I refer you to accordingly literature (sources listed at the end).
 
 
 The laws of the boolean algebra are shown in the following table:
-[%autowidth cols="40,75a,75a",options="header"]
+[cols="40,75a,75a",options="header"]
 |====================================================================================================================
 |   Law   |  ∧  (conjunction, AND operator)               |  ∨ (disjunction, OR operator)
 | commutative law   | \[p \land q = q \land p\]   |\[p \lor q = q \lor p\]
