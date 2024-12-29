@@ -1,5 +1,5 @@
 ---
-title: 04_Signs
+title: 04_Signs (de)
 date: 2022-02-06
 category:
 link: 
@@ -11,94 +11,89 @@ menu:
     weight: 20
 ---
 
-== Extending the binary system
+== Erweiterung des Binärsystems
 
-While in the previous blog post about addition,
-the binary numbers had only one interpretation,
-we extend the system here to include negative (integer)
-numbers.
+Während wir im vorherigen Blogbeitrag über Addition
+die Binärzahlen nur eine Interpretation hatten,
+erweitern wir das System hier um negative (ganze)
+Zahlen.
 
-image:../images/how_does_cpu/binary_system.svg[width="50%"]
+image:../images/how_does_cpu/binary_system.svg[width=„50%“]
 
-The simplest approach we can think of is to use the most significant bit (MSB)
-as sign bit, where '0' ist intepreted as sign '+' and '1' is interpreted as '-'.
-However as we see in the following calculation this does not work as expected:
+Der einfachste Ansatz, den wir uns vorstellen können, ist die Verwendung des höchstwertigen Bits (MSB)
+als Vorzeichenbit, wobei „0“ als Vorzeichen „+“ und „1“ als Vorzeichen „-“ interpretiert wird.
+Wie wir jedoch in der folgenden Berechnung sehen, funktioniert dies nicht wie erwartet:
 
-image:../images/how_does_cpu/addition_extended.svg[width="50%"]
+image:../images/how_does_cpu/addition_extended.svg[width=„50%“]
 
-=== One complement
+=== Einerkomplement
 
-As the previous approach does not fullfill the requirements let us introduce
-the one complement and two complement here.
-The one complement is just an inversion of every bit, independent from its significance.
+Da der vorherige Ansatz die Anforderungen nicht erfüllt, wollen wir
+hier das Einerkomplement und das Zweikomplement einführen.
+Das Einerkomplement ist einfach eine Inversion jedes Bits, unabhängig von seiner Bedeutung.
 
-[role="image","../images/one-complement.svg",imgfmt="svg", width="70%"]
-\[ 
+[role=„image“,„../images/one-complement.svg“,imgfmt=„svg“, width=„70%“]
+\[
 \begin{array}{l}
 00000011_{2} = +3_{10} \\
 11111100_{2} = -3_{10}
 \end{array}
 \]
 
-=== Two complement
+=== Zweierkomplement
 
-However,as can be seen in the panel below, there is still a mismatch
-on addition. So, as a second step the inverted number is incremented by one.
-This leads us to the so-called two's complement as seen below.
+Wie jedoch in der folgenden Tabelle zu sehen ist, gibt es bei der Addition immer noch eine Abweichung.
+ Daher wird in einem zweiten Schritt die invertierte Zahl um eins erhöht.
+Dies führt uns zum sogenannten Zweierkomplement, wie unten dargestellt.
 
-[role="image","../images/two-complement.svg",imgfmt="svg", width="70%"]
-\[ 
+[role=„image“,„../images/two-complement.svg“,imgfmt=„svg“, width=„70%“]
+\[
 \begin{array}{l}
 00000011_{2} = +3_{10} \\
 11111101_{2} = -3_{10}
 \end{array}
 \]
 
-As can be seen in the following calculations, with the two's complement
-we get the correct results.
-image:../images/how_does_cpu/one_and_two_complement.svg[width="100%"]
+Wie in den folgenden Berechnungen zu sehen ist, erhalten wir mit dem Zweierkomplement
+die richtigen Ergebnisse.
+image:../images/how_does_cpu/one_and_two_complement.svg[width=„100%“]
 
-=== Overflow 
-As can be seen, in both cases, for one- and two-complement
-an arithmetic overflow is produced. 
-It is very dependent on the cpu achitecture how those are handled,
-but in every case you get the information as a flag (v) .
+=== Überlauf
+Wie in beiden Fällen zu sehen ist, wird sowohl beim Ein- als auch beim Zweierkomplement ein arithmetischer Überlauf erzeugt.
+Es hängt sehr stark von der CPU-Architektur ab, wie diese gehandhabt werden,
+aber in jedem Fall erhält man die Information als Flag (v).
 
-=== Implementation of subtraction in a fulladder
+=== Implementierung der Subtraktion in einem Volladdierer
 
-To extend the full-adder with the logic for subtraction we do not 
-need to design from scratch all again. The properties of the xor-gate
-allows the first step of the two's complement, the inversion of every bit,
-while for the second step the increment, we simply use '1' of the subtraction
-switch as carry-input for the first full-adder stage.
+Um den Volladdierer um die Logik für die Subtraktion zu erweitern, müssen wir nicht alles von Grund auf neu entwerfen. Die Eigenschaften des XOR-Gatters erlauben den ersten Schritt des Zweierkomplements, die Invertierung jedes Bits, während wir für
+den zweiten Schritt, die Inkrementierung, einfach die '1' des Subtraktionsschalters als Übertragseingang für die erste Volladdierer-Stufe verwenden.
 
-image:../images/how_does_cpu/fulladder_subtractor.svg[width="100%"]
+image:../images/how_does_cpu/fulladder_subtractor.svg[width=„100%“]
 
 
 
-=== Overview table for the number range -7..+7
- 
+=== Übersichtstabelle für den Zahlenbereich -7..+7
+
 |==============================================================
-| decimal |binary | one complement | two complement
-| +7 |    0111|     0111  | 0111                  
-| +6 |    0110|     0110  | 0110
-| +5 |    0101|     0101  | 0101
-| +4 |    0100|     0100  | 0100
-| +3 |    0011|     0011  | 0011
-| +2 |    0010|     0010  | 0010
-| +1 |    0001|     0001  | 0001
-| +0 |    0000|     0000  | 0000      
-| -0 |    1000|     1111  | -
-| -1 |    1001|     1110  | 1111
-| -2 |    1010|     1101  | 1110
-| -3 |    1011|     1100  | 1101
-| -4 |    1100|     1011  | 1100       
-| -5 |    1101|     1010  | 1011
-| -6 |    1110|     1001  | 1010
-| -7 |    1111|     1000  | 1001
+| dezimal |binär | ein Komplement | zwei Komplemente
+| +7 | 0111| 0111 | 0111
+| +6 | 0110| 0110 | 0110
+| +5 | 0101| 0101 | 0101
+| +4 | 0100| 0100 | 0100
+| +3 | 0011| 0011 | 0011
+| +2 | 0010| 0010 | 0010
+| +1 | 0001| 0001 | 0001
+| +0 | 0000| 0000 | 0000
+| -0 | 1000| 1111 | -
+| -1 | 1001| 1110 | 1111
+| - 2 | 1010| 1101 | 1110
+| -3 | 1011| 1100 | 1101
+| -4 | 1100| 1011 | 1100
+| -5 | 1101| 1010 | 1011
+| -6 | 1110| 1001 | 1010
+| -7 | 1111| 1000 | 1001
 |==============================================================
 
-// image:../images/how_does_cpu/digitcircle.svg[width="100%"]
+// image: . ./images/how_does_cpu/digitcircle.svg[width=„100%“]
 
-
-
+(translation 2024-12-29)
