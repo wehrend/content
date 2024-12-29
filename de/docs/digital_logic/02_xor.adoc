@@ -1,5 +1,5 @@
 ---
-title: 02_XOR
+title: 02_XOR (de)
 date: 2021-11-08
 category:
 link: 
@@ -10,87 +10,87 @@ menu:
     parent: "digital_logic"
     weight: 10
 ---
+(translation 2024-12-29)
 
 == XOR
 
-As there are a lot of important applications for the exclusive-or (XOR) operation
-it is dedicated an own blog post. Two of the most important are:
+Da es viele wichtige Anwendungen für die Exklusiv-Oder-Operation (XOR) gibt,
+ ist ihr ein eigener Blog-Beitrag gewidmet. Zwei der wichtigsten sind:
 
-- XOR operations are often used in a Linear Feedback Shift Registers (LFSR). 
-LFSR are a crucial step  in scrambler / descrambler respectively, 
-which are used in transmitters / receivers
-- Part of an encryption algorithmus
-- Last but not least an important part of a halfadder.
+- XOR-Operationen werden häufig in einem Linear Feedback Shift Register (LFSR) verwendet.
+LFSR sind ein entscheidender Schritt  in Scrambler/Descrambler,
+die in Sendern/Empfängern verwendet werden
+- Teil eines Verschlüsselungsalgorithmus
+- Nicht zuletzt ein wichtiger Bestandteil eines Halbaddierers.
 
 ////
-//as you can expect for a such basic and fundamental operation, but still
-//the situation is a bit different with this operation compared to 'and' and 'or'.
+//Wie bei einer so grundlegenden und fundamentalen Operation zu erwarten ist,
+//ist die Situation bei dieser Operation jedoch etwas anders als bei „und“ und „oder“.
 ////
 
-The exclusive-or operation xor which is also termed as antivalence
-is denoted as A ⊕ B = Q. Its truth table is shown below
+Die Exklusiv-Oder-Operation xor, die auch als Antivalenz bezeichnet wird,
+ wird als A ⊕ B = Q bezeichnet. Ihre Wahrheitstabelle ist unten dargestellt
 
-[width="50%"]
+[width=„50%“]
 |================
-| A   | B   |  Q  
-| 0   | 0   |  0  
-| 0   | 1   |  1 
-| 1   | 0   |  1  
-| 1   | 1   |  0  
+| A | B | Q
+| 0 | 0 | 0
+| 0 | 1 | 1
+| 1 | 0 | 1
+| 1 | 1 | 0
 |================
-  
+
 image:../images/how_does_cpu/xor_symbol.svg[width=250]
 
-[width="100%" cols="a"]
+[width=„100%“ cols=„a“]
 |======
-| CMOS XOR 
-|image:../images/how_does_cpu/xor_cmos.svg[width=800] 
-| # transistor: 12 
+| CMOS XOR
+|image:../images/how_does_cpu/xor_cmos.svg[width=800]
+| # transistor: 12
 |======
 
- 
 
-== Some Applications
 
-=== Linear Feedback Shift Register (LSFR)
-As described above XOR gates are used in Linear Feedback Shift Registers (LFSR).
-LFSR are often used for test pattern generation.
-The author selected a simple example of a 3-bit LFSR found in a 
-https://www.ti.com/lit/an/scta036a/scta036a.pdf[white paper from Texas Instruments].
+== Einige Anwendungen
+
+=== Lineares Rückkopplungs-Schieberegister (LSFR)
+Wie oben beschrieben werden XOR-Gatter in linearen Rückkopplungs-Schieberegistern (LFSR) verwendet.
+LFSR werden häufig zur Testmustererzeugung verwendet.
+Der Autor hat ein einfaches Beispiel eines 3-Bit-LFSR ausgewählt, das in einem
+https://www.ti.com/lit/an/scta036a/scta036a.pdf[Whitepaper von Texas Instruments] erwähnt wird.
 
 
 image:../images/how_does_cpu/lfsr.svg[width=800]
 
-For this example we need to take a big leap and enter the area of sequential circuits.
-These are circuits which make use of feedback. The chosen example generates pseudo-random 
-test patterns according to the table below. The registers are feed with the seed value 111,
-after 8 clock cycles the patterns repeat again.
-Of course real test pattern generators have a much higher bit width.
+Für dieses Beispiel müssen wir einen großen Sprung machen und in den Bereich der sequenziellen Schaltkreise einsteigen.
+Dies sind Schaltkreise, die Rückkopplung nutzen. Das gewählte Beispiel erzeugt
+Testmuster nach dem Zufallsprinzip gemäß der folgenden Tabelle. Die Register werden mit dem Startwert 111 gespeist,
+nach 8 Taktzyklen wiederholen sich die Muster erneut.
+Echte Testmustergeneratoren haben natürlich eine viel höhere Bitbreite.
 
-[width="50%"]
+[width=„50%“]
 |================
-| CLK  | FF1   |  FF2 | FF3  
-| 0    | 1   |  1 | 1  
-| 1    | 0   |  1 | 1
-| 2    | 0   |  0 | 1  
-| 3    | 1   |  0 | 0 
-| 4    | 1   |  0 | 0
-| 5    | 0   | 1  | 0
-| 6    | 1   | 0  | 0
-| 7    | 1   | 1  | 0
-| 8    | 1   | 1  | 1
+| CLK | FF1 | FF2 | FF3
+| 0 | 1 | 1 | 1
+| 1 | 0 | 1 | 1
+| 2 | 0 | 0 | 1
+| 3 | 1 | 0 | 0
+| 4 | 1 | 0 | 0
+| 5 | 0 | 1 | 0
+| 6 | 1 | 0 | 0
+| 7 | 1 | 1 | 0
+| 8 | 1 | 1 | 1
 |================
 
-=== Halfadder
-In the next blogpost we dive deeper into the halfadder application.
-The halfadder essentialy consists of the two following particular equations
-for sum (making use of the XOR ) and carry (using a simple AND). 
+=== Halbaddierer
+Im nächsten Blogbeitrag werden wir uns eingehender mit der Halbaddierer-Anwendung befassen.
+Der Halbaddierer besteht im Wesentlichen aus den beiden folgenden Gleichungen
+für die Summe (unter Verwendung des XOR) und den Übertrag (unter Verwendung eines einfachen UND).
 
-[role="image","../images/half-adder.svg",imgfmt="svg", width="40%"]
+[role=„image“,„../images/half-adder.svg“,imgfmt=„svg“, width=„40%“]
 \[
 \begin{array}{c}
 c = x \land y \\
 s = x \oplus y
 \end{array}
 \]
-
