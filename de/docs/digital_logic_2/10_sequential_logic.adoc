@@ -1,5 +1,5 @@
 ---
-title: 10_sequential_logic
+title: 10_sequential_logic (de)
 date: 2023-05-01
 category:
 link:

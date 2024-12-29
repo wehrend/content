@@ -1,5 +1,5 @@
 ---
-title: 11_Clocks_flipflops_and_registers
+title: 11_Clocks_flipflops_and_registers (de)
 date: 2022-03-12
 category:
 link:
@@ -11,170 +11,170 @@ menu:
     weight: 10
 ---
 
-== Clocks, Flipflops and registers
-In this blog post the author will introduce multiple elements needed at a later 
-stage.
+== Taktgeber, Flipflops und Register
+In diesem Blogbeitrag stellt der Autor mehrere Elemente vor, die zu einem späteren Zeitpunkt benötigt werden
+.
 
 
-=== Register-Transfer-Level needs a clock source
-As for now we only learned about combinatiorial logic, which works
-without any clock source - every signal is just delayed by the 
-time it needs to travel through the circuit. This is known as asynchronous.
-But for more sophisticated tasks, sequential circuits, having registers 
-storing the input and output signals are necessary 
-to get correct results. This is known as synchronous.
-Most, if not all designs used nowadays are synchronous, 
-due to a lower design complexity.
+=== Register-Transfer-Level benötigt eine Taktquelle
+Bisher haben wir nur die kombinatorische Logik kennengelernt, die
+ohne Taktquelle auskommt – jedes Signal wird nur um die Zeit verzögert, die es
+für die Übertragung durch den Schaltkreis benötigt. Dies wird als asynchron bezeichnet.
+Für anspruchsvollere Aufgaben, wie sequentielle Schaltkreise, sind jedoch Register erforderlich,
+ die die Eingangs- und Ausgangssignale speichern,
+um korrekte Ergebnisse zu erzielen. Dies wird als synchron bezeichnet.
+Die meisten, wenn nicht sogar alle heutzutage verwendeten Designs sind synchron, da diese weniger komplex sind.
 
 
 *Register-Transfer-Level*
 
 
-image:../images/how_does_cpu/rtl_scheme.svg[width="100%"]
+image:../images/how_does_cpu/rtl_scheme.svg[width=„100%“]
 
-The blue parts in the image above are showing registers where the values are 
-stored, we will see later how those are implemented, lets first have a look 
-at the clock source which is needed.
+Die blauen Teile im Bild oben zeigen Register, in denen die Werte
+gespeichert werden. Wir werden später sehen, wie diese implementiert werden. Schauen wir uns zunächst
+die benötigte Taktquelle an.
 
-There are different ways to create a clock source: 
+Es gibt verschiedene Möglichkeiten, eine Taktquelle zu erzeugen:
 
-. A crystal oscillator
-. A ring oscillator 
+. Ein Quarzoszillator
+. Ein Ringoszillator
 
-The former one is the classical, the later one a more modern variant.
+Ersterer ist die klassische, letzterer eine modernere Variante.
 
-[cols="a,a" width="100%"]
+[cols=„a,a“ width=„100%“]
 |===
-| *crystal oscillator* | *ring oscillator*
-|image:../images/how_does_cpu/crystal_symbol.svg[width="80%"]
-|image:../images/how_does_cpu/inverter_chain_symbol.svg[width="80%"]
-|typical frequence range: 1Mhz..100Mhz | typical frequence range: 1Hz..15Mhz(discrete layout)
-|image:../images/how_does_cpu/pierce_gate_circuit.svg[width="350px"]
-|image:../images/how_does_cpu/inverter_chain.svg[width="350px"]
-| frequency determined by crystal geometry 
-| frequency determined by propagation delay and number of gates
-| accuracy mostly dependent from temperature; for precise applications crystal ovens are used
-| accuracy mostly dependent from power supply stability 
-|===
-
-==== The crystal oscillator
-The crystal oscilltor is a clock source based on a quartz crystal.
-The frequency is dependent on the geometry of the quartz.
-Crystal oscillators are available in a metal box housing, with 
-additional wiring, with the quartz being the heart of the circuit. 
-The circuit is commonly based on the https://en.wikipedia.org/wiki/Pierce_oscillator[Pierce oscillator].
-
-image:../images/how_does_cpu/pierce_gate_circuit.svg[width="400px"]
-
-Their accuracy is mostly dependent on the temperature,so for applications with high accuracy needs, 
-they are housed in a quartz oven, holding the quartz on a constant temperature.
-An interesting teardown of such an oscillator is available on http://www.righto.com/2021/02/teardown-of-quartz-crystal-oscillator.html[Ken Shirriffs blog].
-
-
-==== The ring oscillator
-Another common source of a clock source is the ring oscillator.
-The trick here is to chain an odd number of inverter gates and feedback the output of the last inverter as input 
-to the first inverter. This way we create an oscillating circuit. 
-
-image:../images/how_does_cpu/inverter_chain.svg[width="400px"]
-
-The frequency is dependent on the number of inverters as well as the propagation time Tp (see the equation below). The time the signal needs to travel 
-trough the gate is known as propagation time Tp.
-
-[role="image","../images/how_does_cpu/ring_oscillator_frequency.svg",imgfmt="svg", width="40%"]
-\[f_{ro}  = \frac{1}{2nT_{p}}\]
-
-Here the accuracy is mostly dependent on the stability of the power supply.
-An example where it is used - e.g. the 8087, intels(R) Floating Point Unit - is again provided by
-http://www.righto.com/2018/08/inside-die-of-intels-8087-coprocessor.html[Ken Shirriffs blog].
-As shown there, the frequency can be decreased by adding an RC-network between the inverters.
-
-
-
-==== The classic RS-flipflop
-
-The classic flipflop consists of two Nand gates which outputs are feedback'ed to the complementary 
-gate, as can be seen in the table below. Below the circuit the truth table is given.
-As can be seen the flipflop locks the output to one state, '1' or '0'. 
-If both inputs are set low, the output is undefined (and conforms to the preferred position).
-
-[cols="a,a" width="100%"]
-|===
-| *RS-flipflop structure* | *RS-flipflop symbol*
-|image:../images/how_does_cpu/flipflop_circuit.svg[width="80%"]
-|image:../images/how_does_cpu/flipflop_symbol.svg[width="80%"]
+| *Quarzoszillator* | *Ringoszillator*
+|image:../images/how_does_cpu/crystal_symbol.svg[width=„80%“]
+|image:../images/how_does_cpu/inverter_chain_symbol.svg[width=„80%“]
+|typischer Frequenzbereich: 1Mhz..100Mhz | typischer Frequenzbereich: 1Hz..15Mhz(diskretes Layout)
+|image:../images/how_does_cpu/pierce_gate_circuit.svg[width=„350px“]
+|image:../images/how_does_cpu/inverter_chain.svg[width=„350px“]
+| Frequenz wird durch Kristallgeometrie bestimmt
+| Frequenz wird durch Laufzeit und Anzahl der Gates bestimmt
+| Genauigkeit hängt hauptsächlich von der Temperatur ab; für präzise Anwendungen werden Kristallöfen verwendet
+| Genauigkeit hängt hauptsächlich von der Stabilität der Stromversorgung ab
 |===
 
-[width="50%"]
+==== Der Kristalloszillator
+Der Kristalloszillator ist eine Taktquelle, die auf einem Quarzkristall basiert.
+Die Frequenz hängt von der Geometrie des Quarzes ab.
+Quarzoszillatoren sind in einem Metallgehäuse mit
+zusätzlicher Verdrahtung erhältlich, wobei der Quarz das Herzstück des Schaltkreises bildet.
+Der Schaltkreis basiert in der Regel auf dem https://en.wikipedia.org/wiki/Pierce_oscillator[Pierce-Oszillator].
+
+image:../images/how_does_cpu/pierce_gate_circuit.svg[width=„400px“]
+
+Ihre Genauigkeit hängt hauptsächlich von der Temperatur ab. Für Anwendungen mit hohen Genauigkeitsanforderungen
+werden sie daher in einem Quarzofen untergebracht, der den Quarz auf einer konstanten Temperatur hält.
+Eine interessante Zerlegung eines solchen Oszillators ist auf http://www.righto.com/2021/02/teardown-of-quartz-crystal-oscillator.html [Ken Shirriffs Blog] verfügbar.
+
+
+==== Der Ringoszillator
+Eine weitere gängige Taktgeberquelle ist der Ringoszillator.
+Der Trick besteht darin, eine ungerade Anzahl von Inverter-Gates zu verketten und den Ausgang des letzten Inverters als Eingang
+für den ersten Inverter zu verwenden. Auf diese Weise entsteht ein Schwingkreis.
+
+image:../images/how_does_cpu/inverter_chain.svg[width=„400px“]
+
+Die Frequenz hängt von der Anzahl der Inverter sowie von der Laufzeit Tp ab (siehe Gleichung unten). Die Zeit, die das Signal benötigt, um
+durch das Gate zu laufen, wird als Laufzeit Tp bezeichnet.
+
+[role=„image“,„../images/how_does_cpu/ring_oscillator_frequency.svg“,imgfmt=„svg“, width=„40%“]
+\[f_{ro} = \frac{1}{2nT_{p}}\]
+
+Hier hängt die Genauigkeit hauptsächlich von der Stabilität der Stromversorgung ab.
+Ein Anwendungsbeispiel – z. B. die 8087, die Gleitkommaeinheit von Intel® – wird erneut von
+http://www.righto.com/2018/08/inside-die-of-intels-8087-coprocessor.html[Ken Shirriffs Blog].
+ Wie dort gezeigt, kann die Frequenz durch Hinzufügen eines RC-Netzwerks zwischen den Invertern verringert werden.
+
+
+
+==== Das klassische RS-Flipflop
+
+Das klassische Flipflop besteht aus zwei NAND-Gattern, deren Ausgänge an das komplementäre Gatter rückgekoppelt werden,
+ wie in der folgenden Tabelle zu sehen ist. Unterhalb der Schaltung ist die Wahrheitstabelle angegeben.
+Wie zu sehen ist, sperrt das Flipflop den Ausgang auf einen Zustand, „1“ oder „0“.
+Wenn beide Eingänge auf „niedrig“ gesetzt sind, ist der Ausgang undefiniert (und entspricht der bevorzugten Position).
+
+[cols=„a,a“ width=„100%“]
 |===
-|&#773;R | &#773;S || Q | &#773;Q | comments
-| 0  | 0  || 1 | 1 | invalid
-| 0  | 1  || 1 | 0 | Reset
-| 1  | 0  || 0 | 1 | Set
-| 1  | 1  || Q | &#773;Q | --
-|===
-One application of the classic RS-flipflop is to debounce switches.
-
-But for most applications a more evolved flipflop is necessary. Let's have
-a look at the (D)ata-flipflop.
-
-==== The D-flipflop
-
-In the D-flipflop the circuit of the RS-flipflop is preceeded by two Nand gates,
-controlled by a clock impulse. Only when the clock is high (i.e. '1') the date applied
-to the (D)ata-input is valid and stored in the RS-fliplop. Otherwise the applied data 
-input is invalid.
-
-[cols="a,a" width="100%"]
-|===
-| *D-flipflop structure* | *D-flipflop symbol*
-|image:../images/how_does_cpu/dflipflop_circuit.svg[width="80%"]
-|image:../images/how_does_cpu/dflipflop_symbol.svg[width="80%"]
+| *RS-Flipflop-Struktur* | *RS-Flipflop-Symbol*
+|image:../images/how_does_cpu/flipflop_circuit.svg[width=„80%“]
+|image:../images/how_does_cpu/flipflop_symbol.svg[width=„80%“]
 |===
 
-[width="50%"]
+[width=„50%“]
 |===
-|Clock   | D | Q | &#773;Q | comments
-| 🠓 >>0  | x  | Q | &#773;Q | no change
-| 🠓 >>0  | 1  | 1 | 0 | Reset
-| 🠑 >>1  | 0  | 0 | 1 | Set
-| 🠑 >>1   | 1  | Q | &#773;Q | -
+|̅R | ̅S || Q | ̅Q | comments
+| 0 | 0 | 1 | 1 | invalid
+| 0 | 1 | 1 | 0 | Reset
+| 1 | 0 | 0 | 1 | Setzen
+| 1 | 1 | Q | ΩQ | --
+|===
+Eine Anwendung des klassischen RS-Flipflops ist die Entprellung von Schaltern.
+
+Für die meisten Anwendungen ist jedoch ein weiterentwickeltes Flipflop erforderlich. Sehen wir uns
+das (D)ata-Flipflop an.
+
+==== Das D-Flipflop
+
+Beim D-Flipflop wird der Schaltung des RS-Flipflops zwei NAND-Gatter vorgeschaltet,
+die durch einen Taktimpuls gesteuert werden. Nur wenn der Takt hoch ist (d. h. „1“), ist das
+am (D)ata-Eingang anliegende Datum gültig und wird im RS-Flipflop gespeichert. Andernfalls ist das
+anliegende Datum ungültig.
+
+[cols=„a,a“ width=„100%“]
+|===
+| *D-Flipflop-Struktur* | *D-Flipflop-Symbol*
+|image:../images/how_does_cpu/dflipflop_circuit.svg[width=„80%“]
+|image:../images/how_does_cpu/dflipflop_symbol.svg[width=„80%“]
+|===
+
+[width=„50%“]
+|===
+|Clock | D | Q | ̅Q | comments
+| 🠓 >>0 | x | Q | ₯Q | keine Änderung
+| 🠓 >>0 | 1 | 1 | 0 | Zurücksetzen
+| 🠑 >>1 | 0 | 0 | 1 | Setzen
+| 🠑 >>1 | 1 | Q | ₯Q | -
 |===
 
 
-=== A binary counter
+=== Ein Binärzähler
 
-Using the D-flipflop we got acquainted with in the last section,
-we can construct an (asynchronous) binary counter.
-This output can be used as adresses for a ROM table, as we will see in another blog post.
+Mit dem D-Flipflop, das wir im letzten Abschnitt kennengelernt haben,
+können wir einen (asynchronen) Binärzähler konstruieren.
+Dieser Ausgang kann als Adresse für eine ROM-Tabelle verwendet werden, wie wir in einem anderen Blogbeitrag sehen werden.
 
-[cols="a" width="100%"]
+[cols=„a“ width=„100%“]
 |===
-| *Asynchronous binary counter with D-flipflops* 
-|image:../images/how_does_cpu/dflipflop_counter.svg[width="100%"]
+| *Asynchroner Binärzähler mit D-Flipflops*
+|image:../images/how_does_cpu/dflipflop_counter.svg[width=„100%“]
 |===
 
-Using the outputs independent, it can be seen that the counter 
-also works as frequency divider: On every output the frequency
-is divided by two referenced to the previous one.
+Wenn man die Ausgänge unabhängig voneinander betrachtet, kann man sehen, dass der Zähler
+auch als Frequenzteiler funktioniert: Bei jedem Ausgang wird die Frequenz
+im Verhältnis zu der vorherigen durch zwei geteilt.
 
-== Registers
-What are registers? Registers are used to hold respectively store values.
-Every slighlty more complex nowadays CPU has copious quantities of registers inside.
-Register sizes vary widely dependent on the application. Reaching from status registers 
-only holding one bit to registers over 32 and 64 bit for regular registers until vector 
-registers with a size of 64 bytes (= 512 bits). Those registers are named after a certain
-scheme, in some architectures with numbers (e.g. MIPS and ARM), other times with a more
-comnplex scheme of alphabetic numbers (like in x86 architectures).
+== Register
+Was sind Register? Register werden verwendet, um Werte zu halten bzw. zu speichern.
+Jede heutzutage etwas komplexere CPU verfügt über eine große Anzahl von Registern.
+Die Registergrößen variieren stark je nach Anwendung. Sie reichen von Statusregistern,
+ die nur ein Bit enthalten, über Register mit mehr als 32 und 64 Bit für reguläre Register bis hin zu Vektorregistern
+mit einer Größe von 64 Byte (= 512 Bit). Diese Register werden nach einem bestimmten Schema benannt
+Schema benannt, in einigen Architekturen mit Zahlen (z. B. MIPS und ARM), in anderen Fällen mit einem
+komplexeren Schema aus alphabetischen Zahlen (wie in x86-Architekturen).
 
 
-image:../images/how_does_cpu/register.svg[width="100%"]
+image:../images/how_does_cpu/register.svg[width=„100%“]
 
-In the previous sections we have learned about the flipflop.
-These are the building blocks of registers. As can be seen in the picture
-above every flipflop is clocked by the same signal.
-We will also often use the term accumulator.
-Accumulators are registers which are source and destination registers
-at the same time. So e.g. on addition they store one input value and
-after the operation, holding the result in the same register.
+In den vorherigen Abschnitten haben wir etwas über das Flipflop gelernt.
+Dies sind die Bausteine der Register. Wie im Bild oben zu sehen ist,
+wird jedes Flipflop mit demselben Signal getaktet.
+Wir werden auch oft den Begriff Akkumulator verwenden.
+Akkumulatoren sind Register, die gleichzeitig Quell- und Zielregister sind.
+ So speichern sie z. B. bei einer Addition einen Eingabewert und
+halten das Ergebnis nach der Operation im selben Register.
 
+(translation: 2024-12-29)
