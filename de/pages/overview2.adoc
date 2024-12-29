@@ -7,66 +7,58 @@ link:
 description:
 ---
 
-== How does a CPU work 2 - Table of contents
+== Wie funktioniert eine CPU 2 - Inhaltsverzeichnis
 
+== *Von kombinatorischer zu sequentieller Logik - Einführung*
+_https://wehrend.uber.space/docs/digital_logic_2/10_sequential_logic[Einführung in sequentielle Logik]_
 
-==  *From Combinatorial to Sequential Logic - Introduction*
-_https://wehrend.uber.space/docs/digital_logic_2/10_sequential_logic[Introduction to Sequential Logic]_
+Wir gelangen von rein kombinatorischen Logikschaltungen ohne jegliche Form von Speicher zu sequentiellen Logikschaltungen mit irgendeiner
+Art von Speicher (meistens Flipflops)
 
-We get from purely conmbinatorial logic circuits wihout any form of memeory to sequential logic circuits with some
-type of memory (mostly flipflops)
+== *Uhren, Flipflops und Register*
 
-==  *Clocks,Flipflops and registers*
+_https://wehrend.uber.space/docs/digital_logic_2/11_clocks_and_registers/[Uhren, Flipflops und Register]_
 
-_https://wehrend.uber.space/docs/digital_logic_2/11_clocks_and_registers/[Clocks,flipflops and registers]_
+Wir machen einen Sprung in den Bereich der sequentiellen Logik und führen einige für die sequentielle Logik wichtige Konzepte ein,
+wie Uhr, Flipflops und Register
 
-We make a leap into the area of sequential logic and introduce some concepts vital  for the sequential logics,
-like clock, flipflops and registers
+== *Automaten*
 
-==  *Automata*
+_https://wehrend.uber.space/docs/digital_logic_2/12_automata/[Automaten]_
 
-_https://wehrend.uber.space/docs/digital_logic_2/12_automata/[Automata]_
+Wir stellen die zwei (drei) verschiedenen Automaten Mealy, Moore (und Medwedjew) vor. Diese können synchron oder
+asynchron sein.
 
-We introduce the two (three) different automata Mealy, Moore (and Medwedjew). Those can be synchronous or
-asynchronous.
+== *CPU-Steuerung*
 
+_http://wehrend.uber.space/docs/digital_logic_02/13_cpu_control/[CPU-Steuerung]_
 
-==  *CPU Control*
+Hier sezieren wir das Gehirn einer CPU, die Steuereinheit, die alle Aktionen
+einer CPU handhabt und steuert.
 
-_http://wehrend.uber.space/docs/digital_logic_02/13_cpu_control/[CPU control]_
+== *Programmierbare Logik*
 
-Here we are dissecting the brain of a CPU, the control unit, which handles and controls all actions
-of a cpu
+_http://wehrend.uber.space/docs/digital_logic_02/14_programmable_logic/[Programmierbare Logik]_
 
-==  *Programmable Logic*
+Wir stellen das Konzept der programmierbaren Logik sowohl für kombinatorische als auch sequentielle Logik vor.
 
-_http://wehrend.uber.space/docs/digital_logic_02/14_programmable_logic/[Programmable Logic]_
-
-We introduce the concept of programmable logic for both, combinatorial and sequential logic.
-
-
-==  *Test thoroughly*
+== *Gründlich testen*
 
 _http://wehrend.uber.space/docs/digital_logic_02/15_testable_logic/[Testable Logic]_
 
-Every embedded circuit or logic needs some infrastructure for testing. Here we introduce
-JTAG and boundary-scan-tests.
+Jede eingebettete Schaltung oder Logik benötigt eine Infrastruktur zum Testen. Hier stellen wir
+JTAG- und Boundary-Scan-Tests vor.
 
+== *HDLs*
 
-==  *HDLs*
+_VHDL und Verilog_
 
-_VHDL and Verilog_
-
-We introduce the concept of a Hardware Description Language (HDL) like VHDL and Verilog.
-
+Wir stellen das Konzept einer Hardwarebeschreibungssprache (HDL) wie VHDL und Verilog vor.
 
 = Extra
 
-==  *Register-Transfer-Level*
+== *Register-Transfer-Level*
 
 _Register-Transfer-Level_
 
-In this lesson we introduce the concept of the register transfer level.
-
-
-
+In dieser Lektion stellen wir das Konzept des Register-Transfer-Levels vor.
