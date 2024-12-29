@@ -95,7 +95,7 @@ which is useful as input for the ALU we introduced in the last blog
 post. While the amount of read ports is theoretically unlimited, 
 the amount of write ports is usually one. The reason, as the vivid 
 reader can imagine is to mitigate hazards, which is with multiple 
-read ports difficult to handle.
+write ports difficult to handle.
 
 image:../images/how_does_cpu/register_file_read_ports.svg[width="100%"]
 

@@ -11,30 +11,30 @@ menu:
     weight: 10
 ---
 
-== Sequential Logic
+== Sequentielle Logik
 
-Complementary to Combinatorial logic, sequential logic contains some type of memory,
-making the behaviour state-dependent. We need to feed it a clock signal.
+Ergänzend zur kombinatorischen Logik enthält die sequentielle Logik eine Art Speicher,
+der das Verhalten zustandsabhängig macht. Wir müssen ihr ein Taktsignal zuführen.
 
 image:../images/how_does_cpu/sequential_logic.svg[width=50%]
 
-=== Mealy and Moore Automata (synchronous)
-There are two different types of finite automata in the digital logic.
-Those are:
+=== Mealy- und Moore-Automaten (synchron)
+In der digitalen Logik gibt es zwei verschiedene Arten von endlichen Automaten.
+Diese sind:
 
-. The mealy automata, which is dependent on the input and the state
-. The moore automata, which is only dependent on the state
+Der Mealy-Automat, der von der Eingabe und dem Zustand abhängig ist.
+Der Moore-Automat, der nur vom Zustand abhängig ist
 
 image:../images/how_does_cpu/mealy_logic.svg[width=50%]
 image:../images/how_does_cpu/moore_logic.svg[width=50%]
 
-=== Synchronous and Asynchronous sequential Logic
+=== Synchrone und asynchrone sequentielle Logik
 
-There are two different types of sequential logic, the synchronous sequential logic
-with one central clock, as well as the asnychonous logic which has multiple clock
-domains.
+Es gibt zwei verschiedene Arten sequentieller Logik: die synchrone sequentielle Logik
+mit einem zentralen Taktgeber sowie die asnychrone Logik mit mehreren Taktgeber-Domänen.
 
 image:../images/how_does_cpu/sequential_logic2.svg[width=50%]
 
-When we add a clock function to our automata shown above the synchronous
-automata becomes an asynchronous automata.
+Wenn wir unserem oben gezeigten Automaten eine Taktgeberfunktion hinzufügen, wird der synchrone Automat zum asynchronen Automaten.
+
+(translation: 2024-12-29)

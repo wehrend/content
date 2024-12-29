@@ -1,5 +1,5 @@
 ---
-title: 06_Memory
+title: 06_Memory (de)
 date: 2022-03-20
 category:
 link: 
@@ -11,132 +11,131 @@ menu:
     weight: 30
 ---
 
-== Memory Organization
-In this blog post the author will introduce the different
-types of semiconductor memory. This is a wide field, 
-so the goal here is to focus on the most important ones 
-and draw the differences between the different types.
+== Speicherorganisation
+In diesem Blogbeitrag stellt der Autor die verschiedenen
+Arten von Halbleiterspeichern vor. Dies ist ein weites Feld,
+daher besteht das Ziel hier darin, sich auf die wichtigsten zu konzentrieren und die Unterschiede zwischen den verschiedenen Arten herauszuarbeiten.
 
-=== The Memory hierarchy 
+=== Die Speicherhierarchie
 
-As in computing all is about performance, we first have a look 
-at the memory hierarchy. As you can see in the pyramid below, memory is 
-ordered in layers. The slowest elements -also the ones with highest 
-latency - are at the bottom of this pyramid, while the fastest ones are 
-shown at the apex.
-Imagine your desk is the actual CPU, with an open book laying in front of your
-eyes. This is the register. Now you read in this book a reference to another book
-in your bookshelf. Your bookshelf is the cache here. The cache itself is again layered.
-Lets say L1-cache is the bookshelf in your room, L2-cache the bookshelf in another room
-and L3-cache books stored in a box in the same room. If you now have a reference
-in your current book (the one on your desk), that refers to a book you do not possess, you need to
-go to the public library. The public library is your RAM. The access times are really high. 
-And lets say the book you need is also not available there, and they must order it from a library 
-in another city. Then you got to the level at the bottom, which is the disk storage unit.
+Da es bei der Datenverarbeitung immer um Leistung geht, werfen wir zunächst einen Blick auf die Speicherhierarchie. Wie Sie in der untenstehenden Pyramide sehen können, ist der Speicher
+in Schichten angeordnet. Die langsamsten Elemente – auch die mit der höchsten
+Latenz – befinden sich am unteren Ende dieser Pyramide, während die schnellsten
+an der Spitze dargestellt werden.
+Stellen Sie sich vor, Ihr Schreibtisch ist die eigentliche CPU, mit einem aufgeschlagenen Buch vor Ihren
+Augen. Dies ist das Register. Nun lesen Sie in diesem Buch einen Verweis auf ein anderes Buch
+in Ihrem Bücherregal. Ihr Bücherregal ist hier der Cache. Der Cache selbst ist wiederum in Schichten unterteilt.
+Nehmen wir an, L1-Cache ist das Bücherregal in Ihrem Zimmer, L2-Cache das Bücherregal in einem anderen Zimmer
+und L3-Cache Bücher, die in einer Kiste im selben Zimmer aufbewahrt werden. Wenn Sie nun eine Referenz
+in Ihrem aktuellen Buch (dem auf Ihrem Schreibtisch) haben, die auf ein Buch verweist, das Sie nicht besitzen, müssen Sie
+in die öffentliche Bibliothek gehen. Die öffentliche Bibliothek ist Ihr RAM. Die Zugriffszeiten sind sehr hoch.
+Und nehmen wir an, das Buch, das Sie benötigen, ist auch dort nicht verfügbar und muss aus einer Bibliothek
+in einer anderen Stadt bestellt werden. Dann kommen Sie auf die unterste Ebene, die Festplattenspeichereinheit.
 
-image:../images/how_does_cpu/memhierarchy.svg[width="100%"]
+image:../images/how_does_cpu/memhierarchy.svg[width=„100%“]
 
-At the bottom is also the low-priced memory (per byte). 
-The higher you go on the hierarchy the costlier the memory becomes.
-In this article we will expand our knowledge about the RAM. 
-Caches are more complex and will eventually be handeled in a future 
-article.
+Ganz unten befindet sich auch der günstigste Speicher (pro Byte).
+Je höher man in der Hierarchie steigt, desto teurer wird der Speicher.
+In diesem Artikel werden wir unser Wissen über den RAM erweitern.
+Caches sind komplexer und werden eventuell in einem zukünftigen Artikel behandelt
+.
 
-=== RAM and ROM
-The image below shows the overall organization of a ram circuit,
-RAM stand for random access memory, so it means a memory with arbitrary
-access. Simply put, you set an address in and get the data which is stored 
-under the given address location out.The schematic given here also holds for
-Read only memory (ROM). Complementary to ROM, which is persistent, RAM 
-is volatile. So it needs ongoing power supply,otherwise it loses
-its stored data.
+=== RAM und ROM
+Das folgende Bild zeigt die Gesamtorganisation einer RAM-Schaltung.
+RAM steht für Random Access Memory, also einen Speicher mit beliebigem
+Zugriff. Einfach ausgedrückt: Sie geben eine Adresse ein und erhalten die Daten, die
+unter der angegebenen Adresse gespeichert sind. Das hier gezeigte Schema gilt auch für den
+Nur-Lese-Speicher (ROM). Im Gegensatz zum ROM, das persistent ist, ist der RAM
+flüchtig. Er benötigt also eine kontinuierliche Stromversorgung, da er sonst seine gespeicherten Daten verliert.
 
-image:../images/how_does_cpu/ram_schematic.svg[width="90%"]
+image:../images/how_does_cpu/ram_schematic.svg[width=„90%“]
 
-As can be seen the main parts apart from the memory itself
-are column- and row-decoder, as well as read / write amplifier.
-The address-decoder just consists of well-known combinatorial logic,
-while the amplifier are a bit more complex.
-The blue dots on the intersection of rows and columns mark the
-placements of the memory cell, depending on the type of memory,
-those differ and are explained in the next section.
+Wie zu sehen ist, sind die Hauptbestandteile neben dem Speicher selbst
+der Spalten- und Zeilendecoder sowie der Lese-/Schreibverstärker.
+Der Adressdecoder besteht lediglich aus bekannter kombinatorischer Logik,
+während die Verstärker etwas komplexer sind.
+Die blauen Punkte an den Schnittpunkten von Zeilen und Spalten markieren die
+Positionen der Speicherzellen, die je nach Speichertyp
+unterschiedlich sind und im nächsten Abschnitt erläutert werden.
 
-==== The different memory cells
+==== Die verschiedenen Speicherzellen
 
 
-[cols="a,a" width="100%"]
+[cols=„a,a“ width=„100%“]
 |===
-| static RAM (SRAM)  | dynamic RAM (DRAM)
-| image:../images/how_does_cpu/sram_nmos.svg[width="100%"] 
-| image:../images/how_does_cpu/dram.svg[width="100%"]
-| transistor # 4 | transistor # 1 
-|image:../images/how_does_cpu/sram_cmos.svg[width="100%"] |
-| transistor # 6 |
+| statischer RAM (SRAM) | dynamischer RAM (DRAM)
+| image:../images/how_does_cpu/sram_nmos.svg[width=„100%“]
+| image:../images/how_does_cpu/dram.svg[width=„100%“]
+| Transistor Nr. 4 | Transistor Nr. 1
+| Bild:../images/how_does_cpu/sram_cmos.svg[width=„100%“] |
+| Transistor Nr. 6 |
 |===
 
 === SRAM vs. DRAM
 
-The static RAM (SRAM) cell has the advantage of holding the stored value 
-as long as the power supply is not interrupted. Its clear disadvantage
-is the circuit effort of minum 4 transistor (for an nmos design) but regularly 6 
-for a cmos design.That makes it ideal for small pockets of memories like registers
-and cache located near the cpu.
-Complementary the dynamic RAM (DRAM) cell needs just one transistor and one capacitor 
-to hold the stored value, but needs to be refreshed periodically.
+Die statische RAM-Zelle (SRAM) hat den Vorteil, dass der gespeicherte Wert erhalten bleibt,
+ solange die Stromversorgung nicht unterbrochen wird. Ihr klarer Nachteil
+ist der Schaltungsaufwand von mindestens 4 Transistoren (für ein nmos-Design), aber in der Regel 6
+für ein cmos-Design. Das macht sie ideal für kleine Speicherbereiche wie Register
+und Cache, die sich in der Nähe der CPU befinden.
+Ergänzend dazu benötigt die dynamische RAM-Zelle (DRAM) nur einen Transistor und einen Kondensator,
+ um den gespeicherten Wert zu halten, muss aber regelmäßig aufgefrischt werden.
 
 
-=== The register file
+=== Die Registerdatei
 
-image:../images/how_does_cpu/register_file.svg[width="60%"] 
+image:../images/how_does_cpu/register_file.svg[width=„60%“]
 
-At this point the author wants to introduce the so-called register
-file. This is a type of memory which can have multiple read ports.
-which is useful as input for the ALU we introduced in the last blog
-post. While the amount of read ports is theoretically unlimited, 
-the amount of write ports is usually one. The reason, as the vivid 
-reader can imagine is to mitigate hazards, which is with multiple 
-read ports difficult to handle.
+An dieser Stelle möchte der Autor die sogenannte Registerdatei vorstellen.
+ Dabei handelt es sich um einen Speichertyp, der über mehrere Leseports verfügen kann.
+Dies ist nützlich als Eingabe für die ALU, die wir im letzten Blogbeitrag vorgestellt haben.
+ Während die Anzahl der Leseports theoretisch unbegrenzt ist,
+beträgt die Anzahl der Schreibports in der Regel eins. Der Grund dafür ist, wie sich der aufmerksame
+Leser vorstellen kann, die Minderung von Gefahren, die bei mehreren
+Schreibports schwer zu handhaben sind.
 
-image:../images/how_does_cpu/register_file_read_ports.svg[width="100%"]
+image:../images/how_does_cpu/register_file_read_ports.svg[width=„100%“]
 
-image:../images/how_does_cpu/register_file_write_port.svg[width="100%"] 
+image:../images/how_does_cpu/register_file_write_port.svg[width=„100%“]
 
 ////
-==== The bus cycle
-The bus cycles are highly specific on the chosen CPU and / or implementation, 
-so here we can only show the essentials. 
-For this example to show the fundamentals of read and write
-cycle the author chose the Zilog (R) Z80 processor. We will only have 
-a look onto the surface here and not discuss things like direct memory access (DMA).
-The Z80 is a somewhat simple processor, designed 1976.
+==== Der Buszyklus
+Die Buszyklen sind je nach gewählter CPU und/oder Implementierung sehr spezifisch,
+daher können wir hier nur das Wesentliche zeigen.
+Für dieses Beispiel, das die Grundlagen des Lese- und Schreibzyklus zeigen soll,
+ hat der Autor den Zilog (R) Z80-Prozessor gewählt. Wir werden uns hier nur
+die Oberfläche ansehen und nicht auf Dinge wie den direkten Speicherzugriff (DMA) eingehen.
+Der Z80 ist ein recht einfacher Prozessor, der 1976 entwickelt wurde.
 
-*Memory pins*
-[cols="a,a,a",autowidth,options="header"]
+*Speicher-Pins*
+[cols=„a,a,a“,autowidth,options=„header“]
 |===
-| Pin(s)   | Description         | Comment
-| A0 - An  | Address lines / bus | 
-| D0 - Dn  | Data lines / bus    |
-| /CE | Chip Enable (low-active) | Enable the chip; also known as Chip Select (/CS)
-| /OE | Output Enable (low-active) | Enable the data output 
-| /WE | Write Enable (low-active) | Enable write cycle 
-|===
-
-*Zilog Z80 - overview of memory relevant pins*
-[cols="a,a,a" autowidth options="header"]
-|===
-| Pin(s)   | Description         | Comment
-| Clk      | Clock               |
-| /MREQ    | Memory Request (low-active) |
-| A0 - A7  | Address lines / bus | 
-| D0 - D7  | Data lines / bus    |
-| /M1      | machine cycle 1 (low-active) | instruction fetch cycle
-| /RD | Read (low-active)  | read operation
-| /WR | Write (low-active) | write operation
-| /RFSH | Refresh (low-active) | Refresh for DRAM
-| /WAIT | Wait (low-active) | use wait-cycles
+| Pin(s) | Beschreibung | Kommentar
+| A0 - An | Adressleitungen / Bus |
+| D0 - Dn | Datenleitungen / Bus |
+| /CE | Chip Enable (low-aktiv) | Chip aktivieren; auch bekannt als Chip Select (/CS)
+| /OE | Output Enable (low-active) | Aktiviert den Datenausgang
+| /WE | Write Enable (low-active) | Aktiviert den Schreibzyklus
 |===
 
+*Zilog Z80 - Übersicht über die speicherrelevanten Pins*
+[cols=„a,a,a“ autowidth options=„header“]
+|===
+| Pin(s) | Beschreibung | Kommentar
+| Clk | Taktgeber |
+| /MREQ | Speicheranforderung (low-aktiv) |
+| A0 - A7 | Adressleitungen / Bus |
+| D0 - D7 | Datenleitungen / Bus |
+| /M1 | Maschinenzyklus 1 (low-aktiv) | Befehlsabrufzyklus
+| /RD | Lesen (low-aktiv) | Lesevorgang
+| /WR | Write (low-active) | Schreibvorgang
+| /RFSH | Refresh (low-active) | Refresh für DRAM
+| /WAIT | Wait (low-active) | Wartezyklen verwenden
+|===
 
-image:../images/how_does_cpu/m1_cycle.svg[width="80%"] 
-image:../images/how_does_cpu/m2m3_cycle.svg[width="80%"] 
+
+Bild:../images/how_does_cpu/m1_cycle.svg[width=„80%“]
+Bild:../images/how_does_cpu/m2m3_cycle.svg[width=„80%“]
 ////
+
+(translation: 2024-12-29)

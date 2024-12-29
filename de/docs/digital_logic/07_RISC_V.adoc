@@ -1,5 +1,5 @@
 ---
-title: 07_RISC-V
+title: 07_RISC-V (de)
 date: 2022-03-21
 tags: ['draft']
 category:
@@ -12,28 +12,28 @@ menu:
     weight: 35
 ---
 
-== Digital design meets computer architecture
+== Digitales Design trifft auf Computerarchitektur
 
-= RISC vs CISC and The RISC-V architecture 
+= RISC vs. CISC und die RISC-V-Architektur
 
-Existing processor types can be classified by their instruction type set:
-Reduced instruction set computer (RISC), Complex instruction set computer (CISC) and hybrid forms.
-While mini processors like ARM for embedded systems mostly utilise reduced instruction
-sets,todays workstation and Server Architectures (x86, x86_64) are hybrids of RISC and CISC.
-The idea of a reduced instruction set is to avoid big complex instructions and multiple different
-addressing modes (as those typically used in x86 architectures).
-Advantages of a RISC architecture are shorter pipelines which allows faster clocking.
-RISC architectures follow a simple scheme: 'Fetch -> Decode -> Fetch Operands -> Execute -> Write Back'
-Also instructions have a constant length, memory operations are divided from arithmetic operations,
-which is known as Load/Store-architecture. RISC-V is an open standard for the instruction set archtitecture (ISA).
-Most of this post is referenced from the popular book Computer Organization and Design (RISC-V) Edition by Hennessey and Patterson.
-    
+Bestehende Prozessortypen können nach ihrem Befehlssatz klassifiziert werden:
+Computer mit reduziertem Befehlssatz (RISC), Computer mit komplexem Befehlssatz (CISC) und Mischformen.
+Während Miniprozessoren wie ARM für eingebettete Systeme meist reduzierte Befehlssätze verwenden
+, sind heutige Workstation- und Server-Architekturen (x86, x86_64) Mischformen aus RISC und CISC.
+Die Idee eines reduzierten Befehlssatzes besteht darin, große komplexe Anweisungen und mehrere unterschiedliche
+Adressierungsmodi (wie sie typischerweise in x86-Architekturen verwendet werden) zu vermeiden.
+Zu den Vorteilen einer RISC-Architektur gehören kürzere Pipelines, die eine schnellere Taktung ermöglichen.
+RISC-Architekturen folgen einem einfachen Schema: „Abrufen -> Dekodieren -> Operanden abrufen -> Ausführen -> Zurückschreiben“
+Außerdem haben Anweisungen eine konstante Länge, Speicheroperationen sind von arithmetischen Operationen getrennt,
+was als Load/Store-Architektur bekannt ist. RISC-V ist ein offener Standard für die Befehlssatzarchitektur (ISA).
+Der größte Teil dieses Beitrags bezieht sich auf das beliebte Buch „Computer Organization and Design (RISC-V) Edition“ von Hennessey und Patterson.
+
 == RISC-V Assembler
 
-Here we introduce the RISC-V assembler.
-The subset shown here is a bit bigger than the one we will implement further down the line.
-For example also immediate instructions like 'addi' are shown, necessay as a way to load constants
-into registers. The example program shown below, counts from 0 to 10, utilizing a loop.
+Hier stellen wir den RISC-V Assembler vor.
+Die hier gezeigte Teilmenge ist etwas größer als die, die wir später implementieren werden.
+Zum Beispiel werden auch unmittelbare Anweisungen wie „addi“ angezeigt, die notwendig sind, um Konstanten
+in Register zu laden. Das unten gezeigte Beispielprogramm zählt von 0 bis 10 und verwendet dabei eine Schleife.
 
 ----
 ADDI x2, x0, 1
@@ -41,104 +41,106 @@ ADDI x3, x0, 10
 
 loop:
    ADD x1, x1, x2
-   SW  x1, 4(x0) 
+   SW  x1, 4(x0)
    BNE x3, x1, loop
    HLT
 
 ----
-Register-type: Instruction [dest. reg] [reg1] [reg2]
+Registertyp: Anweisung [Zielreg] [Reg1] [Reg2]
 
-Load / Store-type:  Instruction [dest. reg] [byte offset(reg1)] 
+Lade-/Speichertyp: Anweisung [Zielreg] [Byte-Offset(Reg1)]
 
-Branch-type: Instruction [dest. reg] [reg1] [dest. label]
+Verzweigungstyp: Anweisung [Zielreg] [Reg1] [Zielmarke]
 
-For the load / store instructions the reg1 contains the start address while the byte offset
-contains the size of the value loaded into the register (normaly 4) / respectively written to
-the memory.
+Bei den Lade-/Speicheranweisungen enthält reg1 die Startadresse, während der Byte-Offset
+die Größe des in das Register geladenen Wertes (normalerweise 4) bzw. des in den Speicher geschriebenen Wertes enthält
+.
 
-An overview of the instruction formats of the different types is given below:
+Nachfolgend finden Sie eine Übersicht über die Befehlsformate der verschiedenen Typen:
 
-image:../images/how_does_cpu/instruction_types.png[width="140%"]
-
-
-== A minimal Implementation
-The minimal working subset of a RISC-V implementation contains the following instructions:
-
-* Arithmetic-logical instructions 'add', 'sub', 'and' and 'or' [Register-type instructions]
-
-* Memory reference instructions like load word (lw) and store word (sw)  [Store-type instructions]
-
-* Conditional branch instruction(s) like branch-if-equal (beq) [Branch-type instructions]
-
-We will see how the instruction set architecture choosen, affects performance-related key aspects like
-clock rate and Cycles-per-instruction (CPI).
-We will also see, that the different instruction types only differ in the later stages of the Fetch->Decode-> Execute-cycle
-
-For every instruction the first two steps are identical:
-
-    1. The program counter (PC) points to the  current code that will be executed.The address is sent to the memory to fetch the current instruction from the memory.
-       
-    2. Read two (one for the lw-instruction) registers, the instruction fields contains the register numbers.
-
-For the next steps the actions depend on the instruction type, but are still utilizing / sharing the same resources.
-For example the ALU is used by Register-type instruction to compute data, while it is also used by Store-type instructions
-to compute the address, and the Branch-instructions for the equality test.
-Only after that ALU, the different instruction types really differ.
-
-image:../images/how_does_cpu/cpu_structure.svg[width="120%"]
-
-As we will see the abstract schematic shown below does not explain all cases. 
-We need another schematic extended, showing also the control parts.
-    
-image:../images/how_does_cpu/cpu_structure_with_control.svg[width="120%"]
+image:../images/how_does_cpu/instruction_types.png[width=„140%“]
 
 
+== Eine minimale Implementierung
+Die minimal funktionierende Teilmenge einer RISC-V-Implementierung enthält die folgenden Anweisungen:
 
-== The Fetch-Decode-Execute cycle for the different instruction types
+- Arithmetisch-logische Anweisungen 'add', 'sub', 'and' und 'or' [Registertyp-Anweisungen]
 
-We will start with the common Fetch-Decode-Execute cycle of a common RISC processor,
-and demonstrate the working principle of it for typical instructions.
+- Speicherreferenzanweisungen wie load word (lw) und store word (sw) [Speichertyp-Anweisungen]
+
+* Bedingte Sprungbefehle wie „Branch-if-equal (beq)“ [Verzweigungsbefehle]
+
+Wir werden sehen, wie sich die gewählte Befehlssatzarchitektur auf leistungsbezogene Schlüsselaspekte wie
+Taktrate und Zyklen pro Befehl (CPI) auswirkt.
+Wir werden auch sehen, dass sich die verschiedenen Befehlstypen erst in den späteren Phasen des Fetch->Decode-> Execute-Zyklus unterscheiden
+
+Die ersten beiden Schritte sind bei jeder Anweisung identisch:
+
+  1. Der Programmzähler (PC) zeigt auf den  aktuellen Code, der ausgeführt wird. Die Adresse wird an den Speicher gesendet, um die aktuelle Anweisung aus dem Speicher abzurufen.
+
+  2. Lesen von zwei (eine für die lw-Anweisung) Registern, die Anweisungsfelder enthalten die Registernummern.
+
+Die nächsten Schritte hängen vom Befehlstyp ab, nutzen jedoch weiterhin dieselben Ressourcen.
+Beispielsweise wird die ALU von Register-Befehlen zur Datenberechnung verwendet, während sie auch von Speicher-Befehlen
+zur Adressberechnung und von Verzweigungsbefehlen für den Gleichheitstest verwendet wird.
+Erst nach dieser ALU unterscheiden sich die verschiedenen Befehlstypen wirklich.
+
+image:../images/how_does_cpu/cpu_structure.svg[width=„120%“]
+
+Wie wir sehen werden, erklärt das unten gezeigte abstrakte Schema nicht alle Fälle.
+Wir benötigen ein weiteres erweitertes Schema, das auch die Steuerteile zeigt.
+
+image:../images/how_does_cpu/cpu_structure_with_control.svg[width=„120%“]
 
 
-The full cycle is: Fetch -> Decode -> Fetch Operands -> Execute -> Write Back
 
-[options="header"]
+== Der Fetch-Decode-Execute-Zyklus für die verschiedenen Befehlstypen
+
+Wir beginnen mit dem üblichen Fetch-Decode-Execute-Zyklus eines gewöhnlichen RISC-Prozessors
+und zeigen dessen Funktionsweise für typische Befehle.
+
+
+Der vollständige Zyklus ist: Fetch -> Decode -> Fetch Operands -> Execute -> Write Back
+
+[options=„header“]
 |==================
-| Type | example instruction| Fetch | Decode | Fetch Operands | Execute | Write Back
+| Typ | Beispielanweisung| Fetch | Decode | Fetch Operands | Execute | Write Back
 | Register |add, sub,and,or | fetch instruction, increase PC by 4 | Decode instruction | Fetch operands from registers | Execute calculation in ALU | Write value back to data memory.
-| Store | lw,sw | fetch instruction, increase PC by 4 | Decode instruction | operand | Calculate address | read / write data from / to memory
-| Branch |beq | fetch instruction,set PC to destination address | Decode instruction | Fetch operands from registers |Test for equality (for beq)  | switch multiplexer for address calculation to second adder
+| Speichern | lw,sw | Abrufanweisung, PC um 4 erhöhen | Dekodieranweisung | Operand | Adresse berechnen | Daten aus dem Speicher lesen/in den Speicher schreiben
+| Verzweigung | beq | Abrufanweisung, PC auf Zieladresse setzen | Dekodieranweisung | Operanden aus Registern abrufen | Gleichheitstest (für beq) | Multiplexer für Adressberechnung auf zweiten Addierer umschalten
 |==================
 
 
 
-=== The instruction part
-To explain a cpu on this abstract level, we need to introduce some more concepts,
-e.g that an **instruction**, stored in memory, is accessible under a specific address.
-An **address** in RISC-V standards is a 32 bit long value, pointing to  a certain cell in a memory array.
-The **program counter (PC)** is a register which points to a certain address in the memory / register file. The program counter is connected to the first address-adder with a contant intger of 4 (the adress offset, 4 * 1 byte = 32 bit). 
+=== Der Anweisungsteil
+Um eine CPU auf dieser abstrakten Ebene zu erklären, müssen wir einige weitere Konzepte einführen,
+z. B. dass eine **Anweisung**, die im Speicher gespeichert ist, unter einer bestimmten Adresse zugänglich ist.
+Eine **Adresse** in RISC-V-Standards ist ein 32 Bit langer Wert, der auf  eine bestimmte Zelle in einem Speicher-Array
+Der **Program Counter (PC)** ist ein Register, das auf eine bestimmte Adresse im Speicher/in der Registerdatei zeigt. Der Programmzähler ist mit dem ersten Adressaddierer mit einem konstanten Integer von 4 (dem Adressoffset, 4 * 1 Byte = 32 Bit) verbunden.
 
-image:../images/how_does_cpu/cpu_instruction_part.svg[width="120%"]
+image:../images/how_does_cpu/cpu_instruction_part.svg[width=„120%“]
 
-If the instruction in the memory is an address modifying instruction,
-the given value will be added by the second address-adder. 
-This way we can generate **jump** instructions. 
+Wenn die Anweisung im Speicher eine adressmodifizierende Anweisung ist,
+wird der angegebene Wert vom zweiten Adressaddierer hinzugefügt.
+Auf diese Weise können wir Anweisungen zum **Springen** generieren.
 
-image:../images/how_does_cpu/cpu_instruction_path.svg[width="120%"]
+image:../images/how_does_cpu/cpu_instruction_path.svg[width=„120%“]
 
-=== The data path 
+=== Der Datenpfad
 
-The data path shows some elements we already are familiar with - the ALU - as well as elments
-we are not yet familiar with - the memory blocks - on the right the so-called register file 
-and on the left the data memory. Both inputs of the ALU are connected to one (different) register.
+Der Datenpfad zeigt einige Elemente, mit denen wir bereits vertraut sind – die ALU – sowie Elemente,
+ mit denen wir noch nicht vertraut sind – die Speicherblöcke – rechts die sogenannte Registerdatei
+und links der Datenspeicher. Beide Eingänge der ALU sind mit einem (anderen) Register verbunden.
 
 
-image:../images/how_does_cpu/cpu_data_path.svg[width="120%"]
+image:../images/how_does_cpu/cpu_data_path.svg[width=„120%“]
 
-=== The control part
+=== Der Steuerteil
 
-The control part is the most black-boxed element we see. We know already how the multiplexers work, 
-and we see already a feedback line for the branch control. But most of the elements in this abstract view
-remain unknown to the reader. Let us change this by having a closer look into it.
+Der Steuerteil ist das Element mit der größten Blackbox. Wir wissen bereits, wie die Multiplexer funktionieren,
+und wir sehen bereits eine Rückkopplungsleitung für die Verzweigungssteuerung. Die meisten Elemente in dieser abstrakten Ansicht
+bleiben dem Leser jedoch unbekannt. Dies wollen wir ändern, indem wir uns das Ganze genauer ansehen.
 
-image:../images/how_does_cpu/cpu_structure_with_control.svg[width="120%"]
+image:../images/how_does_cpu/cpu_structure_with_control.svg[width=„120%“]
+
+(translation: 2024-12-29)

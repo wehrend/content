@@ -11,7 +11,7 @@ type: text
 *So, you want to learn about electronics, digital logic and how a cpu is able to do what she is doing?*
 
 *We'll get you started here*
-
+<rawhtml>
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
         "http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd">
@@ -249,3 +249,4 @@ type: text
 </table>
 </body>
 </html>
+</rawhtml>
