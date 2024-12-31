@@ -2,6 +2,7 @@
 title: Agenda 
 date: 2022-04-15
 tags: 
+slug: 
 category: 
 link: 
 description: 
@@ -11,6 +12,8 @@ type: text
 *So, you want to learn about electronics, digital logic and how a cpu is able to do what she is doing?*
 
 *We'll get you started here*
+
+<rawhtml>
 
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
@@ -98,15 +101,14 @@ type: text
     <tr class="ro1">
         <td style="text-align:left;width:1.6598in; " class="ce7"><p><a
                 href="./../docs/digital_logic/00_combinatorial_logic/">00_combinatorial_logic</a></p></td>
-        <td style="text-align:left;width:2.1283in; " class="ce18"><a
-                href="./../docs/digital_logic_2/10_sequential_logic/"><p>10_sequential_logic</a></p></td>
+        <td style="text-align:left;width:2.1283in; " class="ce18"><p>10_sequential_logic</p></td>
         <td style="text-align:left;width:0.889in; " class="Default"> </td>
     </tr>
     <tr class="ro1">
         <td style="text-align:left;width:1.6598in; " class="ce7"><p><span class="T1"><a
                 href="./../docs/digital_logic/01_boolean_algebra/">01_boolean_algebra</a></span></p></td>
         <td style="text-align:left;width:2.1283in; " class="ce18"><p><a
-                href="./../docs/digital_logic_2/11_clocks_and_registers/">11_clocks,flipflops_and_registers</a></p></td>
+                href="./../digital_logic_2/11_clocks_and_registers.adoc">11_clocks,flipflops_and_registers</a></p></td>
         <td style="text-align:left;width:0.889in; " class="Default"> </td>
     </tr>
     <tr class="ro1">
@@ -206,8 +208,7 @@ type: text
         <td style="text-align:left;width:0.889in; " class="Default"> </td>
     </tr>
     <tr class="ro1">
-        <td style="text-align:left;width:1.6598in; " class="ce14"><a
-                href="./../docs/digital_logic_x/x2_cordic"><p>X2_Trigonometric functions (CORDIC)</a></p></td>
+        <td style="text-align:left;width:1.6598in; " class="ce14"><p>X2_Trigonometric functions (CORDIC)</p></td>
         <td style="text-align:left;width:2.1283in; " class="ce14"> </td>
         <td style="text-align:left;width:0.889in; " class="Default"> </td>
     </tr>
@@ -249,3 +250,7 @@ type: text
 </table>
 </body>
 </html>
+</style>
+</head>
+</html>
+</rawhtml>
