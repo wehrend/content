@@ -1,6 +1,6 @@
 ---
 title: Ein statisches Blog aufsetzen mit Nikola (de)
-date: 2020-12-12
+date: 2020-12-11
 tags: ["Web", "Nikola"]
 category:
 link:

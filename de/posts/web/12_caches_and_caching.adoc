@@ -5,28 +5,29 @@ tags: ["knowhow","web"]
 draft: false
 type: blog
 ---
-When you fire up your browser to visit a website, you most probably did not noticed a very
-important mechanism underlying the browser and working in the background. Caching.
-Caches are used everywhere to optimize and improve access times and such in consequence
-the overall performance (of a site). Caching in the browser for example means, that
-ideally only the portions of the website that changed are loaded from the www. All else
-was already loaded before and did not change, thus needs no reload. Portions that are no longer
-up-to-date become invalidated (also known as cache-invalidation) and are loaded anew from the source.
-There are two types of very different caches in the computer
 
-. hardware caches, real physical parts of silicon located near the CPU,
-. software caches, implemented in the application respectively underlying libraries
+Wenn Sie Ihren Browser starten, um eine Website zu besuchen, haben Sie höchstwahrscheinlich einen sehr
+wichtigen Mechanismus nicht bemerkt, der dem Browser zugrunde liegt und im Hintergrund arbeitet. Caching.
+Caches werden überall eingesetzt, um Zugriffszeiten und damit die
+Gesamtleistung (einer Website) zu optimieren und zu verbessern. Caching im Browser bedeutet beispielsweise, dass
+im Idealfall nur die Teile der Website, die geändert wurden, aus dem Internet geladen werden. Alles andere
+wurde bereits zuvor geladen und hat sich nicht geändert, sodass kein erneutes Laden erforderlich ist. Nicht mehr aktuelle Teile
+werden ungültig (auch als Cache-Ungültigmachung bezeichnet) und erneut von der Quelle geladen.
+Es gibt zwei Arten von sehr unterschiedlichen Caches im Computer.
 
-The type we want to discuss here are the latter ones.
+ Hardware-Caches, echte physische Teile aus Silizium, die sich in der Nähe der CPU befinden,
+Software-Caches, die in der Anwendung bzw. den zugrunde liegenden Bibliotheken implementiert sind
 
-There are multiple different caching strategies, see also https://realpython.com/lru-cache-python/#caching-strategies[here],
-but we want to focus on the Last-recently-Used (LRU) caching strategy here.
-Python's library functools provides a decorator @lru_cache for this caching strategy.
-But before just mindlessly using the decorator @lru_cache you should think about the problem itself, as
-https://msol.io/blog/tech/youre-probably-wrong-about-caching/[already stated].
+Die Art von Caches, die wir hier besprechen wollen, sind die letzteren.
+
+Es gibt mehrere verschiedene Caching-Strategien, siehe auch https://realpython.com/lru-cache-python/#caching-strategies[hier],
+aber wir wollen uns hier auf die Caching-Strategie „Last-recently-Used (LRU)“ konzentrieren.
+Die Python-Bibliothek „functools“ bietet einen Dekorator @lru_cache für diese Caching-Strategie.
+Bevor Sie den Dekorator @lru_cache jedoch gedankenlos verwenden, sollten Sie über das Problem selbst nachdenken, wie
+https://msol.io/blog/tech/youre-probably-wrong-about-caching/[bereits erwähnt].
 
 
-Simple example, taken from the https://docs.python.org/3/library/functools.html#functools.lru_cache[python documentation]:
+Einfaches Beispiel aus der https://docs.python.org/3/library/functools.html#functools.lru_cache[Python-Dokumentation]:
 
 [source, python]
 ----
