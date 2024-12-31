@@ -1,38 +1,38 @@
 ---
-title: Moving to Hugo
+title: Moving to Hugo (de)
 date: 2022-04-15T12:17:41Z
 tags: ["web", "Hugo"]
 draft: false
 type: blog
 ---
 
-Since one week my blog is build on the static-site-generator https://gohugo.io/[Hugo].
-I wanted to move to Hugo far earlier, due to the wide variety of themes.
-However this required the move from Asciidoc to https://asciidoctor.org/[Asciidoctor],
-and I experienced a few problems with the integration of Asciidoctor into my existing workflow. 
-As the approach of rendering the latex-equations in the asciidoc-documents
-no loger worked, I decided to move on to client-based rendering of formulas,
-like done in https://gohugo.io/Katex[KaTex] and https://www.mathjax.org/[Mathjax].
+Seit einer Woche basiert mein Blog auf dem Static-Site-Generator https://gohugo.io/[Hugo].
+Ich wollte schon viel früher zu Hugo wechseln, da es eine große Auswahl an Themes gibt.
+Dies erforderte jedoch den Wechsel von Asciidoc zu https://asciidoctor.org/[Asciidoctor],
+und ich hatte einige Probleme mit der Integration von Asciidoctor in meinen bestehenden Arbeitsablauf.
+Da der Ansatz, die Latex-Gleichungen in den Asciidoc-Dokumenten darzustellen,
+nicht mehr funktionierte, entschied ich mich, auf die clientbasierte Darstellung von Formeln umzusteigen,
+wie sie in https://gohugo.io/Katex[KaTex] und https://www.mathjax.org/[Mathjax] verwendet wird.
 
-So to install Hugo, Asciidoctor and its dependencies without headaches,
-we again make use of Docker and its huge ecosystem: Sombody already created Docker images for hugo with asciidoctor integrated,
-so we do not need to go thru the sometimes cumbersome setup of Asciidoctor and its dependencies.
+Um Hugo, Asciidoctor und seine Abhängigkeiten ohne Kopfschmerzen zu installieren,
+nutzen wir wieder Docker und sein riesiges Ökosystem: Jemand hat bereits Docker-Images für Hugo mit integriertem Asciidoctor erstellt,
+sodass wir nicht die manchmal umständliche Einrichtung von Asciidoctor und seinen Abhängigkeiten durchlaufen müssen.
 
-With docker installed, in the shell (for Linux and Mac OS, for Windows the powershell) we do a
+Wenn Docker installiert ist, führen wir in der Shell (für Linux und Mac OS, für Windows die Powershell) einen
 
 ----
 docker pull klakegg/hugo:edge-asciidoctor
 ----
 
-which pulls an image with the latest Hugo version and Asciidoctor integrated from the Docker-repo klakegg .
+was ein Image mit der neuesten Hugo-Version und integriertem Asciidoctor aus dem Docker-Repo klakegg zieht.
 
-We navigate to the parent-directory of our blog, and run the following command:
+Wir navigieren zum übergeordneten Verzeichnis unseres Blogs und führen den folgenden Befehl aus:
 
 ----
-docker run  -it -v $(pwd):/src klakegg/hugo:edge-asciidoctor new site hugo/blog
+docker run -it -v $(pwd):/src klakegg/hugo:edge-asciidoctor new site hugo/blog
 ----
 
-This creates the skeleton of our new site, looking like that:
+Dadurch wird das Grundgerüst unserer neuen Website erstellt, das wie folgt aussieht:
 
 ----
 old-blog
@@ -47,55 +47,55 @@ hugo
     └── themes
 ----
 
-We have no theme installed yet, so go to https://themes.gohugo.io/[themes] and select your favorite,
-mine is https://themes.gohugo.io/themes/hugo-book/[Book]. We install it via simple download or via git 
+Wir haben noch kein Theme installiert, also gehen Sie zu https://themes.gohugo.io/[themes] und wählen Sie Ihr Lieblings-Theme aus,
+meines ist https://themes.gohugo.io/themes/hugo-book/[Book]. Wir installieren es per einfachem Download oder über git
 
 ----
 cd hugo/themes
 git clone https://github.com/alex-shpak/hugo-book
 ----
 
-and add the line 
+und fügen die Zeile
 ----
-theme = "hugo-book"
+theme = „hugo-book“
 ----
-to our config.toml. While we are at it we also add the following policy, necessary since hugo version 0.91, to our config.
+zu unserer config.toml hinzu. Da wir gerade dabei sind, fügen wir auch die folgende Richtlinie, die seit der Hugo-Version 0.91 erforderlich ist, zu unserer config.toml hinzu.
 
-Example config.toml block
+Beispiel config.toml block
 [source, toml]
 ____
 
 [security]
   enableInlineShortcodes = false
   [security.exec]
-    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^asciidoctor$']
-    osEnv = ['(?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM)$']
+  allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^asciidoctor$']
+  osEnv = ['(?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM)$']
 ____
 
-Now we need to move the content from the old blog to new, we do something similar to this
+Jetzt müssen wir den Inhalt vom alten Blog in den neuen verschieben. Wir machen etwas Ähnliches wie hier
 ----
 cp ../old_blog/pages ../hugo/content/docs
 cp ../old_blog/posts ../hugo/content/posts
-cp ../old_blog/images ../hugo/content/docs/images 
+cp ../old_blog/images ../hugo/content/docs/images
 ----
 
-Now we need to convert the adoc-headers to the hugo frontmatter format,and also adapt the 
-asciidoc syntax to the new.
-To make our new blog digesting the equations and formulas written in Latex, we need to add the script for KaTex / Mathjax at some 
-layout-file in the theme of our choice: https://katex.org/docs/browser.html[Integrate KaTex]
+Jetzt müssen wir die adoc-Kopfzeilen in das hugo-Frontmatter-Format konvertieren und auch die
+asciidoc-Syntax an das neue Format anpassen.
+Damit unser neuer Blog die in Latex geschriebenen Gleichungen und Formeln verarbeiten kann, müssen wir das Skript für KaTex/Mathjax in eine
+Layout-Datei im Design unserer Wahl einfügen: https://katex.org/docs/browser.html[KaTex integrieren]
 
-To see what we need to change we execue the hugo-server and in the browser head over to the given address
+Um zu sehen, was wir ändern müssen, führen wir den hugo-server aus und gehen im Browser zur angegebenen Adresse
 http://localhost:1313
 
 ----
-docker run  -it -v $(pwd):/src -p 1313:1313 swehrend/hugo-ext-asciidoctor:edge-ext-debian server --renderToDisk
+docker run -it -v $(pwd):/src -p 1313:1313 swehrend/hugo-ext-asciidoctor:edge-ext-debian server --renderToDisk
 ----
-which results in something similar to this:
+was in etwa zu folgendem Ergebnis führt:
 
 image:../hugo_server.png[unnamed image]
 
-If we are satisfied with the result we can deploy our site with an rsync to our webspace, something similar
-to the following command:
+Wenn wir mit dem Ergebnis zufrieden sind, können wir unsere Website mit einem rsync auf unserem Webspace bereitstellen, etwa
+mit dem folgenden Befehl:
 
 ----
 rsync -rav public/ wehrend@giclas.uberspace.de:/var/www/virtual/wehrend/html

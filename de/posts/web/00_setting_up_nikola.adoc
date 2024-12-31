@@ -1,5 +1,5 @@
 ---
-title: Setting up a static blog with Nikola
+title: Setting up a static blog with Nikola (de)
 date: 2020-12-12
 tags: ["Web", "Nikola"]
 category:
@@ -8,93 +8,93 @@ description: How to setup Nikola (on Docker)
 type: blog
 ---
 
-I picked up Nikola some months ago as I was searching for a simple static-site-generator to setup a blog with minimal effort.
+Ich habe Nikola vor einigen Monaten entdeckt, als ich nach einem einfachen statischen Website-Generator suchte, um mit minimalem Aufwand einen Blog einzurichten.
 
-To make things a bit more interesting and at the same time easier we will use Nikola in a Docker container.
-So I require an almost basic understanding for Docker here.
+Um die Sache etwas interessanter und gleichzeitig einfacher zu machen, werden wir Nikola in einem Docker-Container verwenden.
+Daher benötige ich hier ein fast grundlegendes Verständnis für Docker.
 
-First create a directory on our host system, where you want the files stored, e.g. 'blog' in your home directory.
+Erstellen Sie zunächst ein Verzeichnis auf unserem Host-System, in dem die Dateien gespeichert werden sollen, z. B. „blog“ in Ihrem Home-Verzeichnis.
 
-You can pull unoffical images with the most recent version via:
+Sie können inoffizielle Images mit der neuesten Version von Nikola wie folgt abrufen:
 
 
  docker pull dragas/nikola
 
-and run the image getting a (bash) shell via:
+und das Image ausführen, um eine (Bash-)Shell zu erhalten:
 
 
- docker run -it --network="host" -v ~/blog:/nikola dragas/nikola
+ docker run -it --network=„host“ -v ~/blog:/nikola dragas/nikola
 
 
-here the option flag -it stands for interactive - which, in fact, it does not but it is easy to memorize so, so let it be so.
-Furthermore we need to add our volume, a storage resource which is shared between the host system and the docker container. So we add
--v ~/blog for our blog located in our home directory (for linux, on windows systems the paths differ).
-Also we need to add the option --network="host" otherwise we won't be able to access the webpage from our host system, and thus from our browser.
-If you are interested, check https://docs.docker.com/engine/reference/run/[Docker run]
+Hier steht die Option „-it“ für „interaktiv“ – was sie zwar nicht tut, aber sie ist leicht zu merken, also lassen wir es so.
+Außerdem müssen wir unser Volume hinzufügen, eine Speicherressource, die vom Hostsystem und dem Docker-Container gemeinsam genutzt wird. Wir fügen also
+-v ~/blog für unseren Blog hinzu, der sich in unserem Home-Verzeichnis befindet (unter Linux, auf Windows-Systemen unterscheiden sich die Pfade).
+Außerdem müssen wir die Option --network=„host“ hinzufügen, da wir sonst nicht von unserem Host-System und damit von unserem Browser aus auf die Webseite zugreifen können.
+Wenn Sie interessiert sind, besuchen Sie https://docs.docker.com/engine/reference/run/[Docker run]
 
-Here you can execute the common bash commands like cd, ls, ps and so on, feel free to test and explore
-https://dev.to/awwsmm/101-bash-commands-and-tips-for-beginners-to-experts-30je[Basic bash commands] :-)
+Hier können Sie die üblichen Bash-Befehle wie cd, ls, ps usw. ausführen. Sie können gerne testen und erkunden
+https://dev.to/awwsmm/101-bash-commands-and-tips-for-beginners-to-experts-30je[Grundlegende Bash-Befehle] :-)
 
-Now that you have explored the system a bit, you can initiate a basic nikola project via:
+Nachdem Sie sich nun ein wenig mit dem System vertraut gemacht haben, können Sie ein grundlegendes Nikola-Projekt über Folgendes starten:
 
 
  nikola init
 
 
-You will be led through some questions regarding your blog, for destination simply set .
+Sie werden durch einige Fragen zu Ihrem Blog geführt. Als Ziel geben Sie einfach . ein.
 
-We create a first post with:
+Wir erstellen einen ersten Beitrag mit:
 
- nikola new_page -t "Hello World"
+ nikola new_page -t „Hello World“
 
 
-Write the post on your host system on an editor of your choice it is located in blog/posts/hello-world.rst and then build via:
+Schreiben Sie den Beitrag auf Ihrem Host-System in einem Editor Ihrer Wahl. Er befindet sich in blog/posts/hello-world.rst und wird dann mit:
 
 
  nikola build
 
 
-To test the website, start the test server with:
+Um die Website zu testen, starten Sie den Testserver mit:
 
  nikola serve
 
-and head your browser to http://localhost:8080[http://localhost:8080] .
+und öffnen Sie Ihren Browser auf http://localhost:8080[http://localhost:8080] .
 
-image:../nikola_default.png[Unnamed image]
+image:../nikola_default.png[Unbenanntes Bild]
 
 
-This is cool, but surely we want do a bit of styling and customization now, as the current look is pretty standard.
-The author's preference is a plain and simple style without much unnecessary payload.So I searched for such theme, but they were not
-to my liking. Then I found the https://themes.getnikola.com/v8/hyde/[Nikola port of Hyde]
+Das ist cool, aber wir wollen jetzt sicher ein bisschen Styling und Anpassung vornehmen, da das aktuelle Aussehen ziemlich standardisiert ist.
+Der Autor bevorzugt einen schlichten und einfachen Stil ohne viel unnötigen Ballast. Also habe ich nach einem solchen Thema gesucht, aber sie waren nicht
+nach meinem Geschmack. Dann fand ich das https://themes.getnikola.com/v8/hyde/[Nikola port of Hyde]
 
-The theme can be installed with:
+Das Thema kann installiert werden mit:
 
  nikola theme -i hyde
 
-After installation the theme needed some tweaking of the about section in the sidebar. So the version shown here diverges
-from the original look. Adjustments were made to the file assets/css/hyde.css in the directory of the freshly installed theme.
-Ideally the changes should be made in an additional file custom.css
+Nach der Installation musste das Thema in der „About“-Sektion der Seitenleiste angepasst werden. Daher weicht die hier gezeigte Version
+vom ursprünglichen Aussehen ab. Die Datei assets/css/hyde.css im Verzeichnis des frisch installierten Themas wurde angepasst.
+Idealerweise sollten die Änderungen in einer zusätzlichen Datei custom.css vorgenommen werden
 
-image:../nikola_hyde.png[Unnamed image]
+image:../nikola_hyde.png[Unbenanntes Bild]
 
-Much better now!
+Jetzt viel besser!
 
-If we are satified with the result, we can deploy our new static site to web space of our choice. For this we adjust the deploy setting 
-in th conf.py file. This can look like the following.
+Wenn wir mit dem Ergebnis zufrieden sind, können wir unsere neue statische Website auf einem Webspace unserer Wahl bereitstellen. Dazu passen wir die Bereitstellungseinstellung
+in der Datei conf.py an. Dies kann wie folgt aussehen.
 
 [source,python]
 ....
 
 DEPLOY_COMMANDS = {
-    'default': [
-        'rsync -rav --delete output/ user@server:/var/www/virtual/user/html',
-        'rdiff-backup output ~/blog-backup',
-    ]
+'default': [
+'rsync -rav --delete output/ user@server:/var/www/virtual/user/html',
+'rdiff-backup output ~/blog-backup',
+]
 }
 ....
 
-Now, we can simply execute this command by typing
+Jetzt können wir diesen Befehl einfach durch Eingabe von
 
  nikola deploy
 
-and the new site is part of the www.
+ausführen und die neue Website ist Teil von www.
