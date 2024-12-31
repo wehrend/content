@@ -1,5 +1,5 @@
 ---
-title: X0_multiplication
+title: X0_multiplication (de)
 date: 2022-04-24
 category:
 link:
@@ -13,102 +13,102 @@ menu:
     weight: 35
 ---
 
-== Multiplication and Divsion
+== Multiplikation und Division
 
-Multiplication operations can be implemented in very
-different ways: Slow, as a serial operation, controlled by a 
-micro program or fast in dedicated hardware. 
+Multiplikationsoperationen können auf sehr unterschiedliche Weise implementiert werden
+: Langsam, als serielle Operation, gesteuert durch ein
+Mikroprogramm oder schnell in dedizierter Hardware.
 
-The division is a more complex operation, and thus will be discussed
-in another post.
-Also for multiplication we set the scope to unsigned integer numbers.
+Die Division ist eine komplexere Operation und wird daher
+in einem anderen Beitrag behandelt.
+Auch für die Multiplikation legen wir den Umfang auf vorzeichenlose Ganzzahlen fest.
 
 
-=== Shift left and shift right
+=== Links- und Rechtsverschiebung
 
-For multipliers that are powers of two, the operation is very 
-simple and can be implemented via a shift left.
+Für Multiplikatoren, die Zweierpotenzen sind, ist die Operation sehr
+einfach und kann durch eine Linksverschiebung implementiert werden.
 
-*A shift left by one bit equals a multiplication by 2, as left shift by n
-bits equals a multiplication by 2^n.*
+*Eine Linksverschiebung um ein Bit entspricht einer Multiplikation mit 2, da eine Linksverschiebung um n
+Bits einer Multiplikation mit 2^n entspricht.*
 
-*A shift right is a division by 2, a right shift by n bits
-is a division by 2^n*
+*Eine Rechtsverschiebung ist eine Division durch 2, eine Rechtsverschiebung um n Bits
+ist eine Division durch 2^n*
 
 image:../images/arithmetic_shift.svg[width=75%]
 
-=== The multiplication algorithm 
-Of course we are not only interested in the special case of base two multipliers, but rather want the multiplication
-operation to work on all numbers we defined above. We begin with a serial multiplication implementation.
+=== Der Multiplikationsalgorithmus
+Natürlich sind wir nicht nur an dem Spezialfall von Multiplizierern zur Basis 2 interessiert, sondern wollen, dass die Multiplikationsoperation
+auf alle oben definierten Zahlen anwendbar ist. Wir beginnen mit einer seriellen Multiplikationsimplementierung.
 
-To start with, we analyze the steps of a binary multiplication, which frankly does not differ much 
-from a multiplication in the decimal system and is even simpler. We multiply 7 times 6 in the binary
-system which results in 42.
+Zunächst analysieren wir die Schritte einer binären Multiplikation, die sich offen gesagt nicht wesentlich
+von einer Multiplikation im Dezimalsystem unterscheidet und sogar noch einfacher ist. Wir multiplizieren 7 mal 6 im Binärsystem,
+ was 42 ergibt.
 
-multiplicand x multiplier = product
+Multiplikand x Multiplikator = Produkt
 
-[role="image","../images/multiplication.svg",imgfmt="svg", width="70%"]
+[role=„image“,„../images/multiplication.svg“,imgfmt=„svg“, width=„70%“]
 \[ \begin{aligned}
 0111_2 \times 0110_2 \\
-\hline 0000   \\
+\hline 0000 \\
 011110 \\
 011100 \\
 0111000 \\
 \hline 0101010 \\
 \end{aligned} \]
 
-As we can see, based on that example, the multiplication operation is a sequence of shifting and addition.
-From this, we can now dissect the multiplication operation and derive an algorithm from it.
+Wie wir anhand dieses Beispiels sehen können, ist die Multiplikation eine Abfolge von Verschiebung und Addition.
+Daraus können wir nun die Multiplikation zerlegen und daraus einen Algorithmus ableiten.
 
-*For details we refer to the original source: Rechnerentwurf: Rechenwerke, Mikroprogrammierung, RISC by R. Hoffman, third edition, Oldenbourg Verlag.*
+*Für Details verweisen wir auf die Originalquelle: Rechnerentwurf: Rechenwerke, Mikroprogrammierung, RISC von R. Hoffman, dritte Auflage, Oldenbourg Verlag.*
 
-We have a multiplicator of X[n] and a multiplier of Y[m], then the product of the multiplication operation results in P[n+m],
-meaning the size of the operation, logically, is the addition of both the size of the multiplicator and the multiplier.
+Wir haben einen Multiplikator von X[n] und einen Multiplikator von Y[m], dann ergibt das Produkt der Multiplikationsoperation P[n+m],
+was bedeutet, dass die Größe der Operation logischerweise die Addition der Größe des Multiplikators und des Multiplikators ist.
 
-=== Booth Algorithm
+=== Booth-Algorithmus
 
-The booth algorithm is one of the most efficient algorithm, as said above, it is again a series of shifting and addition.
-But here the three following rules have to be considered (see https://www.geeksforgeeks.org/computer-organization-booths-algorithm/[here] for reference ):
-1. The multiplicand is subtracted from the partial product upon encountering the first least significant 1 in a string of 1’s in the multiplier
-2. The multiplicand is added to the partial product upon encountering the first 0 (provided that there was a previous ‘1’) in a string of 0’s in the multiplier.
-3. The partial product does not change when the multiplier bit is identical to the previous multiplier bit.
+Der Booth-Algorithmus ist einer der effizientesten Algorithmen, da er, wie oben erwähnt, wiederum aus einer Reihe von Verschiebungen und Additionen besteht.
+Hier müssen jedoch die drei folgenden Regeln beachtet werden (siehe https://www.geeksforgeeks.org/computer-organization-booths-algorithm/[hier] als Referenz):
+1. Der Multiplikand wird vom Teilprodukt abgezogen, sobald die erste niedrigstwertige 1 in einer Folge von 1en im Multiplikator auftritt
+2. Der Multiplikand wird zum Teilprodukt addiert, sobald die erste 0 (vorausgesetzt, es gab eine vorherige „1“) in einer Folge von 0en im Multiplikator auftritt.
+3. Das Teilprodukt ändert sich nicht, wenn das Multiplikatorbit mit dem vorherigen Multiplikatorbit identisch ist.
 
-The booth algorithm applied can be watched https://www.youtube.com/watch?v=1ubyXuXxIWU[here]:
+Der angewandte Booth-Algorithmus kann unter https://www.youtube.com/watch?v=1ubyXuXxIWU[hier] eingesehen werden:
 image:../images/booth_algorithm.svg[width=65%]
 
-==== Booth hardware implementation and flowchart
-The booth multiplier, shown below, consist of the registers A,B for the multiplier and multiplicand and Q for the result.
-The register AC is the accumulator,the bit register BR and the register QR. An extra flipflop Qn+1 is used to check the multiplier.The flowchart is given below.
+==== Implementierung der Hardware des Booth-Algorithmus und Flussdiagramm
+Der unten dargestellte Booth-Multiplikator besteht aus den Registern A, B für den Multiplikator und den Multiplikanden und Q für das Ergebnis.
+Das Register AC ist der Akkumulator, das Bitregister BR und das Register QR. Ein zusätzliches Flipflop Qn+1 wird zur Überprüfung des Multiplikators verwendet. Das Flussdiagramm ist unten dargestellt.
 image:../images/booth_hardware.svg[width=65%]
 
 image:../images/booth_flowchart.svg[width=65%]
 
-Initially the accumulator and the flipflop Qn+1 are cleared, reset to zero.The sequence counter SC ist set to
-the number of bits n of the multiplier. Then the two bits in Qn and Qn+1 are checked. In case these are 10
-the multiplicand gets subtracted from the partial product residing in the Accumulator AC. In case they are 01
-the multiplicand gets additioned to the partial product residing in the Accumulator AC.
-When the two bit are the same (00,11) the partial product is unchanged. Since the subtraction and addition
-alternate, an overflow cannot occur. As next step the partial product and the multiplier (plus Qn+1) are
-shifted right. This is an arithmetic shift (ashr) which shifts AC and QR to the right, thus the sign bit in AC is
-unchanged. The sequence counter is decremented and the computational loop gets repeated n times.
-When multiplying negative numbers we need to find 2's complement because it is easier to add instead of doing
-a binary subtraction.
+Zunächst werden der Akkumulator und das Flipflop Qn+1 gelöscht und auf Null zurückgesetzt. Der Sequenzzähler SC wird auf
+die Anzahl der Bits n des Multiplikators gesetzt. Dann werden die beiden Bits in Qn und Qn+1 überprüft. Wenn diese 10 sind
+, wird der Multiplikand vom Teilprodukt im Akkumulator AC subtrahiert. Sind sie 01,
+ wird der Multiplikand zum Teilprodukt im Akkumulator AC addiert.
+Sind die beiden Bits gleich (00,11), bleibt das Teilprodukt unverändert. Da die Subtraktion und Addition
+abwechselnd erfolgen, kann kein Überlauf auftreten. Im nächsten Schritt werden das Teilprodukt und der Multiplikator (plus Qn+1)
+nach rechts verschoben. Dies ist eine arithmetische Verschiebung (ashr), die AC und QR nach rechts verschiebt, sodass das Vorzeichenbit in AC
+unverändert bleibt. Der Sequenzzähler wird dekrementiert und die Berechnungsschleife wird n-mal wiederholt.
+Bei der Multiplikation negativer Zahlen müssen wir das 2er-Komplement finden, da es einfacher ist, zu addieren, als
+eine binäre Subtraktion durchzuführen.
 
 
 // === Parallel Multiplication
 
 // KANN Weg
-//[role="image", "../images/multiplication_1.svg", width="70%"]
+//[role=„image“, „../images/multiplication_1.svg“, width=„70%“]
 //\[P = X \ast Y = X \ast Y_{1} + 2^1 \ast X \ast Y_{2} + \cdots + 2^{n-1} \ast X \ast Y_{n} \]
 //
-//We derive this formula to a Horner-Schema as known from math classes:
+//Wir leiten diese Formel zu einem Horner-Schema ab, wie es aus dem Mathematikunterricht bekannt ist:
 //
-//["latex", "../images/multiplication_2.svg", width="70%"]
+//[„latex“, „../images/multiplication_2.svg“, width=„70%“]
 //\[P = \underbrace{( \cdots \underbrace{( \underbrace{(X \ast Y_{n})}_{p_1} 2 + X \ast Y_{n-1})}_{p_2}2 + \cdots + X \ast Y_{2})2 + X \ast Y_{1}}_{p_n}\]
 //
-//From which follows a recursive equation system
+//Daraus folgt ein rekursives Gleichungssystem
 //
-//[role="image", "../images/multiplication_3.svg", width="70%"]
+//[role=„image“, „../images/multiplication_3.svg“, width=„70%“]
 //\[ \begin{aligned}
 //P^0 = 0 \\
 //P^1 = 2 \ast P^0 + X \ast Y_n \\
@@ -118,3 +118,4 @@ a binary subtraction.
 //\end{aligned}
 //\]
 
+(translation 2024-12-31)
