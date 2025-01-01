@@ -1,5 +1,5 @@
 ---
-title: "Topics to write about - Wishlist"
+title: "Topics to write about - Wunschliste"
 date: 2023-05-21
 tags: ["web", "blog"]
 draft: false

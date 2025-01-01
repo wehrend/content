@@ -1,5 +1,5 @@
 ---
-title: "Caches and Caching"
+title: "Zwischenspeicher und Zwischenspeichern (Caching)"
 date: 2023-06-10
 tags: ["knowhow","web"]
 draft: false

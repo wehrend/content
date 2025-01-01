@@ -14,7 +14,7 @@ wordly because there exists analog mechanical computers that are models from the
 https://en.wikipedia.org/wiki/Tide-predicting_machine[compute and predict tides] in certain areas of the world .
 Also the brain is an enourmous analog computer with a comparatively very small
 enery budget. https://press.princeton.edu/ideas/is-the-human-brain-a-biological-computer[It only takes 12 Watt.]
-12 Watt; that is not even a quarter of the power supply budget of a laptop.
+12 Watt; that is not even a quarter of the power supply budget of a laptop, which uses 65 Watt.
 And you can do very heavy lifting with the brain, but back to topic.
 I want to talk mainly about analog electronic computers, during the world war two those were used to compute
 https://web.eecs.utk.edu/~bmaclenn/Classes/494-UC/handouts/LNUC-V.pdf[ballistic curves].
