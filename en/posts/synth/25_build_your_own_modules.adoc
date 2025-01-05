@@ -7,6 +7,8 @@ link:
 description: How to build your own synthesizer modules
 type: blog
 ---
+:doctype: book
+= Build your own synthesizer modules
 
 == Introduction
 Hi,
@@ -93,7 +95,7 @@ https://ppvmedien.de/Synthesizer-Klangerzeugung[Synthesizer – So funktioniert 
 
 https://www.modwiggler.com/forum/ucp.php?mode=register[MuffWiggler A very nice synthesizer forum]
 
-= So, spread the sound!
+== So, spread the sound!
 
 ( Still Todo:
 adding some pictures.)

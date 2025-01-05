@@ -7,7 +7,8 @@ link:
 description: How to build your own synthesizer modules
 type: blog
 ---
-
+:doctype: book
+= Bau deine eigenen eurorack synthesizer Module
 
 == Einleitung
 Hallo,
@@ -122,7 +123,7 @@ Florian Anwander] Das Buch, das mich zu diesem Hobby gebracht hat [Deutsch]
 
 https://www.modwiggler.com/forum/ucp.php?mode=register[MuffWiggler Ein sehr schönes Synthesizer-Forum]
 
-= Also, verbreitet den Sound!
+== Also, verbreitet den Sound!
 
 (Noch zu tun:
 einige Bilder hinzufügen.)

@@ -121,7 +121,7 @@ ist die Situation bei dieser Operation etwas anders als bei „Und“ und „Ode
 Obwohl die Boolesche Algebra an sich ein interessantes Gebiet ist, werden wir das Thema hier nur kurz streifen,
 gerade genug, um ein Gefühl dafür zu bekommen und zu verstehen, wie man mit Booleschen Formeln arbeitet.
 
-[HINWEIS]
+[NOTE]
 Wenn Sie an einer tieferen Betrachtung interessiert sind, die Induktion und Beweisführung bietet,
 verweise ich Sie auf die entsprechende Literatur (Quellen am Ende aufgeführt).
 

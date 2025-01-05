@@ -22,7 +22,7 @@ wurden vorgestellt, ebenso wie die arithmetischen Funktionen „add“ und „su
  Nun wollen wir die meisten dieser Funktionen in einer Einheit zusammenfassen,
 der 1-Bit-ALU-Zelle.
 
-Bild:../images/how_does_cpu/alu_symbol.svg[width=„100%“]
+Bild:../images/how_does_cpu/alu_symbol.svg[width=500]
 
 [width=„50%“,cols=„5,4,2,2,4“,options=„header“]
 |===
@@ -44,7 +44,7 @@ die dann einfach durch Wiederholung an jede Bitbreite angepasst werden kann.
 von Hennessey und Peterson entworfen wurde und aus dem beliebten Buch
 „Computer Organization and Design (RISC-V) Edition“ von Hennessey und Patterson stammt.
 
-image:../images/how_does_cpu/1bit_alu_cell.svg[width=„80%“]
+image:../images/how_does_cpu/1bit_alu_cell.svg[width=400]
 
 Die Implementierung unterstützt die grundlegenden Operationen
 „und“, „oder“, „addieren“ und „subtrahieren“. Wie wir bereits gelernt haben, kann die Subtraktion
@@ -56,10 +56,10 @@ Die 1-Bit-ALU-Zelle, die wir im ersten Abschnitt erstellt haben, kann mit einer 
 Die letzte ALU-Zelle in der Kette unterscheidet sich ein wenig von der regulären Zelle, da sie auch
 einen Überlauferkennungsschaltkreis enthält. Wir werden später in diesem Artikel darauf zurückkommen.
 
-Bild:../images/how_does_cpu/1bit_alu_cell_with_overflow.svg[width=„80%“]
+image:../images/how_does_cpu/1bit_alu_cell_with_overflow.svg[width=450]
 
 
-Bild:../images/how_does_cpu/alu_array_with_less.svg[width=„60%“]
+image:../images/how_does_cpu/alu_array_with_less.svg[width=350]
 ////
 // == A 4-bit ALU
 //
@@ -117,7 +117,7 @@ Dies ist jedoch nicht der Fall, falls die Subtraktion zu einem Überlauf führen
 
 Außerdem fügen wir ein NOR-Gatter mit Eingaben von allen Ergebnisbits hinzu, um eine Null zu erkennen.
 
-Bild:../images/how_does_cpu/alu_array_with_zero.svg[width=„60%“]
+image:../images/how_does_cpu/alu_array_with_zero.svg[width=400]
 
 
 
@@ -131,7 +131,7 @@ Dies ermutigt den geneigten Leser, die Wahrheitstabelle und die Schaltung als Ü
 //möchte der Autor eine alternative Implementierung vorstellen
 //, um https://www.geeksforgeeks.org/overflow-in-arithmetic-addition-in-binary-number-system/[hier] zu finden.
 
-image:../images/how_does_cpu/1bit_alu_cell_with_overflow.svg[width=„120%“]
+image:../images/how_does_cpu/1bit_alu_cell_with_overflow.svg[width=500]
 
 Bei einer Zweierkomplement-Interpretation tritt ein Überlauf in zwei Fällen auf:
 
@@ -162,9 +162,9 @@ finden Sie unter http://teaching.idallen.com/dat2343/01f/notes/overflow.txt[hier
 | 1 | 1 | 1 | 1 | 0
 |==================
 
-Der von Logisim erzeugte Schaltkreis sieht dementsprechend aus:
+Der von Logisim erzeugte Schaltkreis sieht dementsprechend aus wie folgt:
 
-image:../images/how_does_cpu/overflow_detection_gates.png[width=„45%“]
+image:../images/how_does_cpu/overflow_detection_gates.png[width=400]
 
 
 // Um dies zu erkennen, genügt ein einfaches XOR mit den Eingängen von Carry-In und Carry-Out.
@@ -221,23 +221,23 @@ Multiplexer kommen an mehreren Stellen vor,
 in einer ALU werden sie jedoch zur Auswahl einer der logischen
 oder arithmetischen Operationen verwendet, wie wir später sehen werden.
 
-image:../images/how_does_cpu/multiplexer_symbol.svg[width=„60%“]
+image:../images/how_does_cpu/multiplexer_symbol.svg[width=350]
 
-image:../images/how_does_cpu/multiplexer_principle.svg[width=„75%“]
+image:../images/how_does_cpu/multiplexer_principle.svg[width=450]
 
 
 Der Demultiplexer – wie der Name schon sagt – hat die genau entgegengesetzte Aufgabe
 und verteilt das Signal auf einer Leitung (Eingang) auf einen
 von mehreren Ausgängen, je nach Auswahlbit(s).
 
-image:../images/how_does_cpu/demultiplexer_principle.svg[width=„75%“]
+image:../images/how_does_cpu/demultiplexer_principle.svg[width=350]
 
 === Multiplexer in komplementärer Pass-Transistor-Logik
 
 Wir zeigen und implementieren den Multiplexer in Pass-Transistor-Logik,
 da dies das ressourceneffizienteste Design ist...
 
-image:../images/how_does_cpu/mux_ptl.svg[width=„65%“]
+image:../images/how_does_cpu/mux_ptl.svg[width=400]
 
 
 
