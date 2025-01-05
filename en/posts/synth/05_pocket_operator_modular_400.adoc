@@ -6,25 +6,25 @@ draft: false
 type: blog
 ---
 
-An analog modular synthesizer was ever me dream, last week I fulfilled this dream of mine,
-and ordered the pocket operator modular 400 from the swedish company teenage engineering.
-Like  furniture from the other popular swedish company you first have to build it yourself,
-before making any sound with it. This took me around 3 to 4 hours. But it was worth it.
+Ein analoger modularer Synthesizer war schon immer mein Traum, letzte Woche habe ich mir diesen Traum erfüllt
+und den Pocket Operator Modular 400 von der schwedischen Firma Teenage Engineering bestellt.
+Wie bei den Möbeln der anderen beliebten schwedischen Firma muss man ihn erst selbst zusammenbauen,
+bevor man damit einen Ton erzeugen kann. Das hat etwa 3 bis 4 Stunden gedauert. Aber es hat sich gelohnt.
 
 
 '''
 
-Here are some patch ideas. In the first example we simply mix the outputs of all
-3 oscillators together and control the sine oscillator with the triangle output of
-the LFO and the pulse width of the square oscillator with the LFO square.
+Hier sind einige Patch-Ideen. Im ersten Beispiel mischen wir einfach die Ausgänge aller
+3 Oszillatoren zusammen und steuern den Sinusoszillator mit dem Dreieckausgang des
+LFO und die Impulsbreite des Rechteckoszillators mit dem LFO-Rechteck.
 
-. mixer out -> speaker right
-. sine out -> mixer 3
-. saw out -> mixer 2
-. square out -> mixer 1
-. sine out -> saw fm
-. LFO triangle -> sine control
-. LFO square -> square pwm
+. Mixer-Ausgang -> Lautsprecher rechts.
+. Sinus-Ausgang -> Mixer 3.
+. Sägezahn-Ausgang -> Mixer 2.
+. Rechteck-Ausgang -> Mixer 1.
+. Sinus-Ausgang -> Sägezahn FM.
+. LFO Dreieck -> Sinus-Steuerung.
+. LFO Rechteck -> Rechteck-PWM
 
 image:../pom400_patch_idea.jpg[POM 400]
 
@@ -42,33 +42,33 @@ image:../plong_plong_plong.jpg[Plong...]
 
 link:../plong_plong_plong.mp4[Plong... Video]
 
-(I apologise for the bad video quality and bad sound quality, the setup
-will be improved.) The nice thing about modular synthesizer ist that they break
-the traditional signal path of voltage controlled oscillator (VCO), voltage controlled filter (VCF) and voltage controlled amplifier (VCA),
-and allow for all the creativity to culminate in experimental setups.
+(Ich entschuldige mich für die schlechte Video- und Tonqualität, die Einrichtung
+wird verbessert.) Das Schöne an modularen Synthesizern ist, dass sie
+den traditionellen Signalweg von spannungsgesteuertem Oszillator (VCO), spannungsgesteuertem Filter (VCF) und spannungsgesteuertem Verstärker (VCA) durchbrechen und
+es ermöglichen, dass die gesamte Kreativität in experimentellen Aufbauten gipfelt.
 
-With the random module we can sample & hold a signal from the input. Its companionship is the noise module.
-We feed the saw output to the input of the rand module.
+Mit dem Zufallsmodul können wir ein Signal vom Eingang abtasten und halten. Sein Begleiter ist das Rauschmodul.
+Wir speisen den Sägezahnausgang in den Eingang des Zufallsmoduls ein.
 
 image:../beep_bleep.jpg[Beep,bleep...]
 
-link:../beep_bleep.mp4[Beep,bleep... Video]
+Link:../beep_bleep.mp4[Beep,bleep... Video]
 
-'''
+'''.
 
-. sine output -> speaker right
-. envelope output -> sine key
-. LFO square -> envelope trig
-. LFO square -> sine fm
+ Sinus-Ausgang -> Lautsprecher rechts.
+ Hüllkurvenausgang -> Sinustaste.
+ LFO-Rechteck -> Hüllkurven-Trigger.
+ LFO-Rechteck -> Sinus fm
 
 
-image:../sweeping_sinus.jpg[Sweeping sinus...]
+image:../sweeping_sinus.jpg[Sweeping Sinus...]
 
-link:../sweeping_sinus.mp4[sweeping sinus... Video]
+link:../sweeping_sinus.mp4[Sweeping Sinus... Video]
 
-We can expand the setup by using the sequencer and utilize the filter. Because  the nice
-thing about modular synthesizers is, that the filter can be used not only in signal paths but
-also in control paths ;-) .
+Wir können das Setup erweitern, indem wir den Sequenzer verwenden und den Filter nutzen. Denn
+das Schöne an modularen Synthesizern ist, dass der Filter nicht nur in Signalpfaden, sondern
+auch in Steuerpfaden verwendet werden kann ;-) ..
 
-. filter output -> sine control
-. sequencer output -> filter input
+ Filterausgang -> Sinussteuerung.
+ Sequenzerausgang -> Filtereingang

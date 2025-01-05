@@ -10,29 +10,29 @@ image:../plong_plong_plong.jpg[Plong...]
 
 link:../plong_plong_plong.mp4[Plong... Video]
 
-With the random module we can sample & hold a signal from the input. Its companionship is the noise module.
-We feed the saw output to the input of the rand module.
+Mit dem Zufallsmodul können wir ein Signal vom Eingang abtasten und halten. Sein Gegenstück ist das Rauschmodul.
+Wir speisen den Sägeausgang in den Eingang des Zufallsmoduls ein.
 
 image:../beep_bleep.jpg[Beep,bleep...]
 
 link:../beep_bleep.mp4[Beep,bleep... Video]
 
-'''
+'''.
 
-. sine output -> speaker right
-. envelope output -> sine key
-. LFO square -> envelope trig
-. LFO square -> sine fm
+ Sinus-Ausgang -> Lautsprecher rechts.
+ Hüllkurvenausgang -> Sinus-Taste.
+ LFO-Rechteck -> Hüllkurven-Trigger.
+ LFO-Rechteck -> Sinus fm
 
 
-image:../sweeping_sinus.jpg[Sweeping sinus...]
+image:../sweeping_sinus.jpg[Sweeping Sinus...]
 
-link:../sweeping_sinus.mp4[sweeping sinus... Video]
+link:../sweeping_sinus.mp4[Sweeping Sinus... Video]
 
-We can expand the setup by using the sequencer and utilize the filter. Because  the nice
-thing about modular synthesizers is, that the filter can be used not only in signal paths but
-also in control paths ;-) .
+Wir können das Setup erweitern, indem wir den Sequenzer verwenden und den Filter nutzen. Denn  das Schöne
+an modularen Synthesizern ist, dass der Filter nicht nur in Signalpfaden, sondern
+auch in Steuerpfaden verwendet werden kann ;-) ..
 
-. filter output -> sine control
-. sequencer output -> filter input
+ Filterausgang -> Sinussteuerung.
+ Sequenzerausgang -> Filtereingang
 ---
