@@ -5,12 +5,11 @@ tags: ["audio", "Synth"]
 draft: false
 type: blog
 ---
-On my mobile setup, the NiftyVCase I have collected my diy modules (with excepition to the Doepfer
-A-124, I had to include for its great sound). It features a kick-drum from erica synths, an even
-VCO, Sampling Modulator, A*B+C and Rampage from Befaco. As well as the Divebomb III for some delay.
-Last but not least a Zlon skew lfo and a BCM086 Diode Ladder High pass filter.
+In meinem mobilen Setup, dem NiftyVCase, habe ich meine DIY-Module gesammelt (mit Ausnahme des Doepfer
+A-124, den ich wegen seines großartigen Klangs einbauen musste). Es verfügt über eine Kick-Drum von Erica Synths, einen even VCO, eine Sampling-Modulator, A*B+C und Rampage von Befaco. Sowie den Divebomb III für etwas Delay.
+Zu guter Letzt ein Zlon-Skew-LFO und ein BCM086-Diodenleiter-Hochpassfilter.
 
 
 image:../noise_floor.jpg[noise floor]
 
-link:../noise_floor.m4a[noise floor Audio]
+Link:../noise_floor.m4a[noise floor Audio]
