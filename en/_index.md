@@ -13,6 +13,17 @@ type: text
 
 *We'll get you started here*
 
+[html]
+++++
+<div class="custom-html">
+  <p>Dies ist ein HTML-Block innerhalb der AsciiDoc-Seite.</p>
+  <ul>
+    <li>Erster Punkt</li>
+    <li>Zweiter Punkt</li>
+  </ul>
+</div>
+++++
+
 <rawhtml>
 
 <?xml version="1.0" encoding="UTF-8"?>
