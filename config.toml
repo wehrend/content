@@ -125,3 +125,13 @@ theme = "hugo-book"
     workingFolderCurrent = true
     trace = true
     verbose = true
+
+[languages.en.markup]
+  [languages.en.markup.goldmark]
+    [languages.en.markup.goldmark.renderer]
+      unsafe = true
+
+[languages.de.markup]
+  [languages.de.markup.goldmark]
+    [languages.de.markup.goldmark.renderer]
+      unsafe = true
