@@ -1,0 +1,73 @@
+---
+title: "Move Hugo Web-presence to GH-Pages"
+date: 2025-02-26
+tags: ["hugo","web","gh-pages"]
+draft: false
+type: blog
+---
+
+Hi there, a few months ago I decided, I would want to go to a form of webspace where I dont have to spend money. Although its only a few bucks, I thought it would be time to move on…​So this is basically a tutorial to move over to github pages…​
+
+We start with the Makefile. My new setup looks like the following:
+
+----
+{{<highlight Makefile>}}
+# ~/development/hugo/blog#
+include credentials.mk
+
+# Name des Ordners, in dem Hugo die Website baut
+BUILD_DIR := wehrend.github.io
+
+.PHONY: up deployment cleanup
+
+# Lokalen Hugo-Server starten
+up:
+	hugo serve --disableFastRender --renderStaticToDisk --ignoreCache --config ./content/config.toml
+
+# Deployment:
+# 1. Baut die Website in BUILD_DIR.
+# 2. Prüft, ob es Änderungen im BUILD_DIR gibt (im Vergleich zum HEAD).
+#    Falls ja, wird interaktiv eine Commit-Nachricht abgefragt und
+#    nur der Inhalt von BUILD_DIR wird gestaged und committet.
+# 3. Anschließend wird mit "git subtree push" der Inhalt des BUILD_DIR in den Remote-Branch "gh-pages" übertragen.
+deployment:
+	@echo "Building site..."
+	hugo -D -d $(BUILD_DIR) --config ./content/config.toml
+	@echo "Checking for changes in $(BUILD_DIR)..."
+	@if ! git diff --quiet HEAD -- $(BUILD_DIR); then \
+		read -p "Enter commit message: " COMMIT_MSG; \
+		echo "Staging changes in $(BUILD_DIR)..."; \
+		git add $(BUILD_DIR); \
+		echo "Committing changes..."; \
+		git commit -m "$$COMMIT_MSG"; \
+	else \
+		echo "No changes in $(BUILD_DIR) to commit."; \
+	fi
+	@echo "Pushing subtree to gh-pages branch..."
+	@git subtree push --prefix=$(BUILD_DIR) https://$(GIT_USER):$(GIT_PASS)@github.com/wehrend/wehrend.github.io.git gh-pages
+
+# Cleanup: Löscht das Build-Verzeichnis
+cleanup:
+	@echo "Cleaning up..."
+	rm -rf $(BUILD_DIR)
+	@echo "Cleanup complete."
+{{</highlight>}}
+----
+and the credentials.mk file shown below which should be explicit in the .gitignore tp prevent secrets fromm being leaked.
+
+----
+GIT_USER = <user>
+GIT_PASS = <password or token>
+----
+
+Next, before doing incremental changes, first we need to create a repository for the pages as is described https://pages.github.com/[here]:
+
+first create a new public reposiory under  https://github.com/<username>/<username>.github.io which is in my case
+
+https://github.com/wehrend/wehrend.github.io, then we need to go to our main directory hugo and manipulatre the
+publishDir URL in the config file, so that it points to <username>.github.io instead of public,
+then do an add *, followed by a git commit and git push origin main .
+
+
+
+
