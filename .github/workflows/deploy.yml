@@ -4,14 +4,16 @@ on:
   push:
     branches:
       - main
-    # Optional: nur triggern, wenn Dateien im "content"-Ordner geändert wurden
     paths:
-      - 'content/**'
+      - 'hugo/content/**'
   workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: hugo
 
     steps:
       - name: Repository auschecken
@@ -28,12 +30,15 @@ jobs:
             echo "changed=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Build der Site mit Hugo
+      - name: Setup Hugo
         if: steps.content_changes.outputs.changed == 'true'
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
           extended: true
+
+      - name: Build der Site mit Hugo
+        if: steps.content_changes.outputs.changed == 'true'
         run: hugo -D -d wehrend.github.io --config ./content/config.toml
 
       - name: Deployment: Commit und Push der Build-Änderungen
@@ -42,8 +47,8 @@ jobs:
         run: |
           if [ -n "$(git status --porcelain)" ]; then
             echo "Änderungen im Build-Output erkannt – Deployment wird durchgeführt..."
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git config user.name 'github-actions[bot]'
+            git config user.email 'github-actions[bot]@users.noreply.github.com'
             git add .
             git commit -m "Automatischer Deployment-Commit"
             git push origin main
