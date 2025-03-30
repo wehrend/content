@@ -20,58 +20,29 @@ jobs:
       - name: Checkout Hugo Blog repository
         uses: actions/checkout@v3
         with:
-          # Clones your hugo_blog repository into the 'hugo_blog' folder.
           path: hugo_blog
+          fetch-depth: 0
 
       - name: Checkout Hugo Content repository
         uses: actions/checkout@v3
         with:
-          # Replace <owner> with your GitHub username or organization.
-          repository: <owner>/hugo_content
+          repository: wehrend/hugo_content
           token: ${{ secrets.GITHUB_TOKEN }}
-          # Clones hugo_content into the subdirectory 'hugo_blog/hugo_content'
           path: hugo_blog/hugo_content
-
-      - name: Check for changes in the content repository
-        id: content_changes
-        run: |
-          # Get the current commit hash of hugo_content.
-          CURRENT_COMMIT=$(git -C hugo_content rev-parse HEAD)
-          echo "Current commit: $CURRENT_COMMIT"
-          # Check if the file containing the last deployed commit exists.
-          if [ -f wehrend.github.io/last_deployed_commit.txt ]; then
-              LAST_DEPLOYED=$(cat wehrend.github.io/last_deployed_commit.txt)
-              echo "Last deployed commit: $LAST_DEPLOYED"
-          else
-              LAST_DEPLOYED=""
-          fi
-          # If the current commit is different from the last deployed, flag as changed.
-          if [ "$CURRENT_COMMIT" != "$LAST_DEPLOYED" ]; then
-              echo "Content has changes."
-              echo "changed=true" >> $GITHUB_OUTPUT
-              echo "current_commit=$CURRENT_COMMIT" >> $GITHUB_OUTPUT
-          else
-              echo "No changes in content."
-              echo "changed=false" >> $GITHUB_OUTPUT
-          fi
+          fetch-depth: 0
 
       - name: Setup Hugo
-        if: steps.content_changes.outputs.changed == 'true'
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
           extended: true
 
       - name: Build the site with Hugo
-        if: steps.content_changes.outputs.changed == 'true'
         run: hugo -D -d wehrend.github.io --config config.toml --contentDir hugo_content
 
       - name: 'Deployment: Commit and push build changes'
-        if: steps.content_changes.outputs.changed == 'true'
         working-directory: wehrend.github.io
         run: |
-          # Update the last deployed commit file with the current commit.
-          echo "${{ steps.content_changes.outputs.current_commit }}" > last_deployed_commit.txt
           if [ -n "$(git status --porcelain)" ]; then
             echo "Detected changes in build output – deploying..."
             git config user.name 'github-actions[bot]'
