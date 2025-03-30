@@ -4,8 +4,9 @@ on:
   push:
     branches:
       - main
+    # Adjust this filter if needed; it now triggers on any changes in the repo.
     paths:
-      - 'hugo/content/**'
+      - '**'
   workflow_dispatch:
 
 jobs:
@@ -13,20 +14,23 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: hugo
+        working-directory: content
 
     steps:
       - name: Repository auschecken
         uses: actions/checkout@v3
+        with:
+          path: content
 
-      - name: Änderungen im content-Verzeichnis prüfen
+      - name: Änderungen im Repository prüfen
         id: content_changes
         run: |
-          if [ -n "$(git status --porcelain content)" ]; then
+          # Prüfe, ob sich etwas im geklonten Repository (im Ordner "content") geändert hat.
+          if [ -n "$(git status --porcelain .)" ]; then
             echo "Content hat Änderungen."
             echo "changed=true" >> $GITHUB_OUTPUT
           else
-            echo "Keine Änderungen im content-Verzeichnis gefunden."
+            echo "Keine Änderungen gefunden."
             echo "changed=false" >> $GITHUB_OUTPUT
           fi
 
@@ -39,7 +43,7 @@ jobs:
 
       - name: Build der Site mit Hugo
         if: steps.content_changes.outputs.changed == 'true'
-        run: hugo -D -d wehrend.github.io --config ./content/config.toml
+        run: hugo -D -d wehrend.github.io --config config.toml
 
       - name: 'Deployment: Commit und Push der Build-Änderungen'
         if: steps.content_changes.outputs.changed == 'true'
