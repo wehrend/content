@@ -14,14 +14,14 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: hugo
+        working-directory: hugo_blog
 
     steps:
       - name: Checkout Hugo Blog repository
         uses: actions/checkout@v3
         with:
-          # This clones your hugo_blog repository into the 'hugo' directory.
-          path: hugo
+          # This clones your hugo_blog repository into the 'hugo_blog' directory.
+          path: hugo_blog
 
       - name: Checkout Hugo Content repository
         uses: actions/checkout@v3
@@ -29,14 +29,14 @@ jobs:
           # Replace <owner> with your GitHub username or organization.
           repository: wehrend/hugo_content
           token: ${{ secrets.GITHUB_TOKEN }}
-          # This clones the hugo_content repository into the subdirectory 'hugo/content'
-          path: hugo/content
+          # This clones the hugo_content repository into 'hugo_blog/hugo_content'
+          path: hugo_blog/hugo_content
 
       - name: Check for changes in the content repository
         id: content_changes
         run: |
-          # Using the -C option to run git commands in the 'content' subfolder.
-          if [ -n "$(git -C content status --porcelain)" ]; then
+          # Use the -C option to execute git commands in the 'hugo_content' subfolder.
+          if [ -n "$(git -C hugo_content status --porcelain)" ]; then
             echo "Content has changes."
             echo "changed=true" >> $GITHUB_OUTPUT
           else
@@ -53,7 +53,7 @@ jobs:
 
       - name: Build the site with Hugo
         if: steps.content_changes.outputs.changed == 'true'
-        run: hugo -D -d wehrend.github.io --config config.toml
+        run: hugo -D -d wehrend.github.io --config config.toml --contentDir hugo_content
 
       - name: 'Deployment: Commit and push build changes'
         if: steps.content_changes.outputs.changed == 'true'
