@@ -9,28 +9,50 @@ on:
       - '**'
   workflow_dispatch:
 
+name: Deploy Site
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'hugo_blog/**'
+      - 'hugo_content/**'
+  workflow_dispatch:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # All run commands below are relative to the 'hugo' directory.
     defaults:
       run:
-        working-directory: content
+        working-directory: hugo
 
     steps:
-      - name: Repository auschecken
+      - name: Checkout Hugo Blog repository
         uses: actions/checkout@v3
         with:
+          # This will clone your hugo_blog repository into the 'hugo' directory.
+          path: hugo
+
+      - name: Checkout Hugo Content repository
+        uses: actions/checkout@v3
+        with:
+          # Replace <owner> with your GitHub username or organization.
+          repository: <owner>/hugo_content
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # This will clone the hugo_content repository into the subdirectory 'hugo/content'
           path: content
 
-      - name: Änderungen im Repository prüfen
+      - name: Check for changes in the content repository
         id: content_changes
         run: |
-          # Prüfe, ob sich etwas im geklonten Repository (im Ordner "content") geändert hat.
-          if [ -n "$(git status --porcelain .)" ]; then
-            echo "Content hat Änderungen."
+          # Using the -C option to run git commands in the 'content' subfolder.
+          if [ -n "$(git -C content status --porcelain)" ]; then
+            echo "Content has changes."
             echo "changed=true" >> $GITHUB_OUTPUT
           else
-            echo "Keine Änderungen gefunden."
+            echo "No changes in content."
             echo "changed=false" >> $GITHUB_OUTPUT
           fi
 
@@ -41,21 +63,21 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
-      - name: Build der Site mit Hugo
+      - name: Build the site with Hugo
         if: steps.content_changes.outputs.changed == 'true'
         run: hugo -D -d wehrend.github.io --config config.toml
 
-      - name: 'Deployment: Commit und Push der Build-Änderungen'
+      - name: 'Deployment: Commit and push build changes'
         if: steps.content_changes.outputs.changed == 'true'
         working-directory: wehrend.github.io
         run: |
           if [ -n "$(git status --porcelain)" ]; then
-            echo "Änderungen im Build-Output erkannt – Deployment wird durchgeführt..."
+            echo "Detected changes in build output – deploying..."
             git config user.name 'github-actions[bot]'
             git config user.email 'github-actions[bot]@users.noreply.github.com'
             git add .
-            git commit -m "Automatischer Deployment-Commit"
+            git commit -m "Automated deployment commit"
             git push origin main
           else
-            echo "Keine Änderungen im Build-Output zum Committen."
+            echo "No changes in build output to commit."
           fi
