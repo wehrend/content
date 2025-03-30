@@ -4,17 +4,6 @@ on:
   push:
     branches:
       - main
-    # Adjust this filter if needed; it now triggers on any changes in the repo.
-    paths:
-      - '**'
-  workflow_dispatch:
-
-name: Deploy Site
-
-on:
-  push:
-    branches:
-      - main
     paths:
       - 'hugo_blog/**'
       - 'hugo_content/**'
@@ -39,7 +28,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           # Replace <owner> with your GitHub username or organization.
-          repository: <owner>/hugo_content
+          repository: wehrend/hugo_content
           token: ${{ secrets.GITHUB_TOKEN }}
           # This will clone the hugo_content repository into the subdirectory 'hugo/content'
           path: content
