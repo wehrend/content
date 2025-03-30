@@ -12,7 +12,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    # All run commands below are relative to the 'hugo' directory.
     defaults:
       run:
         working-directory: hugo
@@ -21,7 +20,7 @@ jobs:
       - name: Checkout Hugo Blog repository
         uses: actions/checkout@v3
         with:
-          # This will clone your hugo_blog repository into the 'hugo' directory.
+          # This clones your hugo_blog repository into the 'hugo' directory.
           path: hugo
 
       - name: Checkout Hugo Content repository
@@ -30,8 +29,8 @@ jobs:
           # Replace <owner> with your GitHub username or organization.
           repository: wehrend/hugo_content
           token: ${{ secrets.GITHUB_TOKEN }}
-          # This will clone the hugo_content repository into the subdirectory 'hugo/content'
-          path: content
+          # This clones the hugo_content repository into the subdirectory 'hugo/content'
+          path: hugo/content
 
       - name: Check for changes in the content repository
         id: content_changes
