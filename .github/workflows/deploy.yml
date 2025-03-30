@@ -41,7 +41,7 @@ jobs:
         if: steps.content_changes.outputs.changed == 'true'
         run: hugo -D -d wehrend.github.io --config ./content/config.toml
 
-      - name: Deployment: Commit und Push der Build-Änderungen
+      - name: 'Deployment: Commit und Push der Build-Änderungen'
         if: steps.content_changes.outputs.changed == 'true'
         working-directory: wehrend.github.io
         run: |
