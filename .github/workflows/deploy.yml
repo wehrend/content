@@ -27,6 +27,11 @@ jobs:
         working-directory: hugo/content
         run: |
           hugo --gc --minify --config config.toml
+      - name: Debug path
+        run: |
+          pwd
+          ls -la
+
       - name: Deploy to wehrend.github.io
         uses: peaceiris/actions-gh-pages@v4
         with:
