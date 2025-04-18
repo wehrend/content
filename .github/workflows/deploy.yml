@@ -27,7 +27,11 @@ jobs:
       - name: Build Hugo Site
         working-directory: /home/runner/work/hugo
         run: |
-          hugo --gc --minify
+          hugo \
+          --gc \
+          --minify \
+          --config ./content/config.toml \
+          --source ./content
 
       - name: Deploy to wehrend.github.io
         uses: peaceiris/actions-gh-pages@v4
