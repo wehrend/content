@@ -23,15 +23,10 @@ jobs:
         run: |
           wget -O hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb
           sudo dpkg -i hugo.deb
-
       - name: Build Hugo Site
+        working-directory: ./content
         run: |
-          hugo \
-          --gc \
-          --minify \
-          --config ./content/config.toml \
-          --source ./content
-
+          hugo --gc --minify --config config.toml
       - name: Deploy to wehrend.github.io
         uses: peaceiris/actions-gh-pages@v4
         with:
