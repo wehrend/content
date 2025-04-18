@@ -31,7 +31,6 @@ jobs:
           pwd
           ls -la
       - name: Build Hugo Site
-        working-directory: .
         run: hugo --gc --minify --source content
 
       - name: Deploy to wehrend.github.io
