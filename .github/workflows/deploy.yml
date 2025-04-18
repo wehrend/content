@@ -16,6 +16,8 @@ jobs:
       HUGO_VERSION: 0.145.0
       TZ: Europe/Berlin
     steps:
+      - name: Initialize Hugo Modules
+        run: hugo mod get
       - name: Checkout Hugo Source Repo
         uses: actions/checkout@v4
       - name: Install Hugo
