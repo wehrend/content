@@ -31,7 +31,7 @@ jobs:
           pwd
           ls -la
       - name: Build Hugo Site
-        run: hugo --gc --minify --source content
+        run: hugo --gc --minify
 
       - name: Deploy to wehrend.github.io
         uses: peaceiris/actions-gh-pages@v4
