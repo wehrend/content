@@ -25,7 +25,7 @@ jobs:
           sudo dpkg -i hugo.deb
 
       - name: Build Hugo Site
-        working-directory: /home/runner/work/hugo_blog
+        working-directory: /home/runner/work/hugo
         run: |
           hugo --gc --minify
 
