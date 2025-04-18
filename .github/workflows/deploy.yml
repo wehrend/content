@@ -39,6 +39,6 @@ jobs:
           personal_token: ${{ secrets.PERSONAL_TOKEN }}
           external_repository: wehrend/wehrend.github.io
           publish_branch: main
-          publish_dir: hugo_blog/wehrend.github.io
+          publish_dir: ./wehrend.github.io
           user_name: wehrend
           user_email: sven.wehrend@gmail.com
