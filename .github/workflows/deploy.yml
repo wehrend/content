@@ -29,7 +29,6 @@ jobs:
           sudo dpkg -i hugo.deb
 
       - name: Build Hugo site
-        working-directory: content
         run: |
           hugo --gc --minify --source content
           ls -la wehrend.github.io
