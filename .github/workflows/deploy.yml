@@ -30,7 +30,7 @@ jobs:
 
       - name: Build Hugo site
         run: |
-          hugo --gc --minify --source /home/runner/work/content
+          hugo --gc --minify --config /home/runner/work/content/content/config.toml
           ls -la wehrend.github.io
 
       - name: Deploy to GitHub Pages (via SSH)
