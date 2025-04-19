@@ -31,7 +31,7 @@ jobs:
       - name: Build Hugo site
         working-directory: content
         run: |
-          hugo --gc --minify --source content/content
+          hugo --gc --minify --source content
           ls -la wehrend.github.io
 
       - name: Deploy to GitHub Pages (via SSH)
