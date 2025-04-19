@@ -31,7 +31,7 @@ jobs:
       - name: Build Hugo site
         working-directory: content
         run: |
-          hugo --gc --minify
+          hugo --gc --minify --source content/content
           ls -la wehrend.github.io
 
       - name: Deploy to GitHub Pages (via SSH)
@@ -40,6 +40,6 @@ jobs:
           deploy_key: ${{ secrets.GH_DEPLOY_KEY }}
           external_repository: wehrend/wehrend.github.io
           publish_branch: main
-          publish_dir: content/wehrend.github.io
+          publish_dir: content/content/wehrend.github.io
           user_name: wehrend
           user_email: sven.wehrend@gmail.com
