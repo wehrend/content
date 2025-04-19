@@ -33,11 +33,11 @@ jobs:
           hugo --gc --minify --config /home/runner/work/content/content/config.toml
           ls -la wehrend.github.io
 
-      - name: Deploy to GitHub Pages (via SSH)
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          deploy_key: ${{ secrets.GH_DEPLOY_KEY }}
-          external_repository: wehrend/wehrend.github.io
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          external_repository: wehrend/content
           publish_branch: main
           publish_dir: content/content/wehrend.github.io
           user_name: wehrend
