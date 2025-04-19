@@ -36,7 +36,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          personal_token: Jr14Yj6luwQ6Wx3qZya3MG8ZLXt6yf08cC39
+          personal_token: ${{ secrets.GH_DEPLOY_KEY}}
           external_repository: wehrend/wehrend.github.io
           publish_branch: main
           publish_dir: ./wehrend.github.io
