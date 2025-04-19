@@ -37,7 +37,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           personal_token: ${{ secrets.GH_DEPLOY_TOKEN2 }}
-          external_repository: wehrend/wehrend.github.io
+          external_repository: wehrend/hugo
           publish_branch: main
           publish_dir: ./wehrend.github.io
           user_name: wehrend
