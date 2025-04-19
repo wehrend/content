@@ -37,7 +37,7 @@ jobs:
           find . -type d | sort
 
       - name: Build Hugo site
-        working-directory: /home/runner/work/hugo/content
+        working-directory: content
         run: |
           hugo --gc --minify
           echo "Build complete. Contents of wehrend.github.io/:"
