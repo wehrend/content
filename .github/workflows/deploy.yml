@@ -33,12 +33,13 @@ jobs:
       - name: Build Hugo Site
         run: hugo --gc --minify
 
-      - name: Deploy to wehrend.github.io
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          personal_token: ${{ secrets.GH_DEPLOY_TOKEN2 }}
-          external_repository: wehrend/hugo
+          personal_token: ${{ secrets.GH_DEPLOY_TOKEN }}
+          external_repository: wehrend/wehrend.github.io
           publish_branch: main
           publish_dir: ./wehrend.github.io
           user_name: wehrend
           user_email: sven.wehrend@gmail.com
+
