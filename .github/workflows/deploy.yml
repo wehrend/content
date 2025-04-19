@@ -37,8 +37,11 @@ jobs:
           find . -type d | sort
 
       - name: Build Hugo site
-        working-directory: content
-        run: hugo --gc --minify
+        working-directory: hugo/content
+        run: |
+          hugo --gc --minify
+          echo "Build complete. Contents of wehrend.github.io/:"
+          ls -la wehrend.github.io
 
       - name: Deploy to GitHub Pages (via SSH)
         uses: peaceiris/actions-gh-pages@v4
